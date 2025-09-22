@@ -1,4 +1,4 @@
-# Auto-remove Jupyter Outputs before committing
+# Auto-remove Jupyter outputs before committing
 
 Jupyter notebooks are great for interactive work, but by default, they also store all cell outputs (e.g., figures, tables, and logs) together with the .ipynb file.
 When you commit to Git, this can make diffs large and messy — but in most cases, you only want the code, not the outputs.
