@@ -26,6 +26,15 @@ What this does:
 * Adds a Git filter and clean rule to .gitattributes so that, whenever you git add a notebook, its outputs are stripped before being written to the repository.
 Note that: Your local copy keeps its outputs, but the committed version is clean.
 
+To double-check whether nbstripout is working, use
+```bash
+cat .git/config
+```
+and check whether you see this in the file:
+```bash
+[filter "nbstripout"]
+```
+
 ---
 ## Clear outputs from code
 
