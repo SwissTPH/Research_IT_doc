@@ -42,5 +42,6 @@ If you only need to clear the output of the current cell during execution, you c
 
 ```python
 from IPython.display import clear_output
-clear_output(wait=True)
+
+clear_output(wait=True) # simply insert this line before the plotting or printing command
 ```
