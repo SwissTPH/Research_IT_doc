@@ -38,7 +38,7 @@ and check whether you see this in the screen:
 ---
 ## Clear outputs from code
 
-If you only need to clear the output of the current cell during execution, you can use:
+If you only need to clear the output of the current cell during execution, you can use the clear_output function: (https://ipython.readthedocs.io/en/9.0.0/api/generated/IPython.display.html#functions):
 
 ```python
 from IPython.display import clear_output
