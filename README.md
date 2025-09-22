@@ -13,20 +13,20 @@ When committing changes, we only want to keep the script itself and see the chan
 ---
 ## Automatically clear outputs
 
-To avoid clearing outputs manually before every commit, you can configure Git to remove them automatically using nbstripout (https://github.com/kynan/nbstripout):
+To avoid clearing outputs manually before every commit, you can configure Git to remove them automatically using `nbstripout` (https://github.com/kynan/nbstripout):
 
-Install nbstripout:
+Install `nbstripout`:
 ```bash
 pip install nbstripout nbconvert
 nbstripout --install --attributes .gitattributes
 ```
 What this does:
 
-* Installs nbstripout in your environment.
-* Adds a Git filter and clean rule to .gitattributes. After this, whenever you git add a file, its outputs are stripped before being written to the repository.
+* Installs `nbstripout` in your environment.
+* Adds a Git filter and clean rule to `.gitattributes`. After this, whenever you git add a file, its outputs are stripped before being written to the repository.
 Note that: Your local copy keeps its outputs, but the committed version is clean.
 
-To double-check whether nbstripout is working, use
+To double-check whether `nbstripout` is working, use
 ```bash
 cat .git/config
 ```
@@ -38,7 +38,7 @@ and check whether you see this in the screen:
 ---
 ## Clear outputs from code
 
-If you only need to clear the output of the current cell during execution, you can use the clear_output function in your Python script directly: (https://ipython.readthedocs.io/en/9.0.0/api/generated/IPython.display.html#functions):
+If you only need to clear the output of the current cell during execution, you can use the `clear_output` function in your Python script directly: (https://ipython.readthedocs.io/en/9.0.0/api/generated/IPython.display.html#functions):
 
 ```python
 from IPython.display import clear_output
