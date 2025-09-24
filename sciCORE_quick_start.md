@@ -11,7 +11,7 @@ More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/ge
 Use your **UniBasel alias** to log in from the terminal:
 
 ```bash
-ssh <username>@login12.scicore.unibas.ch # login12/login11 would both work
+ssh <username>@login12.scicore.unibas.ch # login11 also works
 ```
 
 Alternatively, use SSH clients such as `Termius` or `MobaXterm` with the following settings:
@@ -32,18 +32,18 @@ Example job script `test.sh`:
 
 ```bash
 #!/bin/bash
+#SBATCH --job-name=myrun        # Job name
+#SBATCH --cpus-per-task=1       # Number of cores
+#SBATCH --mem-per-cpu=1G        # RAM per core
+#SBATCH --time=01:00:00         # Maximum runtime (1h)
+#SBATCH --qos=6hours            # Queue (maximum 6h runtime)
+#SBATCH --output=./myrun.o%j    # Path/name for output file
+#SBATCH --error=./myrun.e%j     # Path/name for error file
 
-#SBATCH --job-name=myrun     # Job name = `myrun`
-#SBATCH --cpus-per-task=1    # Number of cores = 1
-#SBATCH --mem-per-cpu=1G     # RAM reserved = 1G
-#SBATCH --time=01:00:00      # Maximum run time = 1h
-#SBATCH --qos=6hours         # Queue to allocate your job = 6hours queue (maximum runtime = 6h)
-#SBATCH --output=./myrun.o%j   # Path and name to the output file
-#SBATCH --error=./myrun.e%j    # Path and name to the error message
+ml Biopython                    # Load module
 
-ml Biopython # Load biopython module
+python ./test.py                # Run your script
 
-python ./test.py # run your script
 ```
 
 Example Python script `test.py`:
@@ -73,7 +73,7 @@ squeue -u <username>
 ### Cancel jobs
 
 ```bash
-# cancel job by job_id or username
+# Cancel job by job_id or username
 scancel <job_id>/<username>
 ```
 
@@ -86,7 +86,7 @@ sciCORE provides a wide range of pre-built-in modules, so you usually don’t ne
 List available modules:
 
 ```bash
-module avail # to see the full module list
+module avail # To see the full module list
 ```
 Full module list can also be found [here](https://scicore.unibas.ch/using-scicore/software/).
 
