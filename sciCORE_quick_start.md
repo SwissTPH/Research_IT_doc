@@ -1,8 +1,8 @@
-# sciCore HPC — Quick Start Guide
+# sciCORE HPC — Quick Start Guide
 
 sciCORE provides **high-performance computing (HPC)** resources for large-scale data processing. Researchers can remotely access these resources from their own laptop or desktop. HPC is perfect for tasks that require large amounts of RAM or take several hours/days to complete, since jobs run remotely while your own machine can be logged out or switched off. 
 
-More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/getstarted/).
+This is a quick start guide for sciCORE HPC. More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/getstarted/).
 
 
 
