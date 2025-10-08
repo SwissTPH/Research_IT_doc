@@ -19,7 +19,7 @@ Alternatively, use SSH clients such as `Termius` or `MobaXterm` with the followi
 - Remote host: `login12.scicore.unibas.ch` or `login11.scicore.unibas.ch`
 - Username: your UniBasel alias.
 
-Please write to the SciCORE help centre (https://support.scicore.unibas.ch/servicedesk/customer/portal/1/create/17) if you do not have access.
+Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/servicedesk/customer/portal/1/create/17) if you do not have access.
 
 
 
