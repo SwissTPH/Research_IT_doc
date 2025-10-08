@@ -92,11 +92,32 @@ module avail # To see the full module list
 ```
 Full module list can also be found [here](https://scicore.unibas.ch/using-scicore/software/).
 
-If a package isn’t available as a module, you can alternatively use **Miniconda3** to create and activate your own environment, or contact the sciCORE team at scicore-admin@unibas.ch.
-
 Load modules in your job script with:
 
 ```bash
 ml <module_name>
 ```
 
+If a package isn’t available as a module, you can alternatively use **Miniconda3** to create and activate your own environment, or contact the sciCORE team at scicore-admin@unibas.ch. To use Miniconda3:
+
+```bash
+ml Miniconda3/24.7.1-0
+
+# then create your conda env, e.g. using an existing yml file:
+conda env create -f environment.yml 
+```
+
+In your `job.sh`, add this before running your script:
+
+```bash
+source /scicore/soft/easybuild/apps/Miniconda3/24.7.1-0/etc/profile.d/conda.sh # initialise conda env
+conda activate your_env_name
+```
+
+
+
+---
+
+## Price List and node selection
+
+Price list can be found [here](https://scicore.unibas.ch/using-scicore/user-fees/), and QoS (Quality of Service) list is available [here](https://docs.scicore.unibas.ch/HPC%20Cluster/batchcomputing/#queues-and-partitions).
