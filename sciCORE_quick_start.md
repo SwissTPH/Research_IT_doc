@@ -1,8 +1,8 @@
-# sciCORE HPC — Quick Start Guide
+# SciCORE HPC — Quick Start Guide
 
-sciCORE provides **high-performance computing (HPC)** resources for large-scale data processing. Researchers can remotely access these resources from their own laptop or desktop. HPC is perfect for tasks that require large amounts of RAM or take several hours/days to complete, since jobs run remotely while your own machine can be logged out or switched off. 
+SciCORE provides **high-performance computing (HPC)** resources for large-scale data processing. Researchers can remotely access these resources from their own laptop or desktop. HPC is perfect for tasks that require large amounts of RAM or take several hours/days to complete, since jobs run remotely while your own machine can be logged out or switched off. 
 
-This is a quick start guide for sciCORE HPC. More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/getstarted/).
+This is a quick start guide for SciCORE HPC. More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/getstarted/).
 
 
 
@@ -83,7 +83,7 @@ scancel <job_id>/<username>
 
 ## Software & modules
 
-sciCORE provides a wide range of pre-built-in modules, so you usually don’t need to install software manually.
+SciCORE provides a wide range of pre-built-in modules, so you usually don’t need to install software manually.
 
 List available modules:
 
@@ -98,7 +98,7 @@ Load modules in your job script with:
 ml <module_name>
 ```
 
-If a package isn’t available as a module, you can alternatively use **Miniconda3** to create and activate your own environment, or contact the sciCORE team at scicore-admin@unibas.ch. To use Miniconda3:
+If a package isn’t available as a module, you can alternatively use **Miniconda3** to create and activate your own environment, or contact the SciCORE team at scicore-admin@unibas.ch. To use Miniconda3:
 
 ```bash
 ml Miniconda3/24.7.1-0
