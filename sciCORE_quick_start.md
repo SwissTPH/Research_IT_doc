@@ -6,6 +6,8 @@ This is a quick start guide for SciCORE HPC. More details can be found [here](ht
 
 
 
+---
+
 ## Login
 
 Use your **UniBasel alias** to log in from the terminal:
@@ -23,7 +25,9 @@ Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/serv
 
 
 
-## Minimal workflow 
+---
+
+## Command-Line Quick Start (Bash Users)
 
 Running jobs on HPC requires two files:
 
@@ -79,7 +83,28 @@ squeue -u <username>
 scancel <job_id>/<username>
 ```
 
+### Transfer files from local laptop to HPC
 
+```bash
+# Copy a single file to SciCORE
+scp /path/to/your/file <username>@login12.scicore.unibas.ch:/path/to/destination/
+
+# Copy a folder to SciCORE
+scp -r /path/to/your/folder <username>@login12.scicore.unibas.ch:/path/to/destination/
+
+# Copy a file directly to your home directory on SciCORE
+scp /path/to/your/file <username>@login12.scicore.unibas.ch:~/
+```
+
+---
+
+## Desktop Quick Start (Web-based Interface)
+
+SciCORE also offers a [web-based interface](https://ood-ubuntu.scicore.unibas.ch/) that lets you interact with the HPC system from your browser (no local SSH configuration needed). Simply log in, launch your environment, and manage your work just like you would on your local machine - but powered by HPC resources. 
+
+
+
+---
 
 ## Software & modules
 
