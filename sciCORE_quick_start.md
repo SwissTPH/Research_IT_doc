@@ -91,10 +91,9 @@ scp /path/to/your/file <username>@login12.scicore.unibas.ch:/path/to/destination
 
 # Copy a folder to SciCORE
 scp -r /path/to/your/folder <username>@login12.scicore.unibas.ch:/path/to/destination/
-
-# Copy a file directly to your home directory on SciCORE
-scp /path/to/your/file <username>@login12.scicore.unibas.ch:~/
 ```
+
+
 
 ---
 
