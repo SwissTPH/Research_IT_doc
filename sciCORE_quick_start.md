@@ -6,8 +6,6 @@ This is a quick start guide for SciCORE HPC. More details can be found [here](ht
 
 
 
----
-
 ## Login
 
 Use your **UniBasel alias** to log in from the terminal:
@@ -24,8 +22,6 @@ Alternatively, use SSH clients such as `Termius` or `MobaXterm` with the followi
 Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/servicedesk/customer/portal/1/create/17) if you do not have access.
 
 
-
----
 
 ## Command-Line Quick Start (Bash Users)
 
@@ -95,15 +91,11 @@ scp -r /path/to/your/folder <username>@login12.scicore.unibas.ch:/path/to/destin
 
 
 
----
-
 ## Desktop Quick Start (Web-based Interface)
 
 SciCORE also offers a [web-based interface](https://ood-ubuntu.scicore.unibas.ch/) that lets you interact with the HPC system from your browser (no local SSH configuration needed). Simply log in, launch your environment, and manage your work just like you would on your local machine - but powered by HPC resources. 
 
 
-
----
 
 ## Software & modules
 
@@ -139,8 +131,6 @@ conda activate your_env_name
 ```
 
 
-
----
 
 ## Price List and node selection
 
