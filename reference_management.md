@@ -14,4 +14,4 @@
 
 3. After entering these information, click "Verify Server" in Zotero and it's done!
 
-![Use Switch Drive WebDAV Service for Zotero](images\switch_drive_zotero_settings_v2.png)
+![Use Switch Drive WebDAV Service for Zotero](images/switch_drive_zotero_settings_v2.png)
