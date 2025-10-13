@@ -12,7 +12,7 @@ It is suggested to use R versions provided at Software Center supported by Swiss
 
 4. Save and apply all the changes, and restart RStudio.
 
-![Change R Version](images\SSL_Connect_Error.PNG)
+![Change R Version](images/SSL_Connect_Error.PNG)
 
 ## Troubleshooting Performance Issues in RStudio
 
