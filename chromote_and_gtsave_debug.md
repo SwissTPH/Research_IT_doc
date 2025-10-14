@@ -2,10 +2,10 @@
 
 When [`gt::gtsave`](https://gt.rstudio.com/reference/gtsave.html) writes a PDF, it first renders HTML and then converts it to PDF via a headless Chromium-based browser. That external dependency can be different across systems. Two ways to fix this:
 
-1. **Configure the browser for `chromote`** (first), or
+1. **Configure the browser for `chromote`** (recommended);
 2. **Bypass the browser**: render to LaTeX (`.tex`) and compile to PDF.
 
-Below are ready-to-run snippets for Windows + Edge:
+Below are debugging snippets for Windows system + Edge browser:
 
 ## Option A: Configure the headless browser
 
@@ -15,17 +15,19 @@ Below are ready-to-run snippets for Windows + Edge:
 edge_paths <- c(
   "C:/Program Files/Microsoft/Edge/Application/msedge.exe",
   "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
-)
+) # paths for 64- and 32-bit systems (only one of these paths exists)
 edge_paths[file.exists(edge_paths)]
-Sys.setenv(CHROMOTE_CHROME = edge_paths[file.exists(edge_paths)][1])
+Sys.setenv(CHROMOTE_CHROME = edge_paths[file.exists(edge_paths)][1]) # use the first existing path
 
-# This line is to double-check
+# This line is just for double-check
 file.exists(Sys.getenv("CHROMOTE_CHROME"))
 
+# make sure there is a path for a temporary “user data directory” used by the headless browser
 ud <- file.path(tempdir(), "chromote-profile")
 dir.create(ud, showWarnings = FALSE, recursive = TRUE)
 Sys.setenv(CHROMOTE_USER_DATA_DIR = ud)
 
+# this ensures chromote picks a free port automatically
 Sys.unsetenv("CHROMOTE_PORT")
 Sys.setenv(CHROMOTE_ARGS = "--no-sandbox --disable-gpu --disable-dev-shm-usage")
 
@@ -77,10 +79,10 @@ make_wrapped <- function(tbl,
   out
 }
 
-# apply wrapping and save as tex (add more files if needed):
+# apply wrapping function and save as tex (add more files if needed):
 Table1 <- make_wrapped(Table1)
 
-# make sure the "PDF" folder exists
+# make sure the output "PDF" folder exists
 dir.create("PDF", showWarnings = FALSE, recursive = TRUE)
 
 # save as tex (add more files if needed)
@@ -88,7 +90,7 @@ gt::gtsave(Table1, "PDF/table1.tex")
 
 
 # Patch the generated .tex and compile
-# gt’s LaTeX output is a tabular environment, not a full document. The helper below wraps it into a minimal LaTeX document and ensures the table scales to page width via adjustbox.
+# gt’s LaTeX output is a tabular environment, not a full document. The helper below wraps it into a minimal LaTeX document and ensures the compiling progress
 
 fix_tex_file <- function(path, out = path) {
   lines <- readLines(path, warn = FALSE)
@@ -122,12 +124,12 @@ fix_tex_file <- function(path, out = path) {
   invisible(out)
 }
 
-# apply the fix function to the tables
-tex_files <- c("PDF/table1.tex") # add more files if needed
+# apply the fix function to the tables (add more files if needed)
+tex_files <- c("PDF/table1.tex") 
 invisible(lapply(tex_files, fix_tex_file))
 
 
-# convert to pdf (creates PDF/table1.pdf next to the .tex)
+# creates PDF/table1.pdf next to the .tex
 tinytex::latexmk("PDF/table1.tex")
 
 ```
