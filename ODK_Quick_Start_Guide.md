@@ -4,11 +4,15 @@ ODK (**Open Data Kit**) enables user-friendly digital data collection in the fie
 
 ## 🔦ODK Workflow at a Glance
 
-**For form designers**
+**For form designers**:
+
 Design questionnaire using **XLSForm** ➡️ Upload to **ODK Central** ➡️ (Wait for collectors to submit) ➡️ View data and manage **datasets/entities**
 
-**For data collectors**
+**For data collectors**:
+
 Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ Auto-upload to **ODK Central** when online
+
+
 
 ## 🔗Components
 
@@ -17,6 +21,8 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 | **XLSForm**     | Excel-based questionnaire design file (`.xlsx`)         | Form designer             |
 | **ODK Central** | Web platform for form hosting, user and data management | Project manager / analyst |
 | **ODK Collect** | Android app for field data entry and submission         | Data collector            |
+
+
 
 ## 🚀Quick Steps
 
@@ -28,6 +34,8 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 4. Monitor submissions via the "Entities" tab.
 
 **For Collectors**
+
+
 
 
 
