@@ -31,4 +31,4 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 ---
 
-_Last updated automatically whenever the repository is updated._
+_Please contact research-it@swisstph.ch if you need further help._
