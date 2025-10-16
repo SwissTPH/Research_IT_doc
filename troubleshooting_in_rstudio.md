@@ -6,13 +6,13 @@ It is suggested to use R versions provided at Software Center supported by Swiss
 
 1. Open RStudio, go to "Tools - Global Options - General".
 
-2. Make sure you have the correct R version chosen. Current Swiss TPH default version should be "[64-bit] C:\Program Files\R\R-4.4.1".
+2. Make sure you have the correct R version chosen. Current Swiss TPH default version should be "[64-bit] C:\Program Files\R\R-4.4.3".
 
-3. If it's not the Swiss TPH version, go to "Change - Choose a specific version of R", and select "[64-bit] C:\Program Files\R\R-4.4.1".
+3. If it's not the Swiss TPH version, go to "Change - Choose a specific version of R", and select "[64-bit] C:\Program Files\R\R-4.4.3".
 
 4. Save and apply all the changes, and restart RStudio.
 
-![Change R Version](images/SSL_Connect_Error.PNG)
+![Change R Version](images/SSL_Connect_Error_v2.PNG)
 
 ## Troubleshooting Performance Issues in RStudio
 
