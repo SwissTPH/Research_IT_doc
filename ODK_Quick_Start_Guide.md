@@ -1,6 +1,6 @@
 # ODK Quick Start Guide
 
-ODK (**Open Data Kit**) enables user-friendly digital data collection in the field. It connects **form designers**, **data collectors**, and **analysts** through a shared ODK Central server.
+**ODK** (Open Data Kit) enables user-friendly digital data collection in the field. It connects **form designers**, **data collectors**, and **analysts** through a shared ODK Central server.
 
 ## 🔦ODK Workflow at a Glance
 
@@ -14,7 +14,7 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 
 
 
-## 🔗Components
+## 🧩Components
 
 | Component       | Description                                             | Typical User              |
 | --------------- | ------------------------------------------------------- | ------------------------- |
@@ -28,7 +28,7 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 
 **For Designers**
 
-1. Create your form using ODK’s XLSForm template in `.xlsx` (`survey`, `choices`, and `settings` sheets).
+1. Create your form using ODK’s [XLSForm template](https://docs.getodk.org/xlsform/) in `.xlsx` (`survey`, `choices`, and `settings` sheets).
 2. Upload the `.xlsx` file to **ODK Central** under "Forms" tab "New".
 3. Publish the form and share access with data collectors.
 4. Monitor submissions via the "Entities" tab.
@@ -45,3 +45,11 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 
 1. Log in to **ODK Central** ➡️ "Forms" ➡️ "Submissions" or **ODK Central** ➡️ "Entities" to review records.
 2. Export data as `.csv` or connect to tools like R (RuODK) or Python (PyODK) for analysis.
+
+
+
+## 🔗Other useful links
+
+- [ODK quick start guide from WHO](https://cdn.who.int/media/docs/default-source/classification/other-classifications/autopsy/2022-va-instrument/odk4va-quick-guide-v2-2025-designed.pdf?sfvrsn=c1425ce0_1&download=true)
+- [ODK official website](https://docs.getodk.org/getting-started/)
+- [ODK forum](https://forum.getodk.org/)
