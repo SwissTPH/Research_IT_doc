@@ -26,7 +26,7 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 
 ## 🚀Quick Steps
 
-### For Designers
+**For Designers**
 
 1. Create your form using ODK’s XLSForm template in `.xlsx` (`survey`, `choices`, and `settings` sheets).
 2. Upload the `.xlsx` file to **ODK Central** under "Forms" tab "New".
@@ -35,7 +35,9 @@ Download blank forms via **ODK Collect** ➡️ Fill in and submit forms ➡️ 
 
 **For Collectors**
 
-
+1. Install **ODK Collect**.
+2. Download available forms.
+3. Fill in the forms offline; submissions will auto-upload when connected to the internet.
 
 
 
