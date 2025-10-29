@@ -20,12 +20,14 @@ This repository provides manuals and tutorials created by the Research-IT team.
 
 ### R
 
-  - [Troubleshooting in RStudio](troubleshooting_in_rstudio.md)
-  - [Debugging `chromote`/headless browser issues for `gtsave`](chromote_and_gtsave_debug.md)
+- [Troubleshooting in RStudio](troubleshooting_in_rstudio.md)
+- [Debugging `chromote`/headless browser issues for `gtsave`](chromote_and_gtsave_debug.md)
 
 ### High-performance computing infrastructure
 
-  - [Quick start on SciCORE HPC](sciCORE_quick_start.md) (For those who prefer to skip the full manual)
+- [Quick start on SciCORE HPC](sciCORE_quick_start.md) (For those who prefer to skip the full manual)
 
-## ODK
+**PowerShell**
+
+- [PowerShell basic usage](powershell_basic_usage.md)
 
