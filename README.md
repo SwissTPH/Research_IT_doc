@@ -13,6 +13,7 @@ This repository provides manuals and tutorials created by the Research-IT team.
 ### Python
 
 - [Removing outputs in Jupyter before committing (`nbstripout`)](auto_remove_jupyter_outputs_before_committing.md)
+- [Useful Python tricks](useful_python_tricks.md)
 
 ### Quarto
 

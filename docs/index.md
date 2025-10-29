@@ -18,6 +18,7 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 ### 🐍 Python
 - [Removing outputs in Jupyter before committing (`nbstripout`)](https://github.com/SwissTPH/Research_IT_doc/blob/main/auto_remove_jupyter_outputs_before_committing.md)
+- [Useful Python tricks](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_python_tricks.md)
 
 ### 📘 Quarto
 - [Quarto Training](https://research-it-swiss-tph.github.io/quarto_training/)
@@ -25,6 +26,10 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 ### 📊 R
 - [Troubleshooting in RStudio](https://github.com/SwissTPH/Research_IT_doc/blob/main/troubleshooting_in_rstudio.md)  
 - [Debugging `chromote` / headless browser issues for `gtsave`](https://github.com/SwissTPH/Research_IT_doc/blob/main/chromote_and_gtsave_debug.md)
+
+💻**PowerShell**
+
+- [PowerShell basic usage](https://github.com/SwissTPH/Research_IT_doc/blob/main/powershell_basic_usage.md)
 
 ### 🧮 High-Performance Computing (HPC)
 - [Quick Start on SciCORE HPC](https://github.com/SwissTPH/Research_IT_doc/blob/main/sciCORE_quick_start.md) — for those who prefer to skip the full manual
