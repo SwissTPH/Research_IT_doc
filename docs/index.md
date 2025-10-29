@@ -27,7 +27,7 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 - [Troubleshooting in RStudio](https://github.com/SwissTPH/Research_IT_doc/blob/main/troubleshooting_in_rstudio.md)  
 - [Debugging `chromote` / headless browser issues for `gtsave`](https://github.com/SwissTPH/Research_IT_doc/blob/main/chromote_and_gtsave_debug.md)
 
-💻**PowerShell**
+### 💻PowerShell
 
 - [PowerShell basic usage](https://github.com/SwissTPH/Research_IT_doc/blob/main/powershell_basic_usage.md)
 
