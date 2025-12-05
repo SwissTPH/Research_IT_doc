@@ -91,6 +91,8 @@ scp /path/to/your/file <username>@login12.scicore.unibas.ch:/path/to/destination
 scp -r /path/to/your/folder <username>@login12.scicore.unibas.ch:/path/to/destination/
 ```
 
+
+
 ## Desktop Quick Start (Web-based Interface)
 
 SciCORE also offers a [web-based interface](https://ood-ubuntu.scicore.unibas.ch/) that lets you interact with the HPC system from your browser (no local SSH configuration needed). Simply log in, launch your environment, and manage your work just like you would on your local machine - but powered by HPC resources. 
@@ -143,7 +145,7 @@ When you first connect to SciCORE, you land on a **login node** (`login11` or `l
 All real analyses must run on **computing nodes**, which are allocated through SLURM when you submit a job using:
 
 ```bash
-sbatch your_job.sh
+sbatch test.sh
 ```
 
 SLURM then assigns your job to a suitable compute node based on your requested resources (cores, RAM, time, QoS).
@@ -158,12 +160,6 @@ In the job file, we requested a compute node using these lines:
 ```
 
 After SLURM grants a node, you job will be placed *inside* that compute node. Only here is it safe to run commands that use significant CPU/RAM. Full selection of SLURM node can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/batchcomputing/#queues-and-partitions).
-
-
-
-## Price List
-
-Price list can be found [here](https://scicore.unibas.ch/using-scicore/user-fees/)
 
 
 
