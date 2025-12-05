@@ -4,11 +4,9 @@ SciCORE provides **high-performance computing (HPC)** resources for large-scale 
 
 This is a quick start guide for SciCORE HPC. More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/getstarted/).
 
-
-
 ## Login
 
-Use your **UniBasel alias** to log in from the terminal:
+Use your **UniBas alias** to connect from any terminal (Unix, macOS, or Windows with PowerShell/WSL) to the SciCORE login node over VPN:
 
 ```bash
 ssh <username>@login12.scicore.unibas.ch # login11 also works
@@ -21,14 +19,18 @@ Alternatively, use SSH clients such as `Termius` or `MobaXterm` with the followi
 
 Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/servicedesk/customer/portal/1/create/17) if you do not have access.
 
-
-
 ## Command-Line Quick Start (Bash Users)
 
-Running jobs on HPC requires two files:
+⚠️ Login node vs. compute nodes
 
-- a **job script** (e.g. `test.sh`) with job name, run time, output file, modules, and commands
-- your own **script** in python/R/etc. (e.g. `test.py`)
+* **Use the login node only** for copying files, editing code, setting up environments, and submitting jobs.
+* **Do not run computations on the login node**. It is shared by all users and meant only for lightweight tasks.
+* **All actual analysis must run on the HPC compute nodes**, which are accessed through SLURM (*Simple Linux Utility for Resource Management*), the job scheduler used on the cluster..
+
+Running jobs on HPC compute nodes requires **two files**:
+
+- a **job script** (e.g. `test.sh`) with SLURM instructions (job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute. 
+- your actual **script** in python/R/etc. (e.g. `test.py`)
 
 Example job script `test.sh`:
 
@@ -89,13 +91,9 @@ scp /path/to/your/file <username>@login12.scicore.unibas.ch:/path/to/destination
 scp -r /path/to/your/folder <username>@login12.scicore.unibas.ch:/path/to/destination/
 ```
 
-
-
 ## Desktop Quick Start (Web-based Interface)
 
 SciCORE also offers a [web-based interface](https://ood-ubuntu.scicore.unibas.ch/) that lets you interact with the HPC system from your browser (no local SSH configuration needed). Simply log in, launch your environment, and manage your work just like you would on your local machine - but powered by HPC resources. 
-
-
 
 ## Software & modules
 
@@ -129,8 +127,6 @@ In your `job.sh`, add this before running your script:
 source /scicore/soft/easybuild/apps/Miniconda3/24.7.1-0/etc/profile.d/conda.sh # initialise conda env
 conda activate your_env_name
 ```
-
-
 
 ## Price List and node selection
 
