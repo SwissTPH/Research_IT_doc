@@ -128,6 +128,55 @@ source /scicore/soft/easybuild/apps/Miniconda3/24.7.1-0/etc/profile.d/conda.sh #
 conda activate your_env_name
 ```
 
-## Price List and node selection
 
-Price list can be found [here](https://scicore.unibas.ch/using-scicore/user-fees/), and QoS (Quality of Service) list is available [here](https://docs.scicore.unibas.ch/HPC%20Cluster/batchcomputing/#queues-and-partitions).
+
+## Login Node vs Computing Nodes (Important!)
+When you first connect to SciCORE, you land on a **login node** (`login11` or `login12`). These nodes are shared by all users and are meant **only for basic tasks** (instead of computation), such as:
+
+- navigating folders
+- editing files
+- submitting jobs
+- checking job status
+
+**Do not run CPU- or memory-intensive analyses on the login node.** Heavy computations may slow down or disrupt other users and can trigger automatic process termination.
+
+All real analyses must run on **computing nodes**, which are allocated through SLURM when you submit a job using:
+
+```bash
+sbatch your_job.sh
+```
+
+SLURM then assigns your job to a suitable compute node based on your requested resources (cores, RAM, time, QoS).
+
+In the job file, we requested a compute node using these lines:
+
+```bash
+#SBATCH --cpus-per-task=1       # Number of cores
+#SBATCH --mem-per-cpu=1G        # RAM per core
+#SBATCH --time=01:00:00         # Maximum runtime (1h)
+#SBATCH --qos=6hours            # Queue (maximum 6h runtime)
+```
+
+After SLURM grants a node, you job will be placed *inside* that compute node. Only here is it safe to run commands that use significant CPU/RAM. Full selection of SLURM node can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/batchcomputing/#queues-and-partitions).
+
+
+
+## Price List
+
+Price list can be found [here](https://scicore.unibas.ch/using-scicore/user-fees/)
+
+
+
+## Data Transfer
+
+SciCORE and SciCORE+ offer several secure methods for transferring data.
+
+If your project involves **personal**, **sensitive**, or **clinical** data, you must ensure all necessary **legal agreements** and **ethical approvals** are in place *before* any transfer. Details can be found [here](https://docs.scicore.unibas.ch/sciCORE%2B/datamanagement/).
+
+If you are unsure which method to choose:
+
+- **For general HPC use (non-sensitive data):**
+   → `scp` or `sftp` on the standard SciCORE cluster.
+- **For sensitive/clinical data under sciCORE+:**
+   → **SFTP** (simple, secure)
+   → **SETT** (encrypted + traceable transfers)
