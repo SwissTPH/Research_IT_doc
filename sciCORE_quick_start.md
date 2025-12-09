@@ -29,10 +29,10 @@ Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/serv
 
 Running jobs on HPC compute nodes requires **two files**:
 
-- a **job script** (e.g. `test.sh`) with SLURM instructions (job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute. 
+- a **job script** (e.g. `job.sh`) with SLURM instructions (job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute. 
 - your actual **script** in python/R/etc. (e.g. `test.py`)
 
-Example job script `test.sh`:
+Example job script `job.sh`:
 
 ```bash
 #!/bin/bash
@@ -44,7 +44,8 @@ Example job script `test.sh`:
 #SBATCH --output=./myrun.o%j    # Path/name for output file
 #SBATCH --error=./myrun.e%j     # Path/name for error file
 
-ml Biopython                    # Load module
+ml Python/3.13.5-GCCcore-14.3.0	# load python
+ml Biopython                    # Load biopython
 
 python ./test.py                # Run your script
 
@@ -65,7 +66,7 @@ except ImportError:
 ### Submit the job
 
 ```bash
-sbatch test.sh
+sbatch job.sh
 ```
 
 ### Check job status
@@ -123,11 +124,23 @@ ml Miniconda3/24.7.1-0
 conda env create -f environment.yml 
 ```
 
-In your `job.sh`, add this before running your script:
+In your `job.sh`, initialize and activate conda env before running your script:
 
 ```bash
-source /scicore/soft/easybuild/apps/Miniconda3/24.7.1-0/etc/profile.d/conda.sh # initialise conda env
-conda activate your_env_name
+#!/bin/bash
+#SBATCH --job-name=myrun        # Job name
+#SBATCH --cpus-per-task=1       # Number of cores
+#SBATCH --mem-per-cpu=1G        # RAM per core
+#SBATCH --time=01:00:00         # Maximum runtime (1h)
+#SBATCH --qos=6hours            # Queue (maximum 6h runtime)
+#SBATCH --output=./myrun.o%j    # Path/name for output file
+#SBATCH --error=./myrun.e%j     # Path/name for error file
+
+source /scicore/soft/easybuild/apps/Miniconda3/24.7.1-0/etc/profile.d/conda.sh # <- Initialize 
+
+conda activate your_env_name	# <- Activate 
+
+python ./test.py                # Run your script
 ```
 
 
@@ -145,7 +158,7 @@ When you first connect to SciCORE, you land on a **login node** (`login11` or `l
 All real analyses must run on **computing nodes**, which are allocated through SLURM when you submit a job using:
 
 ```bash
-sbatch test.sh
+sbatch job.sh
 ```
 
 SLURM then assigns your job to a suitable compute node based on your requested resources (cores, RAM, time, QoS).
