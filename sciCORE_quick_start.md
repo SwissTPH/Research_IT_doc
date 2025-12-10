@@ -181,7 +181,6 @@ If your project involves **personal**, **sensitive**, or **clinical** data, you 
 If you are unsure which method to choose:
 
 - **For general HPC use (non-sensitive data):**
-   → `scp` or `sftp` on the standard SciCORE cluster.
+   ➡️ `scp` or `sftp` on the standard SciCORE cluster.
 - **For sensitive/clinical data under sciCORE+:**
-   → **SFTP** (simple, secure)
-   → **SETT** (encrypted + traceable transfers)
+   ➡️ **SFTP** (simple, secure) or **SETT** (encrypted + traceable transfers)
