@@ -23,24 +23,26 @@ Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/serv
 
 Running jobs on HPC compute nodes requires **two files**:
 
-- 1️⃣ A **job script** (e.g. `job.sh`) with SLURM instructions (job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute. 
+- 1️⃣ A **job script** (e.g. `job.sh`). 
 - 2️⃣ Your actual **script** in python/R/etc. (e.g. `test.py`)
 
-Example job script `job.sh`:
+Example job script `job.sh` (include job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute.):
 
 ```bash
 #!/bin/bash
 #SBATCH --job-name=myrun        # Job name
 #SBATCH --cpus-per-task=1       # Number of cores
 #SBATCH --mem-per-cpu=1G        # RAM per core
-#SBATCH --time=01:00:00         # Maximum runtime (1h)
-#SBATCH --qos=6hours            # Queue (maximum 6h runtime)
-#SBATCH --output=./myrun.o%j    # Path/name for output file
-#SBATCH --error=./myrun.e%j     # Path/name for error file
+#SBATCH --time=01:00:00         # Maximum runtime
+#SBATCH --qos=6hours            # Quality of Service
+#SBATCH --output=./myrun.o%j    # Output file
+#SBATCH --error=./myrun.e%j     # Error file
 
-ml Python/3.13.5-GCCcore-14.3.0	# load python
+# load python
+ml Python/3.13.5-GCCcore-14.3.0
 
-python ./test.py                # Run your script
+# Run your script
+python ./test.py
 
 ```
 
@@ -49,9 +51,11 @@ Example Python script `test.py`:
 ```python
 import os
 
+# print cwd
 current_dir = os.getcwd()
 print("Current directory is", current_dir)
 
+# list files
 print("\nFiles in this directory:")
 for item in os.listdir(current_dir):
     print("-", item)
