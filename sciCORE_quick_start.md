@@ -4,7 +4,7 @@ SciCORE provides **high-performance computing (HPC)** resources for large-scale 
 
 This is a quick start guide for SciCORE HPC. More details can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/getstarted/).
 
-## Login
+## Login (Bash Users)
 
 Use your **UniBas alias** to connect from any terminal (Unix, macOS, or Windows with PowerShell/WSL) to the SciCORE login node over VPN:
 
@@ -19,18 +19,12 @@ Alternatively, use SSH clients such as `Termius` or `MobaXterm` with the followi
 
 Please write to the [SciCORE help centre](https://support.scicore.unibas.ch/servicedesk/customer/portal/1/create/17) if you do not have access.
 
-## Command-Line Quick Start (Bash Users)
-
-⚠️ Login node vs. compute nodes
-
-* **Use the login node only** for copying files, editing code, setting up environments, and submitting jobs.
-* **Do not run computations on the login node**. It is shared by all users and meant only for lightweight tasks.
-* **All actual analysis must run on the HPC compute nodes**, which are accessed through SLURM (*Simple Linux Utility for Resource Management*), the job scheduler used on the cluster..
+## Command-Line Quick Start
 
 Running jobs on HPC compute nodes requires **two files**:
 
-- a **job script** (e.g. `job.sh`) with SLURM instructions (job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute. 
-- your actual **script** in python/R/etc. (e.g. `test.py`)
+- 1️⃣ A **job script** (e.g. `job.sh`) with SLURM instructions (job name, runtime, QoS (*Quality of Service*), memory, output/error files, modules to load, and commands to execute. 
+- 2️⃣ Your actual **script** in python/R/etc. (e.g. `test.py`)
 
 Example job script `job.sh`:
 
@@ -63,26 +57,26 @@ for item in os.listdir(current_dir):
     print("-", item)
 ```
 
-### Submit the job
+### ✅ Submit the job
 
 ```bash
 sbatch job.sh
 ```
 
-### Check job status
+### 📃Check job status
 
 ```bash
 squeue -u <username>
 ```
 
-### Cancel jobs
+### ❌ Cancel jobs
 
 ```bash
 # Cancel job by job_id or username
 scancel <job_id>/<username>
 ```
 
-### Transfer files from local laptop to HPC
+### 📲 Transfer files from local laptop to HPC
 
 ```bash
 # Copy a single file to SciCORE
@@ -149,7 +143,7 @@ When you first connect to SciCORE, you land on a **login node** (`login11` or `l
 - submitting jobs
 - checking job status
 
-**Do not run CPU- or memory-intensive analyses on the login node.** Heavy computations may slow down or disrupt other users and can trigger automatic process termination.
+**⚠️ Do not run CPU- or memory-intensive analyses on the login node.** Heavy computations may slow down or disrupt other users and can trigger automatic process termination.
 
 All real analyses must run on **computing nodes**, which are allocated through SLURM when you submit a job using:
 
