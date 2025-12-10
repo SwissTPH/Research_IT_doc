@@ -125,10 +125,10 @@ In your `job.sh`, initialize and activate conda env before running your script:
 #SBATCH --job-name=myrun        # Job name
 #SBATCH --cpus-per-task=1       # Number of cores
 #SBATCH --mem-per-cpu=1G        # RAM per core
-#SBATCH --time=01:00:00         # Maximum runtime (1h)
-#SBATCH --qos=6hours            # Queue (maximum 6h runtime)
-#SBATCH --output=./myrun.o%j    # Path/name for output file
-#SBATCH --error=./myrun.e%j     # Path/name for error file
+#SBATCH --time=01:00:00         # Maximum runtime
+#SBATCH --qos=6hours            # Quality of Service
+#SBATCH --output=./myrun.o%j    # Output file
+#SBATCH --error=./myrun.e%j     # Error file
 
 source /scicore/soft/easybuild/apps/Miniconda3/24.7.1-0/etc/profile.d/conda.sh # <- Initialize 
 
@@ -162,8 +162,8 @@ In the job file, we requested a compute node using these lines:
 ```bash
 #SBATCH --cpus-per-task=1       # Number of cores
 #SBATCH --mem-per-cpu=1G        # RAM per core
-#SBATCH --time=01:00:00         # Maximum runtime (1h)
-#SBATCH --qos=6hours            # Queue (maximum 6h runtime)
+#SBATCH --time=01:00:00         # Maximum runtime
+#SBATCH --qos=6hours            # Quality of Service
 ```
 
 After SLURM grants a node, you job will be placed *inside* that compute node. Only here is it safe to run commands that use significant CPU/RAM. Full selection of SLURM node can be found [here](https://docs.scicore.unibas.ch/HPC%20Cluster/batchcomputing/#queues-and-partitions).
