@@ -45,7 +45,6 @@ Example job script `job.sh`:
 #SBATCH --error=./myrun.e%j     # Path/name for error file
 
 ml Python/3.13.5-GCCcore-14.3.0	# load python
-ml Biopython                    # Load biopython
 
 python ./test.py                # Run your script
 
@@ -54,13 +53,14 @@ python ./test.py                # Run your script
 Example Python script `test.py`:
 
 ```python
-import Bio
+import os
 
-try:
-    import Bio
-    print("Biopython available,", getattr(Bio, "__version__", "version unknown"))
-except ImportError:
-    print("Biopython not available")
+current_dir = os.getcwd()
+print("Current directory is", current_dir)
+
+print("\nFiles in this directory:")
+for item in os.listdir(current_dir):
+    print("-", item)
 ```
 
 ### Submit the job
