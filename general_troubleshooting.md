@@ -57,3 +57,7 @@ Keeping detailed records of your work is crucial, both for your own reference an
 - [Notion](https://www.notion.com/): A connect workspace that provides free Education Plus Plan for students and educators.
 
 - [MarkText](https://github.com/marktext/marktext): A simple [markdown](https://www.markdownguide.org/cheat-sheet/) editor, available for Linux, macOS and Windows.
+
+## Publication open access policy
+
+Please refer to [Publication & Preservation](https://intranet.swisstph.ch/en/aoc/administration/data-quality/open-science-research-data-management/publication-and-preservation) which address data (and implicitly code) release in the context of publication.
