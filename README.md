@@ -18,6 +18,7 @@ This repository provides manuals and tutorials created by the Research-IT team.
 ### Quarto
 
 - [Quarto training](https://research-it-swiss-tph.github.io/quarto_training/)
+- [Swiss TPH Quarto templates](https://github.com/Research-IT-Swiss-TPH/stphtoolbox/tree/main/inst/quarto)
 
 ### R
 
@@ -31,4 +32,3 @@ This repository provides manuals and tutorials created by the Research-IT team.
 **PowerShell**
 
 - [PowerShell basic usage](powershell_basic_usage.md)
-
