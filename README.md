@@ -30,6 +30,6 @@ This repository provides manuals and tutorials created by the Research-IT team.
 
 - [Quick start on SciCORE HPC](sciCORE_quick_start.md) (For those who prefer to skip the full manual)
 
-**PowerShell**
+### PowerShell
 
 - [PowerShell basic usage](powershell_basic_usage.md)
