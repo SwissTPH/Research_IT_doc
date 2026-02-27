@@ -15,6 +15,7 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 - [General Troubleshooting](https://github.com/SwissTPH/Research_IT_doc/blob/main/general_troubleshooting.md) — a universal advice sheet  
 - [Software Licences Available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)  
 - [Reference Management](https://github.com/SwissTPH/Research_IT_doc/blob/main/reference_management.md)
+- [Useful Resources](useful_resources.md)
 
 ### 🐍 Python
 - [Removing outputs in Jupyter before committing (`nbstripout`)](https://github.com/SwissTPH/Research_IT_doc/blob/main/auto_remove_jupyter_outputs_before_committing.md)
