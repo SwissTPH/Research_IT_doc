@@ -13,22 +13,25 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](https://github.com/SwissTPH/Research_IT_doc/blob/main/research_informatics_intro.pdf)
 
+---
+
 ## 📚 Available Guides
 
 ### 🧩 General
-- [General Troubleshooting](https://github.com/SwissTPH/Research_IT_doc/blob/main/general_troubleshooting.md) — a universal advice sheet  
-- [Software Licences Available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)  
-- [Reference Management](https://github.com/SwissTPH/Research_IT_doc/blob/main/reference_management.md)
-- [Useful Resources](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_resources.md)
-- [How to make high quality, publication level scientific graphs](https://github.com/SwissTPH/Research_IT_doc/blob/main/scientific_graphs.pptx)
+- [General troubleshooting](https://github.com/SwissTPH/Research_IT_doc/blob/main/general_troubleshooting.md) — a universal advice sheet  
+- [Software licences available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)  
+- [Reference management](https://github.com/SwissTPH/Research_IT_doc/blob/main/reference_management.md)
+- [Useful resources](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_resources.md)
+- [How to make high quality, publication level scientific graphs](https://github.com/SwissTPH/Research_IT_doc/blob/main/scientific_graphs.pdf)
 
 ### 🐍 Python
 - [Removing outputs in Jupyter before committing (`nbstripout`)](https://github.com/SwissTPH/Research_IT_doc/blob/main/auto_remove_jupyter_outputs_before_committing.md)
 - [Useful Python tricks](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_python_tricks.md)
 
 ### 📘 Quarto
-- [Quarto Training](https://research-it-swiss-tph.github.io/quarto_training/)
+- [Quarto training](https://research-it-swiss-tph.github.io/quarto_training/)
 - [Swiss TPH Quarto template](https://github.com/Research-IT-Swiss-TPH/stphtoolbox/tree/main/inst/quarto)
+- [Quarto presentation](https://github.com/SwissTPH/Research_IT_doc/blob/main/quarto_presentation_research_plenary.pdf)
 
 ### 📊 R
 - [Troubleshooting in RStudio](https://github.com/SwissTPH/Research_IT_doc/blob/main/troubleshooting_in_rstudio.md)  

@@ -10,10 +10,10 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](resea
 
 ### General
 
-- [General Troubleshooting](general_troubleshooting.md) (A universal advice sheet)
-- [Software Licenses Available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)
-- [Reference Management](reference_management.md)
-- [Useful Resources](useful_resources.md)
+- [General troubleshooting](general_troubleshooting.md) (A universal advice sheet)
+- [Software licenses available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)
+- [Reference management](reference_management.md)
+- [Useful resources](useful_resources.md)
 - [How to make high quality, publication level scientific graphs](scientific_graphs.pdf)
 
 ### Python
