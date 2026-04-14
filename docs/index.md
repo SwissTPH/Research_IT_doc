@@ -1,5 +1,5 @@
 ---
-title: Research-IT Documentation
+title: Research Informatics Documentation
 ---
 
 # 🧭 Research Informatics Documentation
