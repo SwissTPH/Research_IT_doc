@@ -35,6 +35,10 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 ### 🧮 High-Performance Computing (HPC)
 - [Quick Start on SciCORE HPC](https://github.com/SwissTPH/Research_IT_doc/blob/main/sciCORE_quick_start.md) — for those who prefer to skip the full manual
 
+### 📈 Scientific graphs
+
+- [How to make high quality, publication level scientific graphs](scientific_graphs.pptx)
+
 ---
 
 _Please contact research-it@swisstph.ch if you need further help._

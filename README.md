@@ -33,3 +33,7 @@ This repository provides manuals and tutorials created by the Research-IT team.
 ### PowerShell
 
 - [PowerShell basic usage](powershell_basic_usage.md)
+
+### Scientific graphs
+
+- [How to make high quality, publication level scientific graphs](scientific_graphs.pptx)
