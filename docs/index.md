@@ -37,7 +37,7 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 ### 📈 Scientific graphs
 
-- [How to make high quality, publication level scientific graphs](scientific_graphs.pptx)
+- [How to make high quality, publication level scientific graphs](https://github.com/SwissTPH/Research_IT_doc/blob/main/scientific_graphs.pptx)
 
 ---
 
