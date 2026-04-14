@@ -2,6 +2,10 @@
 
 This repository provides manuals and tutorials created by the Research-IT team.
 
+## What is Research Informatics?
+
+We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](research_informatics_intro.pdf)
+
 ## Available Guides
 
 ### General
@@ -10,6 +14,7 @@ This repository provides manuals and tutorials created by the Research-IT team.
 - [Software Licenses Available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)
 - [Reference Management](reference_management.md)
 - [Useful Resources](useful_resources.md)
+- [How to make high quality, publication level scientific graphs](scientific_graphs.pdf)
 
 ### Python
 
@@ -20,6 +25,7 @@ This repository provides manuals and tutorials created by the Research-IT team.
 
 - [Quarto training](https://research-it-swiss-tph.github.io/quarto_training/)
 - [Swiss TPH Quarto templates](https://github.com/Research-IT-Swiss-TPH/stphtoolbox/tree/main/inst/quarto)
+- [Quarto presentation](quarto_presentation_research_plenary.pdf)
 
 ### R
 
@@ -34,6 +40,3 @@ This repository provides manuals and tutorials created by the Research-IT team.
 
 - [PowerShell basic usage](powershell_basic_usage.md)
 
-### Scientific graphs
-
-- [How to make high quality, publication level scientific graphs](scientific_graphs.pptx)
