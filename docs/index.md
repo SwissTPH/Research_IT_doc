@@ -2,7 +2,7 @@
 title: Research Informatics Documentation
 ---
 
-# 🧭 Research Informatics Documentation
+# Research Informatics Documentation
 
 Welcome to the documentation hub of the **Research Informatics** team at Swiss TPH.  
 This site provides manuals, quick-start guides, and tutorials to support researchers in daily computational and data-management tasks.
