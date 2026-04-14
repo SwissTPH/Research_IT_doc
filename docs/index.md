@@ -9,13 +9,18 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 ---
 
+## 🤔What is Research Informatics?
+
+We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](https://github.com/SwissTPH/Research_IT_doc/blob/main/research_informatics_intro.pdf)
+
 ## 📚 Available Guides
 
 ### 🧩 General
 - [General Troubleshooting](https://github.com/SwissTPH/Research_IT_doc/blob/main/general_troubleshooting.md) — a universal advice sheet  
 - [Software Licences Available at Swiss TPH](https://intranet.swisstph.ch/en/aoc/research-it/consulting-coordination-and-collaboration#c16360)  
 - [Reference Management](https://github.com/SwissTPH/Research_IT_doc/blob/main/reference_management.md)
-- [Useful Resources](useful_resources.md)
+- [Useful Resources](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_resources.md)
+- [How to make high quality, publication level scientific graphs](https://github.com/SwissTPH/Research_IT_doc/blob/main/scientific_graphs.pptx)
 
 ### 🐍 Python
 - [Removing outputs in Jupyter before committing (`nbstripout`)](https://github.com/SwissTPH/Research_IT_doc/blob/main/auto_remove_jupyter_outputs_before_committing.md)
@@ -23,6 +28,7 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 ### 📘 Quarto
 - [Quarto Training](https://research-it-swiss-tph.github.io/quarto_training/)
+- [Swiss TPH Quarto template](https://github.com/Research-IT-Swiss-TPH/stphtoolbox/tree/main/inst/quarto)
 
 ### 📊 R
 - [Troubleshooting in RStudio](https://github.com/SwissTPH/Research_IT_doc/blob/main/troubleshooting_in_rstudio.md)  
@@ -34,10 +40,6 @@ This site provides manuals, quick-start guides, and tutorials to support researc
 
 ### 🧮 High-Performance Computing (HPC)
 - [Quick Start on SciCORE HPC](https://github.com/SwissTPH/Research_IT_doc/blob/main/sciCORE_quick_start.md) — for those who prefer to skip the full manual
-
-### 📈 Scientific graphs
-
-- [How to make high quality, publication level scientific graphs](https://github.com/SwissTPH/Research_IT_doc/blob/main/scientific_graphs.pptx)
 
 ---
 
