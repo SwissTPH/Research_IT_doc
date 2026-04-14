@@ -2,9 +2,9 @@
 title: Research-IT Documentation
 ---
 
-# 🧭 Research-IT Documentation
+# 🧭 Research Informatics Documentation
 
-Welcome to the documentation hub of the **Research-IT** team at Swiss TPH.  
+Welcome to the documentation hub of the **Research Informatics** team at Swiss TPH.  
 This site provides manuals, quick-start guides, and tutorials to support researchers in daily computational and data-management tasks.
 
 ---

@@ -1,6 +1,6 @@
-# Research-IT Documentation
+# Research Informatics Documentation
 
-This repository provides manuals and tutorials created by the Research-IT team.
+This repository provides manuals and tutorials created by the Research Informatics team.
 
 ## What is Research Informatics?
 
