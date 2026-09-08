@@ -19,7 +19,7 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](resea
 ### AI
 
 - [Recommended skills](skills_recommend.md)
-- [AI dashboard](ai_dashboard.html)
+- [AI dashboard](./docs/ai_dashboard.html)
 
 ### Python
 
