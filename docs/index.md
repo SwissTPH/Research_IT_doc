@@ -24,7 +24,14 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](https
 - [Useful resources](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_resources.md)
 - [How to make high quality, publication level scientific graphs](https://github.com/SwissTPH/Research_IT_doc/blob/main/scientific_graphs.pdf)
 
+### 🤖 AI
+
+- AI benchmark and news
+- Skills developed for Swiss TPH
+- Recommended skills
+
 ### 🐍 Python
+
 - [Removing outputs in Jupyter before committing (`nbstripout`)](https://github.com/SwissTPH/Research_IT_doc/blob/main/auto_remove_jupyter_outputs_before_committing.md)
 - [Useful Python tricks](https://github.com/SwissTPH/Research_IT_doc/blob/main/useful_python_tricks.md)
 

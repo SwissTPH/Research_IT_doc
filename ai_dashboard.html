@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Dashboard — 2026-09-08</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Design tokens ── */
+    :root {
+      --bg:#f0f4f8; --card:#fff; --text:#1a202c; --text-muted:#718096;
+      --border:#edf2f7; --border-strong:#e2e8f0;
+      --thead-bg:#2d3748; --thead-text:#fff;
+      --row-hover:#f7fafc; --legend-bg:#f7fafc;
+      --shadow:0 1px 4px rgba(0,0,0,0.10);
+      --top1-bg:#fffff0; --top2-bg:#f0fff4; --top3-bg:#e6fffa;
+      --vendor-bg:#ebf4ff; --vendor-text:#2b6cb0;
+      --badge-os-bg:#e6fffa; --badge-os-text:#276749;
+      --badge-mm-bg:#ebf4ff; --badge-mm-text:#2c5282;
+      --price-color:#276749; --speed-color:#744210; --ctx-color:#553c9a;
+      --score-bar:linear-gradient(90deg,#667eea,#764ba2);
+    }
+    body.dark {
+      --bg:#0f1117; --card:#1a1d27; --text:#e2e8f0; --text-muted:#718096;
+      --border:#2d3748; --border-strong:#2d3748;
+      --thead-bg:#1a202c; --row-hover:#252836; --legend-bg:#1a202c;
+      --shadow:0 1px 4px rgba(0,0,0,0.4);
+      --top1-bg:#2d2a00; --top2-bg:#0d1f0d; --top3-bg:#0d1f1a;
+      --vendor-bg:#1a365d; --vendor-text:#90cdf4;
+      --badge-os-bg:#1c4532; --badge-os-text:#68d391;
+      --badge-mm-bg:#1a365d; --badge-mm-text:#90cdf4;
+      --price-color:#68d391; --speed-color:#f6ad55; --ctx-color:#b794f4;
+    }
+
+    body {
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6; padding-bottom:64px;
+      transition:background .2s,color .2s;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);
+      color:#fff; padding:28px 40px 22px;
+    }
+    .header-row { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+    .header-text h1 { font-size:1.9rem; font-weight:700; letter-spacing:-.5px; }
+    .header-text .subtitle { margin-top:5px; font-size:.93rem; opacity:.75; }
+    .header-text .meta    { margin-top:3px; font-size:.8rem; opacity:.55; }
+    .site-header a { color:#90cdf4; text-decoration:none; }
+    .header-controls { display:flex; align-items:flex-end; gap:10px; padding-top:4px; flex-shrink:0; }
+
+    /* ── Language selector ── */
+    .lang-selector { display:flex; flex-direction:column; gap:4px; }
+    .lang-selector label { font-size:.7rem; opacity:.65; letter-spacing:.05em; text-transform:uppercase; }
+    .lang-selector select {
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28);
+      color:#fff; border-radius:6px; padding:5px 10px; font-size:.84rem;
+      cursor:pointer; outline:none; min-width:110px;
+    }
+    .lang-selector select option { background:#2d3748; color:#fff; }
+
+    /* ── Dark mode toggle ── */
+    .dark-toggle {
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28);
+      color:#fff; border-radius:6px; padding:5px 10px; font-size:1rem;
+      cursor:pointer; line-height:1;
+    }
+    .dark-toggle:hover { background:rgba(255,255,255,.22); }
+
+    /* ── Quick stats ── */
+    .quick-stats { display:flex; gap:14px; flex-wrap:wrap; padding:22px 0 0; }
+    .stat-card {
+      flex:1; min-width:155px; background:var(--card); border-radius:10px;
+      padding:14px 18px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:3px;
+    }
+    .stat-label { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); }
+    .stat-value { font-size:1.2rem; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .stat-sub   { font-size:.75rem; color:var(--text-muted); }
+
+    /* ── Layout ── */
+    .container { max-width:1140px; margin:0 auto; padding:0 24px; }
+    .section { margin-top:38px; }
+    .section-title { font-size:1.15rem; font-weight:700; color:var(--text); margin-bottom:4px; }
+    .section-desc  { font-size:.84rem; color:var(--text-muted); margin-bottom:14px; }
+    .section-desc a { color:#4299e1; text-decoration:none; }
+
+    /* ── Leaderboard table ── */
+    .table-wrap { overflow-x:auto; border-radius:12px; box-shadow:var(--shadow); }
+    table { width:100%; border-collapse:collapse; background:var(--card); font-size:.875rem; }
+    thead tr { background:var(--thead-bg); color:var(--thead-text); }
+    thead th { padding:11px 13px; text-align:left; font-weight:600; white-space:nowrap; }
+    thead th.sortable { cursor:pointer; user-select:none; }
+    thead th.sortable:hover { filter:brightness(1.25); }
+    .col-hint  { display:block; font-size:.65rem; font-weight:400; opacity:.6; margin-top:1px; }
+    .sort-icon { margin-left:4px; opacity:.5; font-size:.74rem; }
+    tbody tr { border-bottom:1px solid var(--border); }
+    tbody tr:last-child { border-bottom:none; }
+    tbody td { padding:9px 13px; vertical-align:middle; background:var(--card); transition:background .1s; }
+    tbody tr:hover td { background:var(--row-hover) !important; }
+    .top1 td { background:var(--top1-bg); }
+    .top2 td { background:var(--top2-bg); }
+    .top3 td { background:var(--top3-bg); }
+    .rank { font-weight:700; color:var(--text-muted); width:32px; font-size:.78rem; }
+    .model-name { font-weight:600; color:var(--text); }
+    .vendor-tag { display:inline-block; background:var(--vendor-bg); color:var(--vendor-text); border-radius:4px; padding:2px 7px; font-size:.71rem; font-weight:700; }
+    .badge-os { display:inline-block; background:var(--badge-os-bg); color:var(--badge-os-text); border-radius:3px; padding:1px 5px; font-size:.65rem; font-weight:700; margin-left:4px; vertical-align:middle; }
+    .badge-mm { display:inline-block; background:var(--badge-mm-bg); color:var(--badge-mm-text); border-radius:3px; padding:1px 5px; font-size:.65rem; font-weight:700; margin-left:3px; vertical-align:middle; }
+    .score-wrap { display:flex; align-items:center; gap:7px; }
+    .score-bar-bg   { width:64px; height:6px; background:var(--border-strong); border-radius:3px; overflow:hidden; flex-shrink:0; }
+    .score-bar-fill { height:100%; border-radius:3px; background:var(--score-bar); }
+    .score-num { font-weight:700; color:var(--text); min-width:22px; }
+    .price { color:var(--price-color); font-weight:500; }
+    .speed { color:var(--speed-color); }
+    .ctx   { color:var(--ctx-color); }
+    .na    { color:var(--text-muted); font-style:italic; }
+    .legend {
+      background:var(--legend-bg); border:1px solid var(--border-strong); border-radius:8px;
+      padding:10px 15px; font-size:.76rem; color:var(--text-muted); margin-top:10px;
+    }
+    .legend strong { color:var(--text); }
+    .fetch-error {
+      background:#fff5f5; border:1px solid #fc8181; border-radius:8px;
+      padding:14px 18px; color:#c53030; font-size:.88rem; margin-top:14px;
+    }
+    body.dark .fetch-error { background:#2d1515; border-color:#e53e3e; color:#fc8181; }
+
+    /* ── Takeaways ── */
+    .takeaways { background:var(--card); border-radius:12px; box-shadow:var(--shadow); padding:18px 22px; }
+    .takeaways ul { list-style:none; }
+    .takeaways li { padding:7px 0 7px 20px; position:relative; font-size:.88rem; border-bottom:1px solid var(--border); }
+    .takeaways li:last-child { border-bottom:none; }
+    .takeaways li::before { content:"→"; position:absolute; left:0; color:#667eea; font-weight:700; }
+
+    /* ── News grid ── */
+    .news-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:16px; }
+    .news-card { background:var(--card); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
+    .news-card-header { padding:10px 15px; font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
+    .cat-releases .news-card-header { background:#553c9a; }
+    .cat-pricing  .news-card-header { background:#276749; }
+    .cat-policy   .news-card-header { background:#7b341e; }
+    .cat-features .news-card-header { background:#2c5282; }
+    .cat-company  .news-card-header { background:#4a5568; }
+    .cat-github   .news-card-header { background:#22272e; }
+    .news-card-body { padding:10px 14px 12px; }
+    .news-item { padding:7px 0; border-bottom:1px solid var(--border); font-size:.84rem; line-height:1.5; }
+    .news-item:last-child { border-bottom:none; }
+    .news-company { font-weight:700; color:var(--text); }
+    .news-source { display:inline-block; margin-top:3px; font-size:.73rem; color:#3182ce; text-decoration:none; }
+    .news-source:hover { text-decoration:underline; }
+    .tag-old    { display:inline-block; background:var(--border-strong); color:var(--text-muted); border-radius:3px; padding:0 5px; font-size:.65rem; font-weight:600; vertical-align:middle; margin-right:3px; }
+    .tag-rumour { display:inline-block; background:#fefcbf; color:#744210; border-radius:3px; padding:0 5px; font-size:.65rem; font-weight:700; vertical-align:middle; margin-right:3px; }
+    body.dark .tag-rumour { background:#3d3000; color:#f6ad55; }
+    .repo-stars { display:inline-block; background:#fefcbf; color:#744210; border-radius:3px; padding:0 5px; font-size:.66rem; font-weight:700; vertical-align:middle; margin-left:6px; }
+    body.dark .repo-stars { background:#3d3000; color:#f6ad55; }
+
+    /* ── Multilingual spans ── */
+    .lc { display:none; }
+    .lang-en { display:inline; }
+
+    /* ── Footer ── */
+    .footer { margin-top:52px; text-align:center; font-size:.73rem; color:var(--text-muted); line-height:2; }
+    .footer a { color:#667eea; text-decoration:none; }
+    .footer-credit { margin-top:6px; font-size:.7rem; }
+
+    /* ── Mobile: table → card list ── */
+    @media (max-width:680px) {
+      .site-header { padding:18px 16px 16px; }
+      .container { padding:0 12px; }
+      .quick-stats { gap:10px; }
+      .stat-card { min-width:140px; padding:12px 14px; }
+      .table-wrap { border-radius:0; box-shadow:none; }
+      table, thead, tbody, th, td, tr { display:block; }
+      thead tr { position:absolute; top:-9999px; left:-9999px; }
+      tbody tr {
+        border:1px solid var(--border); border-radius:8px; margin-bottom:10px;
+        background:var(--card); overflow:hidden;
+      }
+      .top1 { border-left:4px solid #d6bcfa; }
+      .top2 { border-left:4px solid #9ae6b4; }
+      .top3 { border-left:4px solid #81e6d9; }
+      tbody td {
+        border:none; padding:7px 12px; display:flex;
+        justify-content:space-between; align-items:center;
+        background:transparent !important;
+        border-bottom:1px solid var(--border);
+      }
+      tbody td:last-child { border-bottom:none; }
+      tbody td::before {
+        content:attr(data-label); font-weight:600; color:var(--text-muted);
+        font-size:.74rem; flex-shrink:0; margin-right:10px;
+      }
+      .rank { display:none; }
+      .score-bar-bg { width:48px; }
+      .news-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-row">
+      <div class="header-text">
+        <h1>AI Dashboard</h1>
+        <p class="subtitle" data-i18n="subtitle">Frontier model rankings &amp; latest AI news</p>
+        <p class="meta">
+          Updated: 2026-09-08 &nbsp;&middot;&nbsp;
+          Model data: <a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a>
+          &nbsp;&middot;&nbsp; News window: last 168 hours
+        </p>
+      </div>
+      <div class="header-controls">
+        <div class="lang-selector">
+          <label for="langSelect" data-i18n="lang_label">Language</label>
+          <select id="langSelect" onchange="applyLang(this.value)">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+        <button class="dark-toggle" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- QUICK STATS -->
+  <div class="quick-stats">
+    <div class="stat-card">
+      <span class="stat-label" data-i18n="qs_top">Top Model</span>
+      <span class="stat-value">Claude Fable 5.1 (max)</span>
+      <span class="stat-sub">Score: 53</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label" data-i18n="qs_value">Best Value</span>
+      <span class="stat-value">GPT-6 Astra (medium)</span>
+      <span class="stat-sub">CHF 1.25/M tokens · score 50</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label" data-i18n="qs_fast">Fastest</span>
+      <span class="stat-value">Claude Fable 5.1 (max)</span>
+      <span class="stat-sub">70 t/s</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label" data-i18n="qs_ctx">Largest Context</span>
+      <span class="stat-value">All top 20 tied</span>
+      <span class="stat-sub">1,000k tokens</span>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD -->
+  <section class="section">
+    <div class="section-title" data-i18n="lb_title">Top Frontier AI Models — Capability Ranking</div>
+    <div class="section-desc" data-i18n="lb_desc">
+      Ranked by <strong>Intelligence Index</strong> — a composite quality score (0–100) from
+      <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank">Artificial Analysis</a>
+      measuring reasoning, coding, and knowledge tasks. Higher is better. Click any column header to sort.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="rank">#</th>
+            <th class="sortable" onclick="sortTable(this,1,'str')">
+              <span data-i18n="col_model">Model</span>
+              <span class="col-hint" data-i18n="col_model_hint">name + open-source / modality badges</span>
+              <span class="sort-icon">⇅</span>
+            </th>
+            <th class="sortable" onclick="sortTable(this,2,'str')">
+              <span data-i18n="col_company">Company</span>
+              <span class="col-hint" data-i18n="col_company_hint">who makes it</span>
+              <span class="sort-icon">⇅</span>
+            </th>
+            <th class="sortable" onclick="sortTable(this,3,'num')">
+              <span data-i18n="col_score">Capability</span>
+              <span class="col-hint" data-i18n="col_score_hint">0–100, higher = better</span>
+              <span class="sort-icon">⇅</span>
+            </th>
+            <th class="sortable" onclick="sortTable(this,4,'num')">
+              <span data-i18n="col_price">API Price</span>
+              <span class="col-hint" data-i18n="col_price_hint">CHF / 1M tokens</span>
+              <span class="sort-icon">⇅</span>
+            </th>
+            <th class="sortable" onclick="sortTable(this,5,'num')">
+              <span data-i18n="col_speed">Speed</span>
+              <span class="col-hint" data-i18n="col_speed_hint">tokens / second</span>
+              <span class="sort-icon">⇅</span>
+            </th>
+            <th class="sortable" onclick="sortTable(this,6,'num')">
+              <span data-i18n="col_ctx">Context Window</span>
+              <span class="col-hint" data-i18n="col_ctx_hint">k tokens (1k ≈ 750 words)</span>
+              <span class="sort-icon">⇅</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="top1">
+            <td class="rank" data-label="#">1</td>
+            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (max)">Claude Fable 5.1 (max)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
+            <td class="price" data-label="Price" data-val="6.19">CHF 6.19/M</td>
+            <td class="speed" data-label="Speed" data-val="70">70 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr class="top2">
+            <td class="rank" data-label="#">2</td>
+            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (xhigh)">Claude Fable 5.1 (xhigh)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
+            <td class="price" data-label="Price" data-val="4.85">CHF 4.85/M</td>
+            <td class="speed" data-label="Speed" data-val="60">60 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr class="top3">
+            <td class="rank" data-label="#">3</td>
+            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (max)">GPT-6 Astra (max)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
+            <td class="price" data-label="Price" data-val="2.64">CHF 2.64/M</td>
+            <td class="speed" data-label="Speed" data-val="59">59 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">4</td>
+            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (xhigh)">GPT-6 Astra (xhigh)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
+            <td class="price" data-label="Price" data-val="1.87">CHF 1.87/M</td>
+            <td class="speed" data-label="Speed" data-val="57">57 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">5</td>
+            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (high)">Claude Fable 5.1 (high)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="51"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51%"></div></div><span class="score-num">51</span></div></td>
+            <td class="price" data-label="Price" data-val="3.17">CHF 3.17/M</td>
+            <td class="speed" data-label="Speed" data-val="57">57 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">6</td>
+            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (high)">GPT-6 Astra (high)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="51"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51%"></div></div><span class="score-num">51</span></div></td>
+            <td class="price" data-label="Price" data-val="1.39">CHF 1.39/M</td>
+            <td class="speed" data-label="Speed" data-val="55">55 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">7</td>
+            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (max)">Claude Opus 5 (max)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="51"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51%"></div></div><span class="score-num">51</span></div></td>
+            <td class="price" data-label="Price" data-val="4.75">CHF 4.75/M</td>
+            <td class="speed" data-label="Speed" data-val="54">54 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">8</td>
+            <td class="model-name" data-label="Model" data-val="Claude Fable 5">Claude Fable 5</td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="50"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-num">50</span></div></td>
+            <td class="price" data-label="Price" data-val="7.10">CHF 7.10/M</td>
+            <td class="speed" data-label="Speed" data-val="70">70 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">9</td>
+            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (medium)">GPT-6 Astra (medium)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="50"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-num">50</span></div></td>
+            <td class="price" data-label="Price" data-val="1.25">CHF 1.25/M</td>
+            <td class="speed" data-label="Speed" data-val="53">53 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">10</td>
+            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (xhigh)">Claude Opus 5 (xhigh)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="50"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-num">50</span></div></td>
+            <td class="price" data-label="Price" data-val="3.96">CHF 3.96/M</td>
+            <td class="speed" data-label="Speed" data-val="53">53 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">11</td>
+            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (medium)">Claude Fable 5.1 (medium)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="49"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:49%"></div></div><span class="score-num">49</span></div></td>
+            <td class="price" data-label="Price" data-val="2.42">CHF 2.42/M</td>
+            <td class="speed" data-label="Speed" data-val="56">56 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">12</td>
+            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (high)">Claude Opus 5 (high)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="48"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48%"></div></div><span class="score-num">48</span></div></td>
+            <td class="price" data-label="Price" data-val="2.93">CHF 2.93/M</td>
+            <td class="speed" data-label="Speed" data-val="54">54 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">13</td>
+            <td class="model-name" data-label="Model" data-val="Muse Spark 1.3 (max)">Muse Spark 1.3 (max)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Meta"><span class="vendor-tag">Meta</span></td>
+            <td data-label="Quality" data-val="48"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48%"></div></div><span class="score-num">48</span></div></td>
+            <td class="price" data-label="Price" data-val="1.30">CHF 1.30/M</td>
+            <td class="speed" data-label="Speed" data-val="237">237 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">14</td>
+            <td class="model-name" data-label="Model" data-val="GPT-5.6 Sol (max)">GPT-5.6 Sol (max)</td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="47"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:47%"></div></div><span class="score-num">47</span></div></td>
+            <td class="price" data-label="Price" data-val="1.61">CHF 1.61/M</td>
+            <td class="speed" data-label="Speed" data-val="70">70 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">15</td>
+            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (low)">Claude Fable 5.1 (low)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="47"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:47%"></div></div><span class="score-num">47</span></div></td>
+            <td class="price" data-label="Price" data-val="1.92">CHF 1.92/M</td>
+            <td class="speed" data-label="Speed" data-val="53">53 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">16</td>
+            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (low)">GPT-6 Astra (low)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="46"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:46%"></div></div><span class="score-num">46</span></div></td>
+            <td class="price" data-label="Price" data-val="0.66">CHF 0.66/M</td>
+            <td class="speed" data-label="Speed" data-val="53">53 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">17</td>
+            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (Non-reasoning)">GPT-6 Astra (Non-reasoning)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+            <td data-label="Quality" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
+            <td class="price" data-label="Price" data-val="1.39">CHF 1.39/M</td>
+            <td class="speed na" data-label="Speed" data-val="0">not reported</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">18</td>
+            <td class="model-name" data-label="Model" data-val="Muse Spark 1.3 (xhigh)">Muse Spark 1.3 (xhigh)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Meta"><span class="vendor-tag">Meta</span></td>
+            <td data-label="Quality" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
+            <td class="price" data-label="Price" data-val="1.11">CHF 1.11/M</td>
+            <td class="speed" data-label="Speed" data-val="198">198 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">19</td>
+            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (medium)">Claude Opus 5 (medium)<span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+            <td data-label="Quality" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
+            <td class="price" data-label="Price" data-val="1.78">CHF 1.78/M</td>
+            <td class="speed" data-label="Speed" data-val="54">54 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+          <tr>
+            <td class="rank" data-label="#">20</td>
+            <td class="model-name" data-label="Model" data-val="GLM-5.3 (max)">GLM-5.3 (max)<span class="badge-os">Open</span><span class="badge-mm">Vision</span></td>
+            <td data-label="Company" data-val="Z AI"><span class="vendor-tag">Z AI</span></td>
+            <td data-label="Quality" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
+            <td class="price" data-label="Price" data-val="1.63">CHF 1.63/M</td>
+            <td class="speed" data-label="Speed" data-val="70">70 t/s</td>
+            <td class="ctx" data-label="Context" data-val="1000">1,000k</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend" data-i18n="legend">
+      <strong>How to read:</strong>
+      Capability = Artificial Analysis Intelligence Index (0–100).
+      <span class="badge-os" style="vertical-align:baseline">Open</span> = open-source weights.
+      <span class="badge-mm" style="vertical-align:baseline">Vision</span> = accepts images as well as text.
+      Badges appear only where the provider's own documentation confirms them — a missing badge means "not confirmed", not "not supported".
+      No model in this top 20 has confirmed audio input.
+      Price = CHF/1M tokens, converted from the Artificial Analysis blended USD rate at USD 1 = CHF 0.8109 (8 September 2026).
+      Speed ≈ words/sec. Context = max text read at once.
+      Suffixes such as (max), (high), (medium), (low) are reasoning-effort settings of the same model, priced and scored separately.
+      Data: <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank">Artificial Analysis</a> — verify before decisions.
+    </div>
+  </section>
+
+  <!-- KEY TAKEAWAYS -->
+  <section class="section">
+    <div class="section-title" data-i18n="tk_title">Key Takeaways</div>
+    <div class="section-desc" data-i18n="tk_desc">Summary of where AI stands right now.</div>
+    <div class="takeaways">
+      <ul>
+        <li>
+          <span class="lc lang-en"><strong>The top is crowded:</strong> the four highest-scoring entries all sit at 53/100 — two from Anthropic, two from OpenAI. Quality no longer separates the leaders; price and speed do.</span>
+          <span class="lc lang-de"><strong>Die Spitze ist eng:</strong> Die vier besten Einträge liegen alle bei 53/100 — zwei von Anthropic, zwei von OpenAI. Qualität unterscheidet die Führenden nicht mehr; Preis und Geschwindigkeit tun es.</span>
+          <span class="lc lang-fr"><strong>Le sommet est encombré :</strong> les quatre meilleures entrées atteignent toutes 53/100 — deux d'Anthropic, deux d'OpenAI. Ce n'est plus la qualité qui distingue les leaders, mais le prix et la vitesse.</span>
+          <span class="lc lang-it"><strong>Il vertice è affollato:</strong> le quattro voci con il punteggio più alto sono tutte a 53/100 — due di Anthropic, due di OpenAI. Non è più la qualità a distinguere i leader, ma prezzo e velocità.</span>
+          <span class="lc lang-zh"><strong>头部高度密集：</strong>得分最高的四项均为 53/100——两项来自 Anthropic，两项来自 OpenAI。区分领先者的已不是质量，而是价格与速度。</span>
+        </li>
+        <li>
+          <span class="lc lang-en"><strong>Same model, ten-fold price range:</strong> reasoning-effort settings change cost far more than quality. GPT-6 Astra runs from CHF 0.66/M (score 46) to CHF 2.64/M (score 53) — a 4× price gap for 7 points. Start on a lower effort setting and only pay up if your own results demand it.</span>
+          <span class="lc lang-de"><strong>Gleiches Modell, zehnfache Preisspanne:</strong> Die Denkaufwand-Stufen verändern die Kosten weit stärker als die Qualität. GPT-6 Astra reicht von CHF 0.66/M (Wert 46) bis CHF 2.64/M (Wert 53) — vierfacher Preis für 7 Punkte. Mit niedriger Stufe beginnen und nur aufzahlen, wenn die eigenen Ergebnisse es erfordern.</span>
+          <span class="lc lang-fr"><strong>Même modèle, prix décuplés :</strong> les niveaux d'effort de raisonnement modifient le coût bien plus que la qualité. GPT-6 Astra va de CHF 0.66/M (score 46) à CHF 2.64/M (score 53) — un prix multiplié par 4 pour 7 points. Commencez par un niveau d'effort bas et ne payez plus que si vos propres résultats l'exigent.</span>
+          <span class="lc lang-it"><strong>Stesso modello, prezzi decuplicati:</strong> i livelli di sforzo di ragionamento incidono sul costo molto più che sulla qualità. GPT-6 Astra va da CHF 0.66/M (punteggio 46) a CHF 2.64/M (punteggio 53) — prezzo quadruplicato per 7 punti. Iniziate da un livello basso e pagate di più solo se i vostri risultati lo richiedono.</span>
+          <span class="lc lang-zh"><strong>同一模型，价格相差十倍：</strong>推理投入档位对成本的影响远大于对质量的影响。GPT-6 Astra 从每百万 token CHF 0.66（得分 46）到 CHF 2.64（得分 53）——价格 4 倍之差，仅换来 7 分。建议先用较低档位，只有当自己的实测结果不足时再加价。</span>
+        </li>
+        <li>
+          <span class="lc lang-en"><strong>Data-retention rules just changed:</strong> Anthropic's new Fable 5.1 and Mythos 5.1 carry a mandatory 30-day data-retention requirement with no zero-retention option, offset by a new Enterprise Frontier Safeguards scheme that keeps the data in the customer's own cloud. Check this before putting any patient or personal data through an API.</span>
+          <span class="lc lang-de"><strong>Regeln zur Datenspeicherung haben sich geändert:</strong> Anthropics neue Modelle Fable 5.1 und Mythos 5.1 unterliegen einer verpflichtenden 30-tägigen Datenspeicherung ohne Zero-Retention-Option; ausgeglichen wird dies durch das neue Programm Enterprise Frontier Safeguards, das die Daten in der eigenen Cloud des Kunden hält. Vor der Verarbeitung von Patienten- oder Personendaten über eine API prüfen.</span>
+          <span class="lc lang-fr"><strong>Les règles de conservation des données viennent de changer :</strong> les nouveaux modèles Fable 5.1 et Mythos 5.1 d'Anthropic imposent une conservation obligatoire de 30 jours, sans option « zéro conservation », compensée par le nouveau dispositif Enterprise Frontier Safeguards qui garde les données dans le cloud du client. À vérifier avant de faire passer des données patients ou personnelles par une API.</span>
+          <span class="lc lang-it"><strong>Le regole di conservazione dei dati sono cambiate:</strong> i nuovi Fable 5.1 e Mythos 5.1 di Anthropic prevedono una conservazione obbligatoria di 30 giorni senza opzione di conservazione zero, compensata dal nuovo programma Enterprise Frontier Safeguards che mantiene i dati nel cloud del cliente. Da verificare prima di far transitare dati di pazienti o personali tramite API.</span>
+          <span class="lc lang-zh"><strong>数据保留规则刚刚变更：</strong>Anthropic 新推出的 Fable 5.1 与 Mythos 5.1 强制要求保留数据 30 天，且不提供零保留选项；作为补偿，新的 Enterprise Frontier Safeguards 方案可将数据保存在客户自有云中。在通过 API 处理病人或个人数据前务必核实。</span>
+        </li>
+        <li>
+          <span class="lc lang-en"><strong>Strong cyber capability is now gated:</strong> Anthropic's Mythos 5.1 is trusted-access only, Google's Gemini 3.8 Flash Cyber is restricted to vetted defenders under its new Fairwind programme, and OpenAI ships Astra with gated cyber features. Expect an application process, not a sign-up form, for security-related AI work.</span>
+          <span class="lc lang-de"><strong>Starke Cyber-Fähigkeiten sind nun zugangsbeschränkt:</strong> Anthropics Mythos 5.1 ist nur über Trusted Access verfügbar, Googles Gemini 3.8 Flash Cyber bleibt geprüften Verteidigern im neuen Fairwind-Programm vorbehalten, und OpenAI liefert Astra mit gesperrten Cyber-Funktionen aus. Für sicherheitsbezogene KI-Arbeit ist ein Antragsverfahren zu erwarten, kein einfaches Anmeldeformular.</span>
+          <span class="lc lang-fr"><strong>Les fortes capacités cyber sont désormais sous contrôle d'accès :</strong> Mythos 5.1 d'Anthropic n'est accessible qu'en accès de confiance, Gemini 3.8 Flash Cyber de Google est réservé aux défenseurs vérifiés via son nouveau programme Fairwind, et OpenAI livre Astra avec des fonctions cyber verrouillées. Prévoyez une procédure de candidature, et non un simple formulaire d'inscription, pour tout travail IA lié à la sécurité.</span>
+          <span class="lc lang-it"><strong>Le forti capacità cyber sono ora ad accesso controllato:</strong> Mythos 5.1 di Anthropic è disponibile solo con accesso fidato, Gemini 3.8 Flash Cyber di Google è riservato a difensori verificati nel nuovo programma Fairwind, e OpenAI distribuisce Astra con funzioni cyber bloccate. Per il lavoro IA legato alla sicurezza aspettatevi una procedura di candidatura, non un semplice modulo di iscrizione.</span>
+          <span class="lc lang-zh"><strong>强网络安全能力现已设门槛：</strong>Anthropic 的 Mythos 5.1 仅限受信任访问，Google 的 Gemini 3.8 Flash Cyber 通过新的 Fairwind 计划仅面向经审核的防御方，OpenAI 的 Astra 也对网络安全功能设限。与安全相关的 AI 工作应预期需要申请审核，而非简单注册。</span>
+        </li>
+        <li>
+          <span class="lc lang-en"><strong>Relevant to environmental health work:</strong> Google DeepMind's WeatherNext 3 claims up to 50% more accurate precipitation forecasts a day or more ahead, at 5 km resolution for surface variables, and is queryable from BigQuery and Earth Engine — usable in an analysis pipeline, not just a demo.</span>
+          <span class="lc lang-de"><strong>Relevant für die Umweltgesundheitsforschung:</strong> Google DeepMinds WeatherNext 3 verspricht bis zu 50% genauere Niederschlagsprognosen ab einem Tag Vorlauf, mit 5-km-Auflösung für Oberflächenvariablen, und ist über BigQuery und Earth Engine abfragbar — nutzbar in einer Analyse-Pipeline, nicht nur als Demo.</span>
+          <span class="lc lang-fr"><strong>Pertinent pour les travaux en santé environnementale :</strong> WeatherNext 3 de Google DeepMind annonce des prévisions de précipitations jusqu'à 50% plus précises à un jour ou plus d'échéance, à 5 km de résolution pour les variables de surface, et s'interroge depuis BigQuery et Earth Engine — utilisable dans une chaîne d'analyse, pas seulement en démonstration.</span>
+          <span class="lc lang-it"><strong>Rilevante per la salute ambientale:</strong> WeatherNext 3 di Google DeepMind dichiara previsioni di precipitazione fino al 50% più accurate con un giorno o più di anticipo, a 5 km di risoluzione per le variabili di superficie, e si può interrogare da BigQuery ed Earth Engine — utilizzabile in una pipeline di analisi, non solo come dimostrazione.</span>
+          <span class="lc lang-zh"><strong>与环境健康研究相关：</strong>Google DeepMind 的 WeatherNext 3 称提前一天及以上的降水预报准确度最高提升 50%，地表变量分辨率达 5 公里，并可通过 BigQuery 与 Earth Engine 查询——可纳入实际分析流程，而非仅作演示。</span>
+        </li>
+        <li>
+          <span class="lc lang-en"><strong>Open weights still trail:</strong> only one model in the top 20 — Z AI's GLM-5.3 — has publicly available weights, at 45/100 against the leaders' 53. If your project needs on-premise or sovereign hosting, budget for roughly an 8-point capability gap.</span>
+          <span class="lc lang-de"><strong>Offene Gewichte hinken weiter hinterher:</strong> Nur ein Modell der Top 20 — GLM-5.3 von Z AI — hat öffentlich verfügbare Gewichte, mit 45/100 gegenüber 53 bei den Führenden. Wer On-Premise- oder souveränes Hosting benötigt, sollte etwa 8 Punkte Leistungsabstand einplanen.</span>
+          <span class="lc lang-fr"><strong>Les poids ouverts restent en retard :</strong> un seul modèle du top 20 — GLM-5.3 de Z AI — dispose de poids publiquement disponibles, à 45/100 contre 53 pour les leaders. Si votre projet exige un hébergement sur site ou souverain, prévoyez un écart de capacité d'environ 8 points.</span>
+          <span class="lc lang-it"><strong>I pesi aperti restano indietro:</strong> un solo modello nella top 20 — GLM-5.3 di Z AI — ha pesi pubblicamente disponibili, con 45/100 contro i 53 dei leader. Se il progetto richiede hosting on-premise o sovrano, mettete in conto un divario di capacità di circa 8 punti.</span>
+          <span class="lc lang-zh"><strong>开源权重仍落后：</strong>前 20 名中仅 Z AI 的 GLM-5.3 公开了权重，得分 45/100，而领先者为 53。若项目需要本地部署或数据主权托管，应预留约 8 分的能力差距。</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section">
+    <div class="section-title" data-i18n="news_title">What's New This Week</div>
+    <div class="section-desc" data-i18n="news_desc">
+      Announcements from AI companies — items older than 72 hours are date-stamped.
+      Click "Source" to read the original.
+    </div>
+    <div class="news-grid">
+      <div class="news-card cat-releases">
+        <div class="news-card-header" data-i18n="cat_releases">New AI Models Released</div>
+        <div class="news-card-body">
+          <div class="news-item">
+            <span class="news-company">OpenAI — GPT-6 Astra</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">OpenAI's new flagship, built around using a computer the way a person does: filling in web forms, updating records in a CRM, running research and writing the summary into your document. It reaches 72.6% on the OSWorld 2.0 computer-use test in roughly 47% less time per task than the previous GPT-5.6 Sol. Rolling out first to selected organisations, then to ChatGPT Plus, Pro, Business and Enterprise, the OpenAI API, Microsoft Azure and AWS Bedrock.</span>
+            <span class="lc lang-de">OpenAIs neues Spitzenmodell, ausgelegt auf die Computernutzung wie durch einen Menschen: Webformulare ausfüllen, Datensätze in einem CRM aktualisieren, recherchieren und die Zusammenfassung ins Dokument schreiben. Es erreicht 72,6% im Computernutzungstest OSWorld 2.0 bei rund 47% weniger Zeit pro Aufgabe als das bisherige GPT-5.6 Sol. Zunächst für ausgewählte Organisationen, dann für ChatGPT Plus, Pro, Business und Enterprise, die OpenAI-API, Microsoft Azure und AWS Bedrock.</span>
+            <span class="lc lang-fr">Le nouveau modèle phare d'OpenAI, conçu pour utiliser un ordinateur comme le ferait une personne : remplir des formulaires web, mettre à jour des fiches dans un CRM, mener une recherche et rédiger le résumé dans votre document. Il atteint 72,6% au test d'utilisation d'ordinateur OSWorld 2.0, avec environ 47% de temps en moins par tâche que le précédent GPT-5.6 Sol. Déploiement d'abord auprès d'organisations sélectionnées, puis sur ChatGPT Plus, Pro, Business et Enterprise, l'API OpenAI, Microsoft Azure et AWS Bedrock.</span>
+            <span class="lc lang-it">Il nuovo modello di punta di OpenAI, pensato per usare un computer come farebbe una persona: compilare moduli web, aggiornare schede in un CRM, condurre ricerche e scrivere il riassunto nel vostro documento. Raggiunge il 72,6% nel test di uso del computer OSWorld 2.0, con circa il 47% di tempo in meno per attività rispetto al precedente GPT-5.6 Sol. Distribuzione prima a organizzazioni selezionate, poi a ChatGPT Plus, Pro, Business ed Enterprise, all'API OpenAI, Microsoft Azure e AWS Bedrock.</span>
+            <span class="lc lang-zh">OpenAI 的新旗舰模型，核心是像人一样操作电脑：填写网页表单、更新 CRM 记录、开展调研并把摘要写进你的文档。在 OSWorld 2.0 电脑操作测试中达到 72.6%，每项任务用时比上一代 GPT-5.6 Sol 减少约 47%。先向部分机构开放，随后覆盖 ChatGPT Plus、Pro、Business 与 Enterprise、OpenAI API、Microsoft Azure 及 AWS Bedrock。</span>
+            <br><a class="news-source" href="https://openai.com/index/gpt-6-astra/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Anthropic — Claude Fable 5.1 and Mythos 5.1</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">Two names, one underlying model, different levels of safeguard. Fable 5.1 is generally available; Mythos 5.1 is restricted to trusted-access programmes for cybersecurity and life-sciences work. Both come with a 1M-token context window and always-on adaptive thinking. In a molecular-design test, Mythos 5.1 designed protein binders with affinities ten times higher than the best entries in Adaptyv Bio's competitions.</span>
+            <span class="lc lang-de">Zwei Namen, ein zugrunde liegendes Modell, unterschiedliche Schutzstufen. Fable 5.1 ist allgemein verfügbar; Mythos 5.1 bleibt Trusted-Access-Programmen für Cybersicherheit und Lebenswissenschaften vorbehalten. Beide bieten ein Kontextfenster von 1M Tokens und dauerhaft aktives adaptives Denken. In einem Test zum Moleküldesign entwarf Mythos 5.1 Proteinbinder mit zehnfach höherer Affinität als die besten Beiträge der Wettbewerbe von Adaptyv Bio.</span>
+            <span class="lc lang-fr">Deux noms, un seul modèle sous-jacent, des niveaux de garde-fous différents. Fable 5.1 est disponible pour tous ; Mythos 5.1 est réservé aux programmes d'accès de confiance pour la cybersécurité et les sciences du vivant. Les deux offrent une fenêtre de contexte de 1M tokens et un raisonnement adaptatif toujours actif. Lors d'un test de conception moléculaire, Mythos 5.1 a conçu des liants protéiques dix fois plus affins que les meilleures propositions des concours d'Adaptyv Bio.</span>
+            <span class="lc lang-it">Due nomi, un unico modello di base, livelli di salvaguardia diversi. Fable 5.1 è disponibile per tutti; Mythos 5.1 è riservato ai programmi ad accesso fidato per cybersicurezza e scienze della vita. Entrambi hanno una finestra di contesto da 1M token e ragionamento adattivo sempre attivo. In un test di progettazione molecolare, Mythos 5.1 ha progettato leganti proteici con affinità dieci volte superiori alle migliori proposte dei concorsi di Adaptyv Bio.</span>
+            <span class="lc lang-zh">两个名称、同一底层模型、不同的安全防护等级。Fable 5.1 面向所有人开放；Mythos 5.1 仅限网络安全与生命科学领域的受信任访问计划。两者均具备 100 万 token 上下文窗口和常开式自适应思考。在分子设计测试中，Mythos 5.1 设计的蛋白结合体亲和力比 Adaptyv Bio 竞赛中的最佳方案高出十倍。</span>
+            <br><a class="news-source" href="https://www.anthropic.com/claude-fable-and-mythos-5-1" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Google — Gemini 3.8 Flash and 3.8 Flash Cyber</span>
+            <span class="tag-old">2026-09-02</span>
+            <br>
+            <span class="lc lang-en">Google's cheap-and-fast tier gets a reasoning upgrade at the same speed as the previous 3.7 Flash, and Google says it beats most larger frontier models on the DeepSWE v1.1 coding benchmark at a fraction of the cost. A separate variant, 3.8 Flash Cyber, finds software vulnerabilities autonomously and is not openly available. Available in Google AI Studio, the Gemini API, Android Studio, Gemini Enterprise, the Gemini app and Google Search.</span>
+            <span class="lc lang-de">Googles günstige und schnelle Stufe erhält ein Reasoning-Upgrade bei gleicher Geschwindigkeit wie das bisherige 3.7 Flash; laut Google übertrifft es die meisten größeren Frontier-Modelle im Coding-Benchmark DeepSWE v1.1 zu einem Bruchteil der Kosten. Eine separate Variante, 3.8 Flash Cyber, findet Softwareschwachstellen autonom und ist nicht offen verfügbar. Verfügbar in Google AI Studio, der Gemini-API, Android Studio, Gemini Enterprise, der Gemini-App und der Google-Suche.</span>
+            <span class="lc lang-fr">La gamme économique et rapide de Google gagne en raisonnement à vitesse égale au précédent 3.7 Flash, et Google affirme qu'elle dépasse la plupart des modèles frontier plus grands sur le benchmark de code DeepSWE v1.1, pour une fraction du coût. Une variante distincte, 3.8 Flash Cyber, détecte des vulnérabilités logicielles de façon autonome et n'est pas librement accessible. Disponible dans Google AI Studio, l'API Gemini, Android Studio, Gemini Enterprise, l'application Gemini et Google Search.</span>
+            <span class="lc lang-it">La fascia economica e veloce di Google riceve un miglioramento nel ragionamento alla stessa velocità del precedente 3.7 Flash, e Google afferma che batte la maggior parte dei modelli frontier più grandi nel benchmark di codice DeepSWE v1.1 a una frazione del costo. Una variante separata, 3.8 Flash Cyber, individua vulnerabilità software in autonomia e non è liberamente disponibile. Disponibile in Google AI Studio, API Gemini, Android Studio, Gemini Enterprise, app Gemini e Google Search.</span>
+            <span class="lc lang-zh">Google 的低价高速档位在保持上一代 3.7 Flash 速度的同时提升了推理能力，Google 称其在 DeepSWE v1.1 编程基准上以极低成本超过多数更大的前沿模型。另一变体 3.8 Flash Cyber 可自主发现软件漏洞，不对外公开开放。可通过 Google AI Studio、Gemini API、Android Studio、Gemini Enterprise、Gemini 应用及 Google 搜索使用。</span>
+            <br><a class="news-source" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Google DeepMind — WeatherNext 3</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">A global weather model producing hourly forecasts at 5 km resolution for surface variables such as temperature and moisture. DeepMind reports up to 50% more accurate precipitation forecasts when planning a day or more ahead, and predictions five times sharper than WeatherNext 2, with independent live evaluation by Brightband. Researchers can query it in BigQuery and Earth Engine, bulk-download from Google Cloud Storage, or use the Weather API.</span>
+            <span class="lc lang-de">Ein globales Wettermodell mit stündlichen Prognosen bei 5-km-Auflösung für Oberflächenvariablen wie Temperatur und Feuchte. DeepMind berichtet bis zu 50% genauere Niederschlagsprognosen ab einem Tag Vorlauf und fünfmal schärfere Vorhersagen als WeatherNext 2, mit unabhängiger Live-Bewertung durch Brightband. Forschende können es in BigQuery und Earth Engine abfragen, aus Google Cloud Storage herunterladen oder die Weather-API nutzen.</span>
+            <span class="lc lang-fr">Un modèle météo mondial produisant des prévisions horaires à 5 km de résolution pour les variables de surface comme la température et l'humidité. DeepMind annonce des prévisions de précipitations jusqu'à 50% plus précises à un jour ou plus d'échéance, et des prédictions cinq fois plus fines que WeatherNext 2, avec une évaluation indépendante en direct par Brightband. Les chercheurs peuvent l'interroger dans BigQuery et Earth Engine, télécharger en masse depuis Google Cloud Storage, ou utiliser la Weather API.</span>
+            <span class="lc lang-it">Un modello meteo globale che produce previsioni orarie a 5 km di risoluzione per variabili di superficie come temperatura e umidità. DeepMind riporta previsioni di precipitazione fino al 50% più accurate con un giorno o più di anticipo e predizioni cinque volte più nitide di WeatherNext 2, con valutazione indipendente in tempo reale di Brightband. I ricercatori possono interrogarlo in BigQuery ed Earth Engine, scaricarlo in blocco da Google Cloud Storage o usare la Weather API.</span>
+            <span class="lc lang-zh">一个全球天气模型，可提供逐小时预报，地表变量（如温度、湿度）分辨率为 5 公里。DeepMind 称提前一天及以上的降水预报准确度最高提升 50%，预测精细度是 WeatherNext 2 的五倍，并由 Brightband 进行独立实时评估。研究人员可在 BigQuery 与 Earth Engine 中查询、从 Google Cloud Storage 批量下载，或使用 Weather API。</span>
+            <br><a class="news-source" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Meta — Muse Spark 1.3</span>
+            <span class="tag-old">2026-09-02</span>
+            <br>
+            <span class="lc lang-en">Meta's update to its Muse Spark model, aimed at coding and multi-step agent work. It reportedly needs about 20% fewer tool calls and 25% fewer tokens than Muse Spark 1.2 for comparable engineering tasks, at the same context window and price. Note: this release was covered by Axios and Bloomberg but was not posted on Meta's own AI blog or newsroom at the time of writing, so the figures come from press reporting rather than Meta's documentation.</span>
+            <span class="lc lang-de">Metas Aktualisierung seines Muse-Spark-Modells, ausgerichtet auf Programmierung und mehrstufige Agentenarbeit. Berichten zufolge benötigt es für vergleichbare Engineering-Aufgaben rund 20% weniger Werkzeugaufrufe und 25% weniger Tokens als Muse Spark 1.2, bei gleichem Kontextfenster und Preis. Hinweis: Diese Veröffentlichung wurde von Axios und Bloomberg berichtet, erschien zum Redaktionszeitpunkt aber nicht auf Metas eigenem KI-Blog oder Newsroom; die Zahlen stammen daher aus der Presse, nicht aus Metas Dokumentation.</span>
+            <span class="lc lang-fr">La mise à jour par Meta de son modèle Muse Spark, orientée code et travail d'agent multi-étapes. Elle nécessiterait environ 20% d'appels d'outils et 25% de tokens en moins que Muse Spark 1.2 pour des tâches d'ingénierie comparables, à fenêtre de contexte et prix inchangés. À noter : cette sortie a été couverte par Axios et Bloomberg mais n'était pas publiée sur le blog IA ni la salle de presse de Meta au moment de la rédaction ; les chiffres proviennent donc de la presse, non de la documentation de Meta.</span>
+            <span class="lc lang-it">L'aggiornamento Meta del modello Muse Spark, orientato alla programmazione e al lavoro di agenti multi-passo. Richiederebbe circa il 20% di chiamate a strumenti e il 25% di token in meno rispetto a Muse Spark 1.2 per attività di ingegneria comparabili, a parità di finestra di contesto e prezzo. Nota: il rilascio è stato riportato da Axios e Bloomberg ma al momento della stesura non era pubblicato sul blog IA né nella newsroom di Meta; i dati provengono quindi dalla stampa e non dalla documentazione Meta.</span>
+            <span class="lc lang-zh">Meta 对其 Muse Spark 模型的更新，面向编程与多步智能体任务。据报道，在同等工程任务下，其工具调用次数比 Muse Spark 1.2 少约 20%、token 用量少约 25%，上下文窗口与价格不变。注意：该发布由 Axios 与 Bloomberg 报道，但撰稿时未出现在 Meta 官方 AI 博客或新闻室，因此数据来自媒体报道而非 Meta 官方文档。</span>
+            <br><a class="news-source" href="https://www.axios.com/2026/09/02/meta-debuts-muse-spark-13-as-personal-agent-work-continues" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="news-card cat-pricing">
+        <div class="news-card-header" data-i18n="cat_pricing">Price &amp; Plan Changes</div>
+        <div class="news-card-body">
+          <div class="news-item">
+            <span class="news-company">Anthropic — cache reads cut to a fortieth of input price</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">Fable 5.1 keeps the same headline price as Fable 5 (USD 10 in / USD 50 out per million tokens) but re-reading cached text now costs USD 0.25 per million — 2.5% of the input price instead of 10%. Anthropic estimates roughly 25% lower cost for typical workloads. This mainly helps anything that sends the same long document or codebase repeatedly.</span>
+            <span class="lc lang-de">Fable 5.1 behält den Grundpreis von Fable 5 (USD 10 Eingabe / USD 50 Ausgabe pro Million Tokens), doch das erneute Lesen zwischengespeicherter Texte kostet nun USD 0,25 pro Million — 2,5% statt 10% des Eingabepreises. Anthropic schätzt für typische Arbeitslasten rund 25% niedrigere Kosten. Das hilft vor allem dort, wo dasselbe lange Dokument oder dieselbe Codebasis wiederholt gesendet wird.</span>
+            <span class="lc lang-fr">Fable 5.1 conserve le tarif affiché de Fable 5 (10 USD en entrée / 50 USD en sortie par million de tokens), mais relire un texte mis en cache coûte désormais 0,25 USD par million — 2,5% du prix d'entrée au lieu de 10%. Anthropic estime le coût d'environ 25% inférieur pour les charges typiques. Cela profite surtout aux usages qui renvoient sans cesse le même long document ou la même base de code.</span>
+            <span class="lc lang-it">Fable 5.1 mantiene il prezzo di listino di Fable 5 (10 USD in ingresso / 50 USD in uscita per milione di token), ma rileggere testo in cache ora costa 0,25 USD per milione — il 2,5% del prezzo di input invece del 10%. Anthropic stima costi inferiori di circa il 25% per carichi tipici. Giova soprattutto a chi invia ripetutamente lo stesso documento lungo o la stessa base di codice.</span>
+            <span class="lc lang-zh">Fable 5.1 沿用 Fable 5 的标价（每百万 token 输入 10 美元 / 输出 50 美元），但重复读取缓存文本的价格降至每百万 0.25 美元——为输入价格的 2.5%，而非此前的 10%。Anthropic 估算典型工作负载成本下降约 25%。这对反复发送同一长文档或同一代码库的场景帮助最大。</span>
+            <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/api" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Google — Gemini 3.8 Flash introductory pricing expires 1 January 2027</span>
+            <span class="tag-old">2026-09-02</span>
+            <br>
+            <span class="lc lang-en">Launch pricing is USD 0.75 per million input tokens and USD 3.75 per million output tokens. From 1 January 2027 those rates double to USD 1.50 and USD 7.50. Worth noting in any budget that assumes today's price will hold.</span>
+            <span class="lc lang-de">Der Einführungspreis liegt bei USD 0,75 pro Million Eingabe-Tokens und USD 3,75 pro Million Ausgabe-Tokens. Ab dem 1. Januar 2027 verdoppeln sich diese Sätze auf USD 1,50 und USD 7,50. Zu berücksichtigen in jedem Budget, das vom heutigen Preis ausgeht.</span>
+            <span class="lc lang-fr">Le tarif de lancement est de 0,75 USD par million de tokens d'entrée et 3,75 USD par million de tokens de sortie. À partir du 1er janvier 2027, ces tarifs doublent à 1,50 USD et 7,50 USD. À signaler dans tout budget qui suppose le maintien du prix actuel.</span>
+            <span class="lc lang-it">Il prezzo di lancio è di 0,75 USD per milione di token in ingresso e 3,75 USD per milione in uscita. Dal 1° gennaio 2027 queste tariffe raddoppiano a 1,50 USD e 7,50 USD. Da tenere presente in qualsiasi budget che dia per stabile il prezzo attuale.</span>
+            <span class="lc lang-zh">上市价格为每百万输入 token 0.75 美元、每百万输出 token 3.75 美元。自 2027 年 1 月 1 日起，两项价格翻倍至 1.50 美元与 7.50 美元。任何按当前价格测算的预算都应注意这一点。</span>
+            <br><a class="news-source" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">OpenAI — GPT-6 Astra pricing, with a long-prompt surcharge</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">USD 10 per million input tokens and USD 50 per million output tokens, with cached input at USD 1. Requests over 272,000 input tokens are billed at double the input rate and 1.5× the output rate — for the whole request, not just the excess. Batch and Flex processing run at half price. The context window is about 1,050,000 tokens.</span>
+            <span class="lc lang-de">USD 10 pro Million Eingabe-Tokens und USD 50 pro Million Ausgabe-Tokens, zwischengespeicherte Eingaben zu USD 1. Anfragen über 272.000 Eingabe-Tokens werden mit dem doppelten Eingabe- und dem 1,5-fachen Ausgabepreis abgerechnet — für die gesamte Anfrage, nicht nur den Überschuss. Batch- und Flex-Verarbeitung kosten die Hälfte. Das Kontextfenster beträgt etwa 1.050.000 Tokens.</span>
+            <span class="lc lang-fr">10 USD par million de tokens d'entrée et 50 USD par million de tokens de sortie, l'entrée mise en cache à 1 USD. Les requêtes dépassant 272 000 tokens d'entrée sont facturées au double du tarif d'entrée et 1,5× celui de sortie — sur la requête entière, pas seulement le dépassement. Les traitements Batch et Flex sont à moitié prix. La fenêtre de contexte est d'environ 1 050 000 tokens.</span>
+            <span class="lc lang-it">10 USD per milione di token in ingresso e 50 USD per milione in uscita, con input in cache a 1 USD. Le richieste oltre 272.000 token di input sono fatturate al doppio della tariffa di input e a 1,5× quella di output — sull'intera richiesta, non solo sull'eccedenza. L'elaborazione Batch e Flex costa la metà. La finestra di contesto è di circa 1.050.000 token.</span>
+            <span class="lc lang-zh">每百万输入 token 10 美元，每百万输出 token 50 美元，缓存输入为 1 美元。输入超过 272,000 token 的请求，输入按两倍、输出按 1.5 倍计费——且按整个请求计算，而非仅超出部分。Batch 与 Flex 处理为半价。上下文窗口约 1,050,000 token。</span>
+            <br><a class="news-source" href="https://developers.openai.com/api/docs/models/gpt-6-astra" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="news-card cat-policy">
+        <div class="news-card-header" data-i18n="cat_policy">Privacy, Rules &amp; Terms</div>
+        <div class="news-card-body">
+          <div class="news-item">
+            <span class="news-company">Anthropic — 30-day data retention now mandatory on Fable 5.1 and Mythos 5.1</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">The zero-retention option is not available on these two models: prompts and outputs are kept for 30 days. If your work involves patient data, personal identifiers or confidential institutional content, check this against your data-protection agreement before switching to Fable 5.1.</span>
+            <span class="lc lang-de">Die Zero-Retention-Option ist für diese beiden Modelle nicht verfügbar: Eingaben und Ausgaben werden 30 Tage gespeichert. Wer mit Patientendaten, Personenkennzeichen oder vertraulichen institutionellen Inhalten arbeitet, sollte dies vor einem Wechsel zu Fable 5.1 gegen die eigene Datenschutzvereinbarung prüfen.</span>
+            <span class="lc lang-fr">L'option « zéro conservation » n'est pas proposée sur ces deux modèles : requêtes et réponses sont conservées 30 jours. Si votre travail porte sur des données de patients, des identifiants personnels ou des contenus institutionnels confidentiels, vérifiez ce point au regard de votre accord de protection des données avant de passer à Fable 5.1.</span>
+            <span class="lc lang-it">L'opzione a conservazione zero non è disponibile per questi due modelli: prompt e risposte sono conservati per 30 giorni. Se il vostro lavoro riguarda dati di pazienti, identificatori personali o contenuti istituzionali riservati, verificatelo rispetto al vostro accordo sulla protezione dei dati prima di passare a Fable 5.1.</span>
+            <span class="lc lang-zh">这两个模型不提供零保留选项：提示与输出将保存 30 天。若工作涉及病人数据、个人标识信息或机构机密内容，切换到 Fable 5.1 前请对照本单位的数据保护协议核实。</span>
+            <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/api" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Anthropic — Enterprise Frontier Safeguards</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">A scheme that tries to combine misuse monitoring with keeping data out of Anthropic's hands: traffic is stored in the customer's own cloud account, under the customer's encryption keys and access rules, and automated checks send any misuse alerts to the customer's team rather than to Anthropic staff. Anthropic charges nothing for it; the customer pays their cloud provider for storage. Phased rollout from autumn 2026, by application; until then, qualifying customers get zero data retention on Fable 5 and 5.1.</span>
+            <span class="lc lang-de">Ein Programm, das Missbrauchsüberwachung mit dem Verbleib der Daten außerhalb Anthropics verbinden soll: Der Verkehr wird im eigenen Cloud-Konto des Kunden gespeichert, mit dessen Schlüsseln und Zugriffsregeln, und automatisierte Prüfungen senden Missbrauchswarnungen an das Team des Kunden statt an Anthropic-Personal. Anthropic verlangt dafür nichts; der Kunde zahlt seinem Cloud-Anbieter die Speicherung. Gestaffelte Einführung ab Herbst 2026 auf Antrag; bis dahin erhalten qualifizierte Kunden Zero Data Retention für Fable 5 und 5.1.</span>
+            <span class="lc lang-fr">Un dispositif qui cherche à combiner surveillance des abus et non-conservation des données par Anthropic : le trafic est stocké dans le compte cloud du client, sous ses clés de chiffrement et ses règles d'accès, et des contrôles automatisés envoient les alertes d'abus à l'équipe du client plutôt qu'au personnel d'Anthropic. Anthropic ne facture rien ; le client paie le stockage à son fournisseur cloud. Déploiement par étapes à partir de l'automne 2026, sur candidature ; d'ici là, les clients éligibles bénéficient de la conservation zéro sur Fable 5 et 5.1.</span>
+            <span class="lc lang-it">Un programma che cerca di unire il monitoraggio degli abusi al mantenimento dei dati fuori da Anthropic: il traffico è archiviato nell'account cloud del cliente, con le sue chiavi di cifratura e regole di accesso, e i controlli automatici inviano gli avvisi di abuso al team del cliente e non al personale Anthropic. Anthropic non lo addebita; il cliente paga lo storage al proprio provider cloud. Introduzione graduale dall'autunno 2026, su candidatura; fino ad allora i clienti idonei ottengono conservazione zero su Fable 5 e 5.1.</span>
+            <span class="lc lang-zh">该方案试图兼顾滥用监测与数据不落入 Anthropic 手中：流量存储在客户自有云账户中，使用客户自己的加密密钥与访问规则，自动检测产生的滥用告警发送给客户团队而非 Anthropic 员工。Anthropic 不收取费用；存储费由客户向云服务商支付。自 2026 年秋季起分阶段推出，需申请；在此之前，符合条件的客户在 Fable 5 与 5.1 上可获得零数据保留。</span>
+            <br><a class="news-source" href="https://www.anthropic.com/news/enterprise-frontier-safeguards" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Anthropic — watermarking and C2PA credentials on generated media</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">Media generated through the Claude API now carries text watermarking and C2PA Content Credentials — a standard label recording that a file was machine-generated. Useful where provenance of figures and images in a publication has to be demonstrable.</span>
+            <span class="lc lang-de">Über die Claude-API erzeugte Medien tragen nun Text-Wasserzeichen und C2PA Content Credentials — ein Standardetikett, das festhält, dass eine Datei maschinell erzeugt wurde. Nützlich, wo die Herkunft von Abbildungen und Bildern in einer Publikation belegbar sein muss.</span>
+            <span class="lc lang-fr">Les médias générés via l'API Claude portent désormais un filigrane textuel et des C2PA Content Credentials — une étiquette standard attestant qu'un fichier a été généré par une machine. Utile lorsque la provenance des figures et images d'une publication doit être démontrable.</span>
+            <span class="lc lang-it">I media generati tramite l'API Claude ora includono watermarking testuale e C2PA Content Credentials — un'etichetta standard che registra la generazione automatica di un file. Utile quando la provenienza di figure e immagini in una pubblicazione deve essere dimostrabile.</span>
+            <span class="lc lang-zh">通过 Claude API 生成的媒体现已带有文本水印与 C2PA 内容凭证——一种记录文件由机器生成的标准标签。在需要证明论文中图表与图像来源时尤为有用。</span>
+            <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/api" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Google — Fairwind programme gates the cyber model</span>
+            <span class="tag-old">2026-09-02</span>
+            <br>
+            <span class="lc lang-en">Gemini 3.8 Flash Cyber, which reports over 70% success at autonomously finding vulnerabilities on Google's internal benchmarks, is available only through a new vetted-access programme for government authorities and critical-infrastructure operators.</span>
+            <span class="lc lang-de">Gemini 3.8 Flash Cyber, das laut Googles internen Benchmarks über 70% Erfolg beim autonomen Auffinden von Schwachstellen erreicht, ist nur über ein neues geprüftes Zugangsprogramm für Behörden und Betreiber kritischer Infrastrukturen verfügbar.</span>
+            <span class="lc lang-fr">Gemini 3.8 Flash Cyber, qui affiche plus de 70% de réussite dans la découverte autonome de vulnérabilités sur les benchmarks internes de Google, n'est accessible que via un nouveau programme d'accès vérifié destiné aux autorités publiques et aux opérateurs d'infrastructures critiques.</span>
+            <span class="lc lang-it">Gemini 3.8 Flash Cyber, che riporta oltre il 70% di successo nell'individuazione autonoma di vulnerabilità sui benchmark interni di Google, è disponibile solo tramite un nuovo programma ad accesso verificato per autorità pubbliche e operatori di infrastrutture critiche.</span>
+            <span class="lc lang-zh">Gemini 3.8 Flash Cyber 在 Google 内部基准上自主发现漏洞的成功率超过 70%，仅通过面向政府机构与关键基础设施运营方的新审核准入计划提供。</span>
+            <br><a class="news-source" href="https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">OpenAI — safety overview published alongside GPT-6 Astra</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">OpenAI shipped Astra four weeks after saying it had slowed the release over cyber risk, and published a separate safety overview covering gated cyber capabilities, jailbreak resistance, browsing safety, misalignment monitoring and stronger protections for users under 18.</span>
+            <span class="lc lang-de">OpenAI veröffentlichte Astra vier Wochen nach der Ankündigung, die Freigabe wegen Cyber-Risiken verlangsamt zu haben, und legte eine separate Sicherheitsübersicht vor: gesperrte Cyber-Fähigkeiten, Widerstand gegen Jailbreaks, sicheres Browsen, Überwachung von Fehlausrichtung und stärkerer Schutz für Nutzende unter 18.</span>
+            <span class="lc lang-fr">OpenAI a livré Astra quatre semaines après avoir annoncé un ralentissement du lancement pour risque cyber, et a publié un aperçu de sécurité distinct couvrant les capacités cyber verrouillées, la résistance aux contournements, la sécurité de navigation, la surveillance des désalignements et des protections renforcées pour les moins de 18 ans.</span>
+            <span class="lc lang-it">OpenAI ha rilasciato Astra quattro settimane dopo aver dichiarato di aver rallentato il lancio per rischio cyber, pubblicando una panoramica di sicurezza separata su capacità cyber bloccate, resistenza ai jailbreak, sicurezza della navigazione, monitoraggio del disallineamento e protezioni rafforzate per gli utenti under 18.</span>
+            <span class="lc lang-zh">OpenAI 在宣布因网络风险放缓发布四周后推出 Astra，并另行发布安全概览，涵盖受限的网络安全能力、抗越狱、浏览安全、失准监测以及对未满 18 岁用户的更强保护。</span>
+            <br><a class="news-source" href="https://openai.com/index/safety-overview-gpt-6-astra/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="news-card cat-features">
+        <div class="news-card-header" data-i18n="cat_features">New Features &amp; Upgrades</div>
+        <div class="news-card-body">
+          <div class="news-item">
+            <span class="news-company">OpenAI — ChatGPT can now build documents, spreadsheets and presentations</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">Alongside GPT-6 Astra, ChatGPT gained document, spreadsheet and presentation creation, plus stronger coding, research and computer use. In practice: ask it to pull data together and it can produce the file, not only the text of an answer.</span>
+            <span class="lc lang-de">Zusammen mit GPT-6 Astra erhielt ChatGPT die Erstellung von Dokumenten, Tabellen und Präsentationen sowie verbessertes Programmieren, Recherchieren und Computernutzung. Praktisch heißt das: Auf Anfrage entsteht die Datei, nicht nur der Antworttext.</span>
+            <span class="lc lang-fr">Avec GPT-6 Astra, ChatGPT gagne la création de documents, feuilles de calcul et présentations, ainsi qu'un meilleur codage, recherche et usage de l'ordinateur. Concrètement : demandez-lui de rassembler des données et il produit le fichier, pas seulement le texte de la réponse.</span>
+            <span class="lc lang-it">Insieme a GPT-6 Astra, ChatGPT ha acquisito la creazione di documenti, fogli di calcolo e presentazioni, oltre a migliori capacità di programmazione, ricerca e uso del computer. In pratica: chiedetegli di mettere insieme dei dati e produce il file, non solo il testo della risposta.</span>
+            <span class="lc lang-zh">随 GPT-6 Astra 一同推出，ChatGPT 新增文档、表格与演示文稿创建功能，并增强了编程、调研与电脑操作能力。实际效果是：要求它整合数据时，它可直接产出文件，而不仅是答案文本。</span>
+            <br><a class="news-source" href="https://openai.com/index/gpt-6-astra/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Google — agentic video understanding in Gemini</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">Instead of processing a video frame by frame at a fixed rate, Gemini can now search a timeline and pull only the frames, audio or transcript it needs. Google reports up to 88% fewer tokens, up to 66% lower cost and up to 7% better accuracy, with sub-second moment retrieval. Available on Gemini 3.7 Flash, 3.6 Flash and 3.5 Flash-Lite via the Gemini API, Google AI Studio and the Gemini app, at standard token prices.</span>
+            <span class="lc lang-de">Statt ein Video bildweise mit fester Rate zu verarbeiten, kann Gemini nun die Zeitleiste durchsuchen und nur die benötigten Bilder, Tonspuren oder Transkripte abrufen. Google berichtet bis zu 88% weniger Tokens, bis zu 66% geringere Kosten und bis zu 7% bessere Genauigkeit, mit Momentsuche unter einer Sekunde. Verfügbar für Gemini 3.7 Flash, 3.6 Flash und 3.5 Flash-Lite über die Gemini-API, Google AI Studio und die Gemini-App zu Standard-Tokenpreisen.</span>
+            <span class="lc lang-fr">Au lieu de traiter une vidéo image par image à cadence fixe, Gemini peut désormais parcourir la chronologie et n'extraire que les images, l'audio ou la transcription nécessaires. Google annonce jusqu'à 88% de tokens en moins, jusqu'à 66% de coût en moins et jusqu'à 7% de précision en plus, avec une recherche de moment en moins d'une seconde. Disponible sur Gemini 3.7 Flash, 3.6 Flash et 3.5 Flash-Lite via l'API Gemini, Google AI Studio et l'application Gemini, aux prix de tokens standard.</span>
+            <span class="lc lang-it">Invece di elaborare un video fotogramma per fotogramma a cadenza fissa, Gemini può ora cercare nella timeline ed estrarre solo i fotogrammi, l'audio o la trascrizione necessari. Google riporta fino all'88% di token in meno, fino al 66% di costo in meno e fino al 7% di accuratezza in più, con recupero dei momenti in meno di un secondo. Disponibile su Gemini 3.7 Flash, 3.6 Flash e 3.5 Flash-Lite tramite API Gemini, Google AI Studio e app Gemini, ai prezzi token standard.</span>
+            <span class="lc lang-zh">Gemini 不再以固定帧率逐帧处理视频，而可在时间轴上检索，只调取所需的画面、音轨或字幕。Google 称 token 用量最多减少 88%、成本最多降低 66%、准确度最多提升 7%，并可实现亚秒级片段定位。适用于 Gemini 3.7 Flash、3.6 Flash 与 3.5 Flash-Lite，可通过 Gemini API、Google AI Studio 与 Gemini 应用使用，按标准 token 价格计费。</span>
+            <br><a class="news-source" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Google — Lyria 3.5 music model in public preview</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">A music-generation model producing full-length songs at 44.1 kHz stereo from text and image prompts, with control over duration and structure. Public preview via the Gemini API.</span>
+            <span class="lc lang-de">Ein Musikgenerierungsmodell, das ganze Songs in 44,1-kHz-Stereo aus Text- und Bildeingaben erzeugt, mit Kontrolle über Dauer und Struktur. Öffentliche Vorschau über die Gemini-API.</span>
+            <span class="lc lang-fr">Un modèle de génération musicale produisant des morceaux complets en stéréo 44,1 kHz à partir d'invites textuelles et visuelles, avec contrôle de la durée et de la structure. Aperçu public via l'API Gemini.</span>
+            <span class="lc lang-it">Un modello di generazione musicale che produce brani completi in stereo a 44,1 kHz da prompt testuali e visivi, con controllo su durata e struttura. Anteprima pubblica tramite API Gemini.</span>
+            <span class="lc lang-zh">一个音乐生成模型，可依据文本与图像提示生成 44.1 kHz 立体声完整歌曲，并可控制时长与结构。通过 Gemini API 提供公开预览。</span>
+            <br><a class="news-source" href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Anthropic — <code>ant apply</code> manages agents as files in a repository</span>
+            <span class="tag-old">2026-09-03</span>
+            <br>
+            <span class="lc lang-en">Version 1.30.0 of Anthropic's <code>ant</code> command-line tool adds <code>ant apply</code>: describe agents, environments, skills, memory stores and deployments in files, review the plan, and apply it. It writes a lockfile so later runs update the same resources instead of creating duplicates — the point being reproducibility, and a record of what was deployed.</span>
+            <span class="lc lang-de">Version 1.30.0 von Anthropics Kommandozeilenwerkzeug <code>ant</code> ergänzt <code>ant apply</code>: Agenten, Umgebungen, Skills, Speicher und Deployments in Dateien beschreiben, den Plan prüfen und anwenden. Eine Lock-Datei stellt sicher, dass späteres Ausführen dieselben Ressourcen aktualisiert statt Duplikate zu erzeugen — es geht um Reproduzierbarkeit und einen Nachweis des Deployments.</span>
+            <span class="lc lang-fr">La version 1.30.0 de l'outil en ligne de commande <code>ant</code> d'Anthropic ajoute <code>ant apply</code> : décrivez agents, environnements, compétences, mémoires et déploiements dans des fichiers, examinez le plan, puis appliquez-le. Un fichier de verrouillage garantit que les exécutions suivantes mettent à jour les mêmes ressources au lieu d'en créer des doublons — l'enjeu étant la reproductibilité et la trace de ce qui a été déployé.</span>
+            <span class="lc lang-it">La versione 1.30.0 dello strumento a riga di comando <code>ant</code> di Anthropic aggiunge <code>ant apply</code>: descrivete agenti, ambienti, skill, archivi di memoria e deployment in file, rivedete il piano e applicatelo. Un file di lock fa sì che le esecuzioni successive aggiornino le stesse risorse invece di crearne duplicati — l'obiettivo è la riproducibilità e la tracciabilità di ciò che è stato distribuito.</span>
+            <span class="lc lang-zh">Anthropic 命令行工具 <code>ant</code> 的 1.30.0 版新增 <code>ant apply</code>：在文件中描述智能体、环境、技能、记忆库与部署，审阅执行计划后应用。它会写入锁文件，使后续运行更新同一批资源而非重复创建——重点在于可复现性以及部署内容的可追溯记录。</span>
+            <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/api" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="news-card cat-company">
+        <div class="news-card-header" data-i18n="cat_company">Company News</div>
+        <div class="news-card-body">
+          <div class="news-item">
+            <span class="news-company">Meta — inside the infrastructure lab</span>
+            <span class="tag-old">2026-09-01</span>
+            <br>
+            <span class="lc lang-en">Meta published a look at the hardware it is building to run its next generation of AI systems — useful background on why compute capacity, not model design alone, sets the pace of releases.</span>
+            <span class="lc lang-de">Meta veröffentlichte einen Einblick in die Hardware, die für die nächste Generation seiner KI-Systeme entsteht — nützlicher Hintergrund dazu, warum die Rechenkapazität und nicht allein das Modelldesign das Tempo der Veröffentlichungen bestimmt.</span>
+            <span class="lc lang-fr">Meta a publié un aperçu du matériel qu'elle construit pour faire tourner sa prochaine génération de systèmes IA — un éclairage utile sur le fait que la capacité de calcul, et pas seulement la conception des modèles, dicte le rythme des sorties.</span>
+            <span class="lc lang-it">Meta ha pubblicato uno sguardo sull'hardware che sta costruendo per far funzionare la prossima generazione dei suoi sistemi IA — un contesto utile su come sia la capacità di calcolo, e non il solo design dei modelli, a dettare il ritmo dei rilasci.</span>
+            <span class="lc lang-zh">Meta 公布了其为下一代 AI 系统所研发硬件的情况——有助于理解为何决定发布节奏的是算力容量，而不仅是模型设计。</span>
+            <br><a class="news-source" href="https://about.fb.com/news/2026/09/inside-metas-infrastructure-lab/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">Alphabet — shares recover on AI momentum</span>
+            <span class="tag-old">2026-09-02</span>
+            <br>
+            <span class="lc lang-en">CNBC reports Alphabet opening September with renewed momentum after its longest run of monthly losses in over a decade, following the week's Gemini announcements. Market context rather than a product change, but it shapes how much the labs can spend next.</span>
+            <span class="lc lang-de">CNBC berichtet, Alphabet starte den September nach der längsten Serie monatlicher Verluste seit über einem Jahrzehnt mit neuem Momentum, im Anschluss an die Gemini-Ankündigungen der Woche. Marktkontext, keine Produktänderung — beeinflusst aber, wie viel die Labore als Nächstes ausgeben können.</span>
+            <span class="lc lang-fr">CNBC rapporte qu'Alphabet entame septembre avec un regain d'élan après sa plus longue série de pertes mensuelles depuis plus de dix ans, à la suite des annonces Gemini de la semaine. Contexte de marché plutôt que changement produit, mais cela conditionne les dépenses futures des laboratoires.</span>
+            <span class="lc lang-it">CNBC riporta che Alphabet apre settembre con slancio ritrovato dopo la più lunga serie di perdite mensili in oltre un decennio, sulla scia degli annunci Gemini della settimana. Contesto di mercato più che cambiamento di prodotto, ma incide su quanto i laboratori potranno spendere in seguito.</span>
+            <span class="lc lang-zh">CNBC 报道，在本周 Gemini 系列发布之后，Alphabet 在经历十余年来最长的月度连跌后于九月重获上涨动能。这属于市场层面而非产品变化，但会影响各实验室后续的投入规模。</span>
+            <br><a class="news-source" href="https://www.cnbc.com/2026/09/02/google-starts-september-with-ai-momentum-after-long-losing-streak.html" target="_blank"><span data-i18n="source_link">Source →</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="news-card cat-github">
+        <div class="news-card-header" data-i18n="cat_github">Trending GitHub AI Tools</div>
+        <div class="news-card-body">
+          <div class="news-item">
+            <span class="news-company">heygen-com/hyperframes</span>
+            <span class="repo-stars">★ 47,383</span>
+            <br>
+            <span class="lc lang-en">Turns HTML pages into rendered video, designed to be driven by an AI agent. Top of the daily trending list with about 2,600 new stars in 24 hours.</span>
+            <span class="lc lang-de">Verwandelt HTML-Seiten in gerendertes Video, konzipiert zur Steuerung durch einen KI-Agenten. An der Spitze der Tagesliste mit rund 2.600 neuen Sterne in 24 Stunden.</span>
+            <span class="lc lang-fr">Transforme des pages HTML en vidéo rendue, conçu pour être piloté par un agent IA. En tête du classement quotidien avec environ 2 600 nouvelles étoiles en 24 heures.</span>
+            <span class="lc lang-it">Trasforma pagine HTML in video renderizzato, progettato per essere guidato da un agente IA. In cima alla classifica giornaliera con circa 2.600 nuove stelle in 24 ore.</span>
+            <span class="lc lang-zh">将 HTML 页面渲染为视频，专为由 AI 智能体驱动而设计。位居每日趋势榜首，24 小时内新增约 2,600 颗星。</span>
+            <br><a class="news-source" href="https://github.com/heygen-com/hyperframes" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">microsoft/markitdown</span>
+            <span class="repo-stars">★ 181,322</span>
+            <br>
+            <span class="lc lang-en">Python tool that converts files and office documents into Markdown, so PDFs, Word files and spreadsheets can be fed to a language model as clean text. About 2,000 new stars in 24 hours. Directly useful for anyone preparing a document collection for analysis.</span>
+            <span class="lc lang-de">Python-Werkzeug, das Dateien und Office-Dokumente in Markdown umwandelt, damit PDFs, Word-Dateien und Tabellen einem Sprachmodell als saubere Textform übergeben werden können. Rund 2.000 neue Sterne in 24 Stunden. Direkt nützlich für die Vorbereitung einer Dokumentensammlung zur Analyse.</span>
+            <span class="lc lang-fr">Outil Python qui convertit fichiers et documents bureautiques en Markdown, afin que PDF, fichiers Word et tableurs puissent être fournis à un modèle de langage en texte propre. Environ 2 000 nouvelles étoiles en 24 heures. Directement utile pour préparer un corpus de documents à analyser.</span>
+            <span class="lc lang-it">Strumento Python che converte file e documenti per ufficio in Markdown, così PDF, file Word e fogli di calcolo possono essere passati a un modello linguistico come testo pulito. Circa 2.000 nuove stelle in 24 ore. Direttamente utile per preparare una raccolta di documenti da analizzare.</span>
+            <span class="lc lang-zh">Python 工具，可将各类文件与办公文档转换为 Markdown，使 PDF、Word 文件与表格能以干净文本形式送入语言模型。24 小时内新增约 2,000 颗星。对整理待分析文档集尤为实用。</span>
+            <br><a class="news-source" href="https://github.com/microsoft/markitdown" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">affaan-m/ECC</span>
+            <span class="repo-stars">★ 253,734</span>
+            <br>
+            <span class="lc lang-en">Described by its authors as an agent-harness performance optimisation system — tooling that tunes how a coding agent runs. About 1,400 new stars in 24 hours.</span>
+            <span class="lc lang-de">Von den Autoren als System zur Leistungsoptimierung von Agenten-Harnessen beschrieben — Werkzeuge, die abstimmen, wie ein Coding-Agent läuft. Rund 1.400 neue Sterne in 24 Stunden.</span>
+            <span class="lc lang-fr">Décrit par ses auteurs comme un système d'optimisation des performances de harnais d'agent — un outillage qui règle la manière dont tourne un agent de code. Environ 1 400 nouvelles étoiles en 24 heures.</span>
+            <span class="lc lang-it">Descritto dagli autori come un sistema di ottimizzazione delle prestazioni dell'harness di agenti — strumenti che regolano il funzionamento di un agente di programmazione. Circa 1.400 nuove stelle in 24 ore.</span>
+            <span class="lc lang-zh">作者称其为智能体运行框架的性能优化系统——用于调校编程智能体运行方式的工具。24 小时内新增约 1,400 颗星。</span>
+            <br><a class="news-source" href="https://github.com/affaan-m/ECC" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">cathrynlavery/diagram-design</span>
+            <span class="repo-stars">★ 33,873</span>
+            <br>
+            <span class="lc lang-en">A skill that gets Claude Code and other AI agents to produce editorial-quality diagrams rather than default charts. About 1,070 new stars in 24 hours.</span>
+            <span class="lc lang-de">Ein Skill, mit dem Claude Code und andere KI-Agenten Diagramme in redaktioneller Qualität statt Standarddiagramme erzeugen. Rund 1.070 neue Sterne in 24 Stunden.</span>
+            <span class="lc lang-fr">Une compétence qui amène Claude Code et d'autres agents IA à produire des diagrammes de qualité éditoriale plutôt que des graphiques par défaut. Environ 1 070 nouvelles étoiles en 24 heures.</span>
+            <span class="lc lang-it">Una skill che porta Claude Code e altri agenti IA a produrre diagrammi di qualità editoriale invece dei grafici predefiniti. Circa 1.070 nuove stelle in 24 ore.</span>
+            <span class="lc lang-zh">一项技能，可让 Claude Code 及其他 AI 智能体产出具备编辑级品质的图示，而非默认样式的图表。24 小时内新增约 1,070 颗星。</span>
+            <br><a class="news-source" href="https://github.com/cathrynlavery/diagram-design" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">mksglu/context-mode</span>
+            <span class="repo-stars">★ 21,211</span>
+            <br>
+            <span class="lc lang-en">An MCP server that manages the context window of AI coding agents, so long sessions do not run out of room. About 650 new stars in 24 hours. MCP is the open standard for connecting tools and data sources to a model.</span>
+            <span class="lc lang-de">Ein MCP-Server, der das Kontextfenster von KI-Coding-Agenten verwaltet, damit langen Sitzungen nicht der Platz ausgeht. Rund 650 neue Sterne in 24 Stunden. MCP ist der offene Standard, um Werkzeuge und Datenquellen an ein Modell anzubinden.</span>
+            <span class="lc lang-fr">Un serveur MCP qui gère la fenêtre de contexte des agents de code IA, pour que les longues sessions ne manquent pas de place. Environ 650 nouvelles étoiles en 24 heures. MCP est le standard ouvert de connexion des outils et sources de données à un modèle.</span>
+            <span class="lc lang-it">Un server MCP che gestisce la finestra di contesto degli agenti di programmazione IA, così le sessioni lunghe non esauriscono lo spazio. Circa 650 nuove stelle in 24 ore. MCP è lo standard aperto per collegare strumenti e fonti di dati a un modello.</span>
+            <span class="lc lang-zh">一个 MCP 服务器，用于管理 AI 编程智能体的上下文窗口，避免长时间会话耗尽空间。24 小时内新增约 650 颗星。MCP 是将工具与数据源接入模型的开放标准。</span>
+            <br><a class="news-source" href="https://github.com/mksglu/context-mode" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+          </div>
+          <div class="news-item">
+            <span class="news-company">openai/skills</span>
+            <span class="repo-stars">★ 26,316</span>
+            <br>
+            <span class="lc lang-en">OpenAI's own catalogue of reusable skills for coding assistants — a set of instruction packs an assistant can load for a specific kind of task. About 490 new stars in 24 hours.</span>
+            <span class="lc lang-de">OpenAIs eigener Katalog wiederverwendbarer Skills für Coding-Assistenten — Anleitungspakete, die ein Assistent für eine bestimmte Aufgabenart laden kann. Rund 490 neue Sterne in 24 Stunden.</span>
+            <span class="lc lang-fr">Le catalogue d'OpenAI de compétences réutilisables pour assistants de code — des paquets d'instructions qu'un assistant peut charger pour un type de tâche donné. Environ 490 nouvelles étoiles en 24 heures.</span>
+            <span class="lc lang-it">Il catalogo di OpenAI di skill riutilizzabili per assistenti di programmazione — pacchetti di istruzioni che un assistente può caricare per un tipo specifico di attività. Circa 490 nuove stelle in 24 ore.</span>
+            <span class="lc lang-zh">OpenAI 官方的可复用技能目录，供编程助手使用——即助手可针对特定任务类型加载的指令包。24 小时内新增约 490 颗星。</span>
+            <br><a class="news-source" href="https://github.com/openai/skills" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer container">
+  <div data-i18n="footer_bench">
+    Benchmark data: <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank">Artificial Analysis Intelligence Index</a>.
+    News from official company blogs, newsrooms, and model cards. Older items are date-stamped.
+    Scores, prices, and speeds change frequently — verify at source before decisions.
+  </div>
+  <div class="footer-credit" data-i18n="footer_credit">
+    Created and maintained by the Research Informatics Group, Swiss TPH.
+  </div>
+</div>
+
+<script>
+const AA = 'https://artificialanalysis.ai/leaderboards/models';
+const T = {
+  en: {
+    lang_label:'Language', subtitle:'Frontier model rankings &amp; latest AI news',
+    lb_title:'Top Frontier AI Models — Capability Ranking',
+    lb_desc:'Ranked by <strong>Intelligence Index</strong> — composite quality score (0–100) from <a href="'+AA+'" target="_blank">Artificial Analysis</a> measuring reasoning, coding, and knowledge. Higher is better. Click any column header to sort.',
+    col_model:'Model', col_model_hint:'name + open-source / modality badges',
+    col_company:'Company', col_company_hint:'who makes it',
+    col_score:'Capability', col_score_hint:'0–100, higher = better',
+    col_price:'API Price', col_price_hint:'CHF / 1M tokens',
+    col_speed:'Speed', col_speed_hint:'tokens / second',
+    col_ctx:'Context Window', col_ctx_hint:'k tokens (1k ≈ 750 words)',
+    legend:'<strong>How to read:</strong> Capability = Artificial Analysis Intelligence Index (0–100). <span class="badge-os" style="vertical-align:baseline">Open</span> = open-source weights. <span class="badge-mm" style="vertical-align:baseline">Vision</span> = accepts images as well as text. Badges appear only where the provider\'s own documentation confirms them — a missing badge means "not confirmed", not "not supported". No model in this top 20 has confirmed audio input. Price = CHF/1M tokens, converted from the Artificial Analysis blended USD rate at USD 1 = CHF 0.8109 (8 September 2026). Speed ≈ words/sec. Context = max text at once. Suffixes such as (max), (high), (medium), (low) are reasoning-effort settings of the same model, priced and scored separately. Data: <a href="'+AA+'" target="_blank">Artificial Analysis</a> — verify before decisions.',
+    tk_title:'Key Takeaways', tk_desc:'Summary of where AI stands right now.',
+    news_title:"What's New This Week",
+    news_desc:'Announcements from AI companies — items older than 72 hours are date-stamped. Click "Source" to read the original.',
+    cat_releases:'New AI Models Released', cat_pricing:'Price &amp; Plan Changes',
+    cat_policy:'Privacy, Rules &amp; Terms', cat_features:'New Features &amp; Upgrades',
+    cat_company:'Company News', source_link:'Source →',
+    cat_github:'Trending GitHub AI Tools', gh_source:'View on GitHub →', gh_empty:'No AI-tool repo with notable momentum in the last 72 hours.',
+    qs_top:'Top Model', qs_value:'Best Value', qs_fast:'Fastest', qs_ctx:'Largest Context',
+    footer_bench:'Benchmark data: <a href="'+AA+'" target="_blank">Artificial Analysis Intelligence Index</a>. News from official company blogs and newsrooms. Older items date-stamped. Verify at source before decisions.',
+    footer_credit:'Created and maintained by the Research Informatics Group, Swiss TPH.'
+  },
+  de: {
+    lang_label:'Sprache', subtitle:'Rangliste der Frontier-KI-Modelle &amp; aktuelle Nachrichten',
+    lb_title:'Top Frontier-KI-Modelle — Capability Ranking',
+    lb_desc:'Gerankt nach dem <strong>Intelligence Index</strong> — zusammengesetzter Qualitätswert (0–100) von <a href="'+AA+'" target="_blank">Artificial Analysis</a>. Höher ist besser. Auf Spaltenüberschrift klicken zum Sortieren.',
+    col_model:'Modell', col_model_hint:'Name + Open-Source / Modalitäts-Badges',
+    col_company:'Unternehmen', col_company_hint:'Anbieter',
+    col_score:'Capability', col_score_hint:'0–100, höher = besser',
+    col_price:'API-Preis', col_price_hint:'CHF / 1M Tokens',
+    col_speed:'Geschwindigkeit', col_speed_hint:'Tokens / Sekunde',
+    col_ctx:'Kontextfenster', col_ctx_hint:'k Tokens (1k ≈ 750 Wörter)',
+    legend:'<strong>So lesen Sie die Tabelle:</strong> Capability = Intelligence Index (0–100). <span class="badge-os" style="vertical-align:baseline">Open</span> = quelloffene Gewichte. <span class="badge-mm" style="vertical-align:baseline">Vision</span> = nimmt neben Text auch Bilder an. Badges erscheinen nur, wenn die Dokumentation des Anbieters sie bestätigt — ein fehlendes Badge bedeutet „nicht bestätigt", nicht „nicht unterstützt". Kein Modell dieser Top 20 hat bestätigte Audio-Eingabe. Preis = CHF/1M Tokens, umgerechnet vom gemischten USD-Satz von Artificial Analysis zu USD 1 = CHF 0.8109 (8. September 2026). Geschwindigkeit ≈ Wörter/Sek. Kontext = maximaler Text auf einmal. Endungen wie (max), (high), (medium), (low) sind Denkaufwand-Stufen desselben Modells, separat bepreist und bewertet. Daten: <a href="'+AA+'" target="_blank">Artificial Analysis</a>.',
+    tk_title:'Wichtigste Erkenntnisse', tk_desc:'Zusammenfassung des aktuellen KI-Stands.',
+    news_title:'Neuigkeiten dieser Woche',
+    news_desc:'KI-Ankündigungen — ältere Einträge sind datiert. Auf „Quelle" klicken für das Original.',
+    cat_releases:'Neue KI-Modelle veröffentlicht', cat_pricing:'Preis- und Planänderungen',
+    cat_policy:'Datenschutz, Regeln &amp; Bedingungen', cat_features:'Neue Funktionen &amp; Updates',
+    cat_company:'Unternehmensnachrichten', source_link:'Quelle →',
+    cat_github:'Trending GitHub-KI-Tools', gh_source:'Auf GitHub ansehen →', gh_empty:'Kein KI-Tool-Repo mit nennenswertem Momentum in den letzten 72 Stunden.',
+    qs_top:'Bestes Modell', qs_value:'Bestes Preis-Leistungs-Verhältnis', qs_fast:'Schnellstes', qs_ctx:'Größter Kontext',
+    footer_bench:'Benchmark-Daten: <a href="'+AA+'" target="_blank">Artificial Analysis Intelligence Index</a>. Nachrichten aus offiziellen Unternehmensblogs. Ältere Einträge sind datiert.',
+    footer_credit:'Erstellt und gepflegt von der Research Informatics Group, Swiss TPH.'
+  },
+  fr: {
+    lang_label:'Langue', subtitle:'Classement des modèles IA frontier &amp; actualités',
+    lb_title:'Meilleurs modèles IA frontier — Classement Capability',
+    lb_desc:'Classés par <strong>Intelligence Index</strong> — score composite (0–100) d\'<a href="'+AA+'" target="_blank">Artificial Analysis</a>. Plus élevé = meilleur. Cliquez sur un en-tête de colonne pour trier.',
+    col_model:'Modèle', col_model_hint:'nom + badges open-source / modalités',
+    col_company:'Entreprise', col_company_hint:'qui le développe',
+    col_score:'Capability', col_score_hint:'0–100, plus élevé = meilleur',
+    col_price:'Prix API', col_price_hint:'CHF / 1M tokens',
+    col_speed:'Vitesse', col_speed_hint:'tokens / seconde',
+    col_ctx:'Fenêtre de contexte', col_ctx_hint:'k tokens (1k ≈ 750 mots)',
+    legend:'<strong>Comment lire :</strong> Capability = Intelligence Index (0–100). <span class="badge-os" style="vertical-align:baseline">Open</span> = poids open-source. <span class="badge-mm" style="vertical-align:baseline">Vision</span> = accepte les images en plus du texte. Les badges n\'apparaissent que si la documentation du fournisseur les confirme — un badge absent signifie « non confirmé », pas « non pris en charge ». Aucun modèle de ce top 20 n\'a d\'entrée audio confirmée. Prix = CHF/1M tokens, converti depuis le tarif USD mixte d\'Artificial Analysis à 1 USD = 0,8109 CHF (8 septembre 2026). Vitesse ≈ mots/sec. Contexte = texte maximal en une fois. Les suffixes (max), (high), (medium), (low) sont des niveaux d\'effort de raisonnement du même modèle, tarifés et notés séparément. Données : <a href="'+AA+'" target="_blank">Artificial Analysis</a>.',
+    tk_title:'Points clés', tk_desc:"Résumé de l'état actuel de l'IA.",
+    news_title:'Quoi de neuf cette semaine',
+    news_desc:'Annonces des entreprises IA — éléments de plus de 72 h datés. Cliquez sur « Source » pour l\'original.',
+    cat_releases:'Nouveaux modèles IA publiés', cat_pricing:'Changements de prix et d\'offres',
+    cat_policy:'Confidentialité, règles &amp; conditions', cat_features:'Nouvelles fonctionnalités &amp; mises à jour',
+    cat_company:'Actualités des entreprises', source_link:'Source →',
+    cat_github:'Outils IA tendance sur GitHub', gh_source:'Voir sur GitHub →', gh_empty:'Aucun dépôt d\'outil IA avec un élan notable au cours des 72 dernières heures.',
+    qs_top:'Meilleur modèle', qs_value:'Meilleur rapport qualité-prix', qs_fast:'Le plus rapide', qs_ctx:'Plus grand contexte',
+    footer_bench:'Données benchmark : <a href="'+AA+'" target="_blank">Artificial Analysis Intelligence Index</a>. Actualités issues des blogs officiels. Les éléments anciens sont datés.',
+    footer_credit:'Créé et maintenu par le groupe Research Informatics, Swiss TPH.'
+  },
+  it: {
+    lang_label:'Lingua', subtitle:'Classifica dei modelli IA frontier &amp; ultime notizie',
+    lb_title:'Migliori modelli IA frontier — Classifica Capability',
+    lb_desc:'Classificati per <strong>Intelligence Index</strong> — punteggio composito (0–100) di <a href="'+AA+'" target="_blank">Artificial Analysis</a>. Più alto = meglio. Clicca un\'intestazione per ordinare.',
+    col_model:'Modello', col_model_hint:'nome + badge open-source / modalità',
+    col_company:'Azienda', col_company_hint:'chi lo sviluppa',
+    col_score:'Capability', col_score_hint:'0–100, più alto = meglio',
+    col_price:'Prezzo API', col_price_hint:'CHF / 1M token',
+    col_speed:'Velocità', col_speed_hint:'token / secondo',
+    col_ctx:'Finestra di contesto', col_ctx_hint:'k token (1k ≈ 750 parole)',
+    legend:'<strong>Come leggere:</strong> Capability = Intelligence Index (0–100). <span class="badge-os" style="vertical-align:baseline">Open</span> = pesi open-source. <span class="badge-mm" style="vertical-align:baseline">Vision</span> = accetta immagini oltre al testo. I badge compaiono solo dove la documentazione del fornitore li conferma — un badge assente significa "non confermato", non "non supportato". Nessun modello di questa top 20 ha input audio confermato. Prezzo = CHF/1M token, convertito dalla tariffa USD mista di Artificial Analysis a 1 USD = 0,8109 CHF (8 settembre 2026). Velocità ≈ parole/sec. Contesto = testo massimo in una volta. I suffissi (max), (high), (medium), (low) sono livelli di sforzo di ragionamento dello stesso modello, con prezzo e punteggio separati. Dati: <a href="'+AA+'" target="_blank">Artificial Analysis</a>.',
+    tk_title:'Punti chiave', tk_desc:"Riepilogo della situazione attuale dell'IA.",
+    news_title:'Novità di questa settimana',
+    news_desc:'Annunci delle aziende IA — elementi più vecchi di 72 ore sono datati. Clicca "Fonte" per l\'originale.',
+    cat_releases:'Nuovi modelli IA rilasciati', cat_pricing:'Modifiche a prezzi e piani',
+    cat_policy:'Privacy, regole &amp; condizioni', cat_features:'Nuove funzionalità &amp; aggiornamenti',
+    cat_company:'Notizie aziendali', source_link:'Fonte →',
+    cat_github:'Strumenti IA di tendenza su GitHub', gh_source:'Vedi su GitHub →', gh_empty:'Nessun repository di strumenti IA con slancio rilevante nelle ultime 72 ore.',
+    qs_top:'Modello top', qs_value:'Miglior rapporto qualità/prezzo', qs_fast:'Il più veloce', qs_ctx:'Contesto più grande',
+    footer_bench:'Dati benchmark: <a href="'+AA+'" target="_blank">Artificial Analysis Intelligence Index</a>. Notizie da blog ufficiali. Gli elementi più vecchi sono datati.',
+    footer_credit:'Creato e mantenuto dal gruppo Research Informatics, Swiss TPH.'
+  },
+  zh: {
+    lang_label:'语言', subtitle:'前沿AI模型排行榜 &amp; 最新资讯',
+    lb_title:'顶级前沿AI模型 — Capability排行',
+    lb_desc:'按 <strong>Intelligence Index</strong> 排名 — 来自 <a href="'+AA+'" target="_blank">Artificial Analysis</a> 的综合质量评分（0–100）。分数越高越好。点击列标题可排序。',
+    col_model:'模型', col_model_hint:'名称 + 开源/模态标签',
+    col_company:'公司', col_company_hint:'开发商',
+    col_score:'Capability', col_score_hint:'0–100，越高越好',
+    col_price:'API价格', col_price_hint:'瑞士法郎 / 百万token',
+    col_speed:'速度', col_speed_hint:'token / 秒',
+    col_ctx:'上下文窗口', col_ctx_hint:'千token（1k ≈ 750词）',
+    legend:'<strong>如何阅读：</strong>Capability = Intelligence Index（0–100）。<span class="badge-os" style="vertical-align:baseline">Open</span> = 开源权重。<span class="badge-mm" style="vertical-align:baseline">Vision</span> = 除文本外还接受图像。标签仅在厂商官方文档确认时显示——没有标签表示「未确认」，而非「不支持」。本前 20 名中没有模型确认支持音频输入。价格 = 瑞士法郎/百万token，按 Artificial Analysis 的混合美元价格以 1 美元 = 0.8109 瑞士法郎换算（2026 年 9 月 8 日）。速度 ≈ 词/秒。上下文 = 单次可读取的最大文本量。(max)、(high)、(medium)、(low) 等后缀是同一模型的推理投入档位，分别计价与评分。数据来自 <a href="'+AA+'" target="_blank">Artificial Analysis</a>。',
+    tk_title:'关键要点', tk_desc:'当前AI格局摘要。',
+    news_title:'本周新动态',
+    news_desc:'各AI公司的公告 — 超72小时的条目标有日期。点击「来源」阅读原文。',
+    cat_releases:'新发布的AI模型', cat_pricing:'价格与方案变更',
+    cat_policy:'隐私、规则与条款', cat_features:'新功能与升级',
+    cat_company:'公司动态', source_link:'来源 →',
+    cat_github:'GitHub 热门 AI 工具', gh_source:'在 GitHub 查看 →', gh_empty:'过去 72 小时内没有出现明显热度的 AI 工具仓库。',
+    qs_top:'最佳模型', qs_value:'最佳性价比', qs_fast:'最快', qs_ctx:'最大上下文',
+    footer_bench:'基准数据：<a href="'+AA+'" target="_blank">Artificial Analysis Intelligence Index</a>。新闻来源于官方博客。较早的条目已标注日期。',
+    footer_credit:'由瑞士热带与公共卫生研究所（Swiss TPH）研究信息学小组创建和维护。'
+  }
+};
+
+function applyLang(lang) {
+  const t = T[lang] || T.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lc').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.style.display = 'inline');
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('ai-dash-lang', lang); } catch(e) {}
+}
+
+function sortTable(th, colIdx, type) {
+  const tbody = document.querySelector('table tbody');
+  if (!tbody) return;
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const asc = th.dataset.sortDir !== 'asc';
+  document.querySelectorAll('thead th.sortable').forEach(h => {
+    h.dataset.sortDir = '';
+    const ic = h.querySelector('.sort-icon');
+    if (ic) ic.textContent = '⇅';
+  });
+  th.dataset.sortDir = asc ? 'asc' : 'desc';
+  const ic = th.querySelector('.sort-icon');
+  if (ic) ic.textContent = asc ? '▲' : '▼';
+  rows.sort((a, b) => {
+    const ac = a.cells[colIdx], bc = b.cells[colIdx];
+    const av = ac ? (ac.dataset.val ?? ac.textContent.trim()) : '';
+    const bv = bc ? (bc.dataset.val ?? bc.textContent.trim()) : '';
+    if (type === 'num') {
+      return asc ? (parseFloat(av)||0)-(parseFloat(bv)||0) : (parseFloat(bv)||0)-(parseFloat(av)||0);
+    }
+    return asc ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+
+function toggleDark() {
+  const isDark = document.body.classList.toggle('dark');
+  document.querySelector('.dark-toggle').textContent = isDark ? '☀️' : '🌙';
+  try { localStorage.setItem('ai-dash-dark', isDark ? '1' : '0'); } catch(e) {}
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  let lang = 'en';
+  try { lang = localStorage.getItem('ai-dash-lang') || 'en'; } catch(e) {}
+  const sel = document.getElementById('langSelect');
+  if (sel) sel.value = lang;
+  applyLang(lang);
+  try {
+    if (localStorage.getItem('ai-dash-dark') === '1') {
+      document.body.classList.add('dark');
+      document.querySelector('.dark-toggle').textContent = '☀️';
+    }
+  } catch(e) {}
+});
+</script>
+
+</body>
+</html>
