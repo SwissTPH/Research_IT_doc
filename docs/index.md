@@ -26,9 +26,8 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](https
 
 ### 🤖 AI
 
-- AI benchmark and news
-- Skills developed for Swiss TPH
-- Recommended skills
+- [Recommended skills](https://github.com/SwissTPH/Research_IT_doc/blob/main/skills_recommend.md)
+- [AI dashboard](https://github.com/SwissTPH/Research_IT_doc/blob/main/ai_dashboard.html)
 
 ### 🐍 Python
 

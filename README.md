@@ -16,6 +16,11 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](resea
 - [Useful resources](useful_resources.md)
 - [How to make high quality, publication level scientific graphs](scientific_graphs.pdf)
 
+### AI
+
+- [Recommended skills](skills_recommend.md)
+- [AI dashboard](ai_dashboard.html)
+
 ### Python
 
 - [Removing outputs in Jupyter before committing (`nbstripout`)](auto_remove_jupyter_outputs_before_committing.md)
