@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Dashboard – 2026-09-10</title>
+  <title>AI Dashboard – 2026-09-17</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -107,6 +107,8 @@
     td[data-val="OpenAI"]    .vendor-tag { background:var(--dv-7); }
     td[data-val="Meta"]      .vendor-tag { background:var(--dv-9); }
     td[data-val="Z AI"]      .vendor-tag { background:var(--dv-8); }
+    td[data-val="Alibaba"]   .vendor-tag { background:var(--dv-5); }
+    td[data-val="SpaceXAI"]  .vendor-tag { background:var(--dv-3); }
     .badge-os, .badge-mm {
       display:inline-block; border-radius:2px; padding:1px 6px; font-size:12px; font-weight:600;
       margin-left:4px; vertical-align:middle;
@@ -221,7 +223,7 @@
         <h1>AI Dashboard</h1>
         <p class="subtitle" data-i18n="subtitle">Frontier model rankings and the latest AI news</p>
         <p class="meta">
-          Updated: 2026-09-10 by Research Informatics &nbsp;&middot;&nbsp;
+          Updated: 2026-09-17 by Research Informatics &nbsp;&middot;&nbsp;
           Model data: <a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a>
           &nbsp;&middot;&nbsp; News window: last 168 hours
         </p>
@@ -312,266 +314,306 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="top1">
-            <td class="rank" data-label="#">1</td>
-            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (max with fallback)">Claude Fable 5.1 (max with fallback)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="63.1">63%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="59.1">59%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="67.2">67%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="63.2">63%</td>
-            <td class="price" data-label="Price" data-val="5.80"><span class="unit">CHF </span>5.80<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="67">67<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr class="top2">
-            <td class="rank" data-label="#">2</td>
-            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (xhigh with fallback)">Claude Fable 5.1 (xhigh with fallback)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="60.9">61%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="58.7">59%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="66.2">66%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="62.3">62%</td>
-            <td class="price" data-label="Price" data-val="5.80"><span class="unit">CHF </span>5.80<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="59">59<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr class="top3">
-            <td class="rank" data-label="#">3</td>
-            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (max)">GPT-6 Astra (max)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="56.5">56%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="54.7">55%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="62.6">63%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="54.0">54%</td>
-            <td class="price" data-label="Price" data-val="6.23"><span class="unit">CHF </span>6.23<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="54">54<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">4</td>
-            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (xhigh)">GPT-6 Astra (xhigh)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="53"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div><span class="score-num">53</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="55.7">56%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="54.6">55%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="61.9">62%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="52.8">53%</td>
-            <td class="price" data-label="Price" data-val="6.23"><span class="unit">CHF </span>6.23<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="51">51<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">5</td>
-            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (high with fallback)">Claude Fable 5.1 (high with fallback)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="51"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51%"></div></div><span class="score-num">51</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="58.7">59%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="55.9">56%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="64.9">65%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="57.5">58%</td>
-            <td class="price" data-label="Price" data-val="5.80"><span class="unit">CHF </span>5.80<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="50">50<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">6</td>
-            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (high)">GPT-6 Astra (high)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="51"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51%"></div></div><span class="score-num">51</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="55.4">55%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="53.1">53%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="61.1">61%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="51.5">52%</td>
-            <td class="price" data-label="Price" data-val="6.23"><span class="unit">CHF </span>6.23<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="48">48<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">7</td>
-            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (max)">Claude Opus 5 (max)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="51"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51%"></div></div><span class="score-num">51</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="56.4">56%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="54.9">55%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="60.9">61%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="61.8">62%</td>
-            <td class="price" data-label="Price" data-val="3.11"><span class="unit">CHF </span>3.11<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="52">52<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">8</td>
-            <td class="model-name" data-label="Model" data-val="Claude Fable 5 (with fallback)">Claude Fable 5 (with fallback)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="50"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-num">50</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="61.0">61%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="55.5">56%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="65.3">65%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="56.6">57%</td>
-            <td class="price" data-label="Price" data-val="6.23"><span class="unit">CHF </span>6.23<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="64">64<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">9</td>
-            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (medium)">GPT-6 Astra (medium)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="50"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-num">50</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="54.2">54%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="52.7">53%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="60.6">61%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="50.0">50%</td>
-            <td class="price" data-label="Price" data-val="6.23"><span class="unit">CHF </span>6.23<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="44">44<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">10</td>
-            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (xhigh)">Claude Opus 5 (xhigh)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="50"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-num">50</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="55.7">56%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="54.4">54%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="59.5">60%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="60.4">60%</td>
-            <td class="price" data-label="Price" data-val="3.11"><span class="unit">CHF </span>3.11<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="51">51<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">11</td>
-            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (medium with fallback)">Claude Fable 5.1 (medium with fallback)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="49"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:49%"></div></div><span class="score-num">49</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="56.4">56%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="53.8">54%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="63.1">63%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="54.0">54%</td>
-            <td class="price" data-label="Price" data-val="5.80"><span class="unit">CHF </span>5.80<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="50">50<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">12</td>
-            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (high)">Claude Opus 5 (high)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="48"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48%"></div></div><span class="score-num">48</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="55.4">55%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="52.8">53%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="58.9">59%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="56.4">56%</td>
-            <td class="price" data-label="Price" data-val="3.11"><span class="unit">CHF </span>3.11<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="51">51<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">13</td>
-            <td class="model-name" data-label="Model" data-val="Muse Spark 1.3 (max)">Muse Spark 1.3 (max)<span class="badge-mm">Vision</span><span class="badge-mm">Video</span></td>
-            <td data-label="Company" data-val="Meta"><span class="vendor-tag">Meta</span></td>
-            <td data-label="AA Intelligence Index" data-val="48"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48%"></div></div><span class="score-num">48</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="58.8">59%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="48.7">49%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="43.6">44%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="60.2">60%</td>
-            <td class="price" data-label="Price" data-val="0.63"><span class="unit">CHF </span>0.63<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="213">213<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">14</td>
-            <td class="model-name" data-label="Model" data-val="GPT-5.6 Sol (max)">GPT-5.6 Sol (max)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="47"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:47%"></div></div><span class="score-num">47</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="57.1">57%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="49.5">50%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="59.4">59%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="56.2">56%</td>
-            <td class="price" data-label="Price" data-val="2.49"><span class="unit">CHF </span>2.49<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="64">64<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">15</td>
-            <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (low with fallback)">Claude Fable 5.1 (low with fallback)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="47"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:47%"></div></div><span class="score-num">47</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="56.7">57%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="48.9">49%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="60.2">60%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="50.2">50%</td>
-            <td class="price" data-label="Price" data-val="5.80"><span class="unit">CHF </span>5.80<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="47">47<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">16</td>
-            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (low)">GPT-6 Astra (low)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="46"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:46%"></div></div><span class="score-num">46</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="54.1">54%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="49.2">49%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="59.5">60%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="46.0">46%</td>
-            <td class="price" data-label="Price" data-val="6.23"><span class="unit">CHF </span>6.23<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="46">46<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">17</td>
-            <td class="model-name" data-label="Model" data-val="GPT-6 Astra (Non-reasoning)">GPT-6 Astra (Non-reasoning)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
-            <td data-label="AA Intelligence Index" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="53.5">54%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="37.1">37%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="55.6">56%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="52.1">52%</td>
-            <td class="na" data-label="Price" data-val="">not reported</td>
-            <td class="na" data-label="Speed" data-val="">not reported</td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">18</td>
-            <td class="model-name" data-label="Model" data-val="Muse Spark 1.3 (xhigh)">Muse Spark 1.3 (xhigh)<span class="badge-mm">Vision</span><span class="badge-mm">Video</span></td>
-            <td data-label="Company" data-val="Meta"><span class="vendor-tag">Meta</span></td>
-            <td data-label="AA Intelligence Index" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="59.7">60%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="47.5">48%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="41.5">42%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="58.1">58%</td>
-            <td class="price" data-label="Price" data-val="0.63"><span class="unit">CHF </span>0.63<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="176">176<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">19</td>
-            <td class="model-name" data-label="Model" data-val="Claude Opus 5 (medium)">Claude Opus 5 (medium)<span class="badge-mm">Vision</span></td>
-            <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
-            <td data-label="AA Intelligence Index" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="51.5">52%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="51.3">51%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="57.1">57%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="51.2">51%</td>
-            <td class="price" data-label="Price" data-val="3.11"><span class="unit">CHF </span>3.11<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="49">49<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
-          <tr>
-            <td class="rank" data-label="#">20</td>
-            <td class="model-name" data-label="Model" data-val="GLM-5.3 (max)">GLM-5.3 (max)<span class="badge-os">Open</span></td>
-            <td data-label="Company" data-val="Z AI"><span class="vendor-tag">Z AI</span></td>
-            <td data-label="AA Intelligence Index" data-val="45"><div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45%"></div></div><span class="score-num">45</span></div></td>
-            <td class="bench" data-label="SciCode" data-val="59.0">59%</td>
-            <td class="bench" data-label="Humanity's Last Exam" data-val="42.3">42%</td>
-            <td class="bench" data-label="AA-Omniscience accuracy" data-val="33.9">34%</td>
-            <td class="bench" data-label="GDPval-AA v2" data-val="58.7">59%</td>
-            <td class="price" data-label="Price" data-val="0.73"><span class="unit">CHF </span>0.73<span class="unit">/M</span></td>
-            <td class="speed" data-label="Speed" data-val="58">58<span class="unit"> t/s</span></td>
-            <td class="ctx" data-label="Context" data-val="1000">1,000<span class="unit">k</span></td>
-          </tr>
+        <tr class="top1">
+          <td class="rank" data-label="#">1</td>
+          <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (max with fallback)">Claude Fable 5.1 (max with fallback)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="53.3738">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53.4%"></div></div><span class="score-num">53.4</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="63.0787">63%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="59.1288">59%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="67.2333">67%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="63.1820">63%</td>
+          <td class="price" data-label="Price" data-val="5.87"><span class="unit">CHF </span>5.87<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="67.69">68<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr class="top2">
+          <td class="rank" data-label="#">2</td>
+          <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (xhigh with fallback)">Claude Fable 5.1 (xhigh with fallback)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="53.1840">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:53.2%"></div></div><span class="score-num">53.2</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="60.8796">61%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="58.7118">59%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="66.2167">66%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="62.2645">62%</td>
+          <td class="price" data-label="Price" data-val="5.87"><span class="unit">CHF </span>5.87<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="58.19">58<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr class="top3">
+          <td class="rank" data-label="#">3</td>
+          <td class="model-name" data-label="Model" data-val="GPT-6 Astra (max)">GPT-6 Astra (max)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="52.8141">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:52.8%"></div></div><span class="score-num">52.8</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="56.4815">56%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="54.6803">55%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="62.6000">63%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="54.0100">54%</td>
+          <td class="price" data-label="Price" data-val="6.3"><span class="unit">CHF </span>6.30<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="52.98">53<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">4</td>
+          <td class="model-name" data-label="Model" data-val="GPT-6 Astra (xhigh)">GPT-6 Astra (xhigh)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="52.5059">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:52.5%"></div></div><span class="score-num">52.5</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="55.6713">56%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="54.5876">55%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="61.8500">62%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="52.7615">53%</td>
+          <td class="price" data-label="Price" data-val="6.3"><span class="unit">CHF </span>6.30<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="52.92">53<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">5</td>
+          <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (high with fallback)">Claude Fable 5.1 (high with fallback)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="51.2095">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51.2%"></div></div><span class="score-num">51.2</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="58.6806">59%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="55.9314">56%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="64.9333">65%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="57.4885">57%</td>
+          <td class="price" data-label="Price" data-val="5.87"><span class="unit">CHF </span>5.87<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="58.00">58<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">6</td>
+          <td class="model-name" data-label="Model" data-val="GPT-6 Astra (high)">GPT-6 Astra (high)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="51.0481">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:51.0%"></div></div><span class="score-num">51.0</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="55.4398">55%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="53.0584">53%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="61.1333">61%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="51.4850">51%</td>
+          <td class="price" data-label="Price" data-val="6.3"><span class="unit">CHF </span>6.30<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="51.95">52<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">7</td>
+          <td class="model-name" data-label="Model" data-val="Claude Opus 5 (max)">Claude Opus 5 (max)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="50.7002">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:50.7%"></div></div><span class="score-num">50.7</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="56.3657">56%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="54.8656">55%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="60.8667">61%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="61.7545">62%</td>
+          <td class="price" data-label="Price" data-val="3.15"><span class="unit">CHF </span>3.15<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="53.26">53<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">8</td>
+          <td class="model-name" data-label="Model" data-val="GPT-6 Astra (medium)">GPT-6 Astra (medium)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="49.6685">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:49.7%"></div></div><span class="score-num">49.7</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="54.1667">54%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="52.7340">53%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="60.5667">61%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="50.0335">50%</td>
+          <td class="price" data-label="Price" data-val="6.3"><span class="unit">CHF </span>6.30<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="53.24">53<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">9</td>
+          <td class="model-name" data-label="Model" data-val="Claude Opus 5 (xhigh)">Claude Opus 5 (xhigh)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="49.6515">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:49.7%"></div></div><span class="score-num">49.7</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="55.6713">56%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="54.4022">54%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="59.5000">60%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="60.4070">60%</td>
+          <td class="price" data-label="Price" data-val="3.15"><span class="unit">CHF </span>3.15<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="53.80">54<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">10</td>
+          <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (medium with fallback)">Claude Fable 5.1 (medium with fallback)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="49.0592">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:49.1%"></div></div><span class="score-num">49.1</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="56.3657">56%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="53.7998">54%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="63.1000">63%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="53.9655">54%</td>
+          <td class="price" data-label="Price" data-val="5.87"><span class="unit">CHF </span>5.87<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="54.03">54<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">11</td>
+          <td class="model-name" data-label="Model" data-val="Claude Opus 5 (high)">Claude Opus 5 (high)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="48.2372">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48.2%"></div></div><span class="score-num">48.2</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="55.4398">55%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="52.8267">53%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="58.8833">59%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="56.4470">56%</td>
+          <td class="price" data-label="Price" data-val="3.15"><span class="unit">CHF </span>3.15<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="53.69">54<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">12</td>
+          <td class="model-name" data-label="Model" data-val="Muse Spark 1.3 (max)">Muse Spark 1.3 (max)<span class="badge-mm">Vision</span><span class="badge-mm">Video</span></td>
+          <td data-label="Company" data-val="Meta"><span class="vendor-tag">Meta</span></td>
+          <td data-label="AA Intelligence Index" data-val="48.1690">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48.2%"></div></div><span class="score-num">48.2</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="58.7963">59%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="48.7025">49%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="43.5833">44%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="60.1670">60%</td>
+          <td class="price" data-label="Price" data-val="0.64"><span class="unit">CHF </span>0.64<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="255.18">255<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">13</td>
+          <td class="model-name" data-label="Model" data-val="GPT-5.6 Sol (max)">GPT-5.6 Sol (max)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="47.0614">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:47.1%"></div></div><span class="score-num">47.1</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="57.0602">57%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="49.4903">49%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="59.4000">59%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="56.2055">56%</td>
+          <td class="price" data-label="Price" data-val="2.52"><span class="unit">CHF </span>2.52<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="73.34">73<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">14</td>
+          <td class="model-name" data-label="Model" data-val="Claude Fable 5.1 (low with fallback)">Claude Fable 5.1 (low with fallback)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="47.0392">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:47.0%"></div></div><span class="score-num">47.0</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="56.7130">57%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="48.8879">49%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="60.2333">60%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="50.1860">50%</td>
+          <td class="price" data-label="Price" data-val="5.87"><span class="unit">CHF </span>5.87<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="54.46">54<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">15</td>
+          <td class="model-name" data-label="Model" data-val="GPT-6 Astra (low)">GPT-6 Astra (low)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="OpenAI"><span class="vendor-tag">OpenAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="45.9945">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:46.0%"></div></div><span class="score-num">46.0</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="54.0509">54%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="49.2122">49%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="59.5333">60%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="45.9645">46%</td>
+          <td class="price" data-label="Price" data-val="6.3"><span class="unit">CHF </span>6.30<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="50.94">51<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">16</td>
+          <td class="model-name" data-label="Model" data-val="Qwen3.8 Max (0902)">Qwen3.8 Max (0902)<span class="badge-mm">Vision</span><span class="badge-mm">Video</span></td>
+          <td data-label="Company" data-val="Alibaba"><span class="vendor-tag">Alibaba</span></td>
+          <td data-label="AA Intelligence Index" data-val="45.4355">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45.4%"></div></div><span class="score-num">45.4</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="52.0833">52%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="43.0955">43%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="31.6833">32%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="59.4480">59%</td>
+          <td class="price" data-label="Price" data-val="0.96"><span class="unit">CHF </span>0.96<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="40.41">40<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="983616">984<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">17</td>
+          <td class="model-name" data-label="Model" data-val="Muse Spark 1.3 (xhigh)">Muse Spark 1.3 (xhigh)<span class="badge-mm">Vision</span><span class="badge-mm">Video</span></td>
+          <td data-label="Company" data-val="Meta"><span class="vendor-tag">Meta</span></td>
+          <td data-label="AA Intelligence Index" data-val="45.1612">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45.2%"></div></div><span class="score-num">45.2</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="59.7222">60%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="47.4513">47%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="41.5167">42%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="58.1170">58%</td>
+          <td class="price" data-label="Price" data-val="0.64"><span class="unit">CHF </span>0.64<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="240.98">241<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">18</td>
+          <td class="model-name" data-label="Model" data-val="Claude Opus 5 (medium)">Claude Opus 5 (medium)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="Anthropic"><span class="vendor-tag">Anthropic</span></td>
+          <td data-label="AA Intelligence Index" data-val="45.0576">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:45.1%"></div></div><span class="score-num">45.1</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="51.5046">52%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="51.2975">51%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="57.0667">57%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="51.2435">51%</td>
+          <td class="price" data-label="Price" data-val="3.15"><span class="unit">CHF </span>3.15<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="52.91">53<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">19</td>
+          <td class="model-name" data-label="Model" data-val="GLM-5.3 (max)">GLM-5.3 (max)<span class="badge-os">Open</span></td>
+          <td data-label="Company" data-val="Z AI"><span class="vendor-tag">Z AI</span></td>
+          <td data-label="AA Intelligence Index" data-val="44.8557">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:44.9%"></div></div><span class="score-num">44.9</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="59.0278">59%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="42.2614">42%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="33.8500">34%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="57.0590">57%</td>
+          <td class="price" data-label="Price" data-val="0.74"><span class="unit">CHF </span>0.74<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="67.01">67<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="1000000">1000<span class="unit">k</span></td>
+        </tr>
+        <tr>
+          <td class="rank" data-label="#">20</td>
+          <td class="model-name" data-label="Model" data-val="Grok 4.6 (high)">Grok 4.6 (high)<span class="badge-mm">Vision</span></td>
+          <td data-label="Company" data-val="SpaceXAI"><span class="vendor-tag">SpaceXAI</span></td>
+          <td data-label="AA Intelligence Index" data-val="44.4050">
+            <div class="score-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:44.4%"></div></div><span class="score-num">44.4</span></div>
+          </td>
+          <td class="bench" data-label="SciCode" data-val="56.4815">56%</td>
+          <td class="bench" data-label="Humanity's Last Exam" data-val="42.9101">43%</td>
+          <td class="bench" data-label="AA-Omniscience accuracy" data-val="48.2333">48%</td>
+          <td class="bench" data-label="GDPval-AA v2" data-val="57.1480">57%</td>
+          <td class="price" data-label="Price" data-val="1.1"><span class="unit">CHF </span>1.10<span class="unit">/M</span></td>
+          <td class="speed" data-label="Speed" data-val="64.46">64<span class="unit"> t/s</span></td>
+          <td class="ctx"   data-label="Context" data-val="500000">500<span class="unit">k</span></td>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -581,26 +623,25 @@
       The four columns immediately after it break that down:
       <strong>SciCode</strong> = writing working scientific analysis code (0–100%);
       <strong>Humanity's Last Exam</strong> = 2,158 frontier academic questions across maths, humanities and natural sciences (0–100%);
-      <strong>AA-Omniscience accuracy</strong> = the share of 6,000 factual questions across 42 topics answered correctly (0–100%).
+      <strong>AA-Omniscience accuracy</strong> = the share of 6,000 factual questions across 42 topics answered correctly (0–100%);
       <strong>GDPval-AA v2</strong> = 220 real-world professional tasks across 44 occupations and 9 industries, scored as an Elo rating from blind pairwise comparisons and normalised to 0–100% as (Elo − 500) / 2000, with a human professional baseline of 1,000 Elo (50%). It is a relative win-rate score, <em>not</em> the share of tasks completed correctly.
       <em>Accuracy counts correct answers only</em> and says nothing about whether a model admits ignorance or invents an answer – Artificial Analysis publishes a separate hallucination rate and a combined Omniscience Index for that.
       <span class="badge-os" style="vertical-align:baseline">Open</span> = model weights are publicly downloadable.
       <span class="badge-mm" style="vertical-align:baseline">Vision</span> /
       <span class="badge-mm" style="vertical-align:baseline">Video</span> = input modalities beyond text.
-      Open-weights status comes from the Artificial Analysis dataset; modalities were checked per model on its Artificial Analysis page or the provider's API documentation.
-      A missing badge means "not confirmed", not "not supported". No model in this top 20 has confirmed audio input.
-      <strong>Price</strong> = CHF per 1M tokens, converted at USD 1 = CHF 0.8086 (10 September 2026) from Artificial Analysis's blended rate, which assumes a
+      Open-weights status comes from the Artificial Analysis dataset; modalities were confirmed per model in the provider's own API documentation (Anthropic, OpenAI, Meta, Alibaba Cloud Model Studio, xAI).
+      A missing badge means "not confirmed", not "not supported" – GLM-5.3 carries no modality badge because Z AI had not published confirmed input modalities at the time of writing. No model in this top 20 has confirmed audio input.
+      <strong>Price</strong> = CHF per 1M tokens, converted at USD 1 = CHF 0.82 (rate of 16 September 2026) from Artificial Analysis's blended rate, which assumes a
       <em>7:2:1 ratio of cache-hit : input : output tokens</em>. It is a per-token rate, so it is the same for every reasoning-effort setting of a model – what changes between settings is how many tokens the model spends, not the rate.
       Speed ≈ words/sec. Context = max text read at once.
-      "not reported" means the value is not published for that model; such cells always sort to the bottom.
-      Suffixes such as (max), (high), (medium), (low) are reasoning-effort settings of the same model, scored separately.
+      "not reported" means the value is not published for that model; such cells always sort to the bottom. All 20 models in this table have a published score for all four benchmarks.
+      Suffixes such as (max), (high), (medium), (low) are reasoning-effort settings of the same model, scored separately; "(with fallback)" means the vendor routes overflow requests to a fallback model.
       Data: <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank">Artificial Analysis</a>
       (<a href="https://artificialanalysis.ai/evaluations/scicode" target="_blank">SciCode</a>,
       <a href="https://artificialanalysis.ai/evaluations/humanitys-last-exam" target="_blank">Humanity's Last Exam</a>,
       <a href="https://artificialanalysis.ai/evaluations/omniscience" target="_blank">AA-Omniscience</a>) – verify before decisions.
     </div>
   </section>
-
 
   <!-- NEWS -->
   <section class="section">
@@ -613,234 +654,258 @@
       <div class="news-card cat-releases">
         <div class="news-card-header" data-i18n="cat_releases">New AI models released</div>
         <div class="news-card-body">
-          <div class="news-item">
-            <span class="news-company">DeepSeek – V4.1 Flash</span>
-            <br>
-            <span class="lc lang-en">DeepSeek opened a self-expiring test endpoint on 8 September, then gave 10 September (Beijing time) as the release date. Its own platform notice says V4.1 Flash "has comprehensively surpassed V4 Pro in performance, cost, speed, and total time". From noon Beijing time on 14 September, requests sent to the older <code>deepseek-v4-pro</code> endpoint are routed to V4.1 Flash and billed at the Flash rate until a V4.1 Pro arrives. If you have anything pinned to the V4 Pro endpoint, that silently changes which model answers you.</span>
-            <span class="lc lang-de">DeepSeek öffnete am 8. September einen selbst ablaufenden Testendpunkt und nannte dann den 10. September (Pekinger Zeit) als Veröffentlichungsdatum. Die eigene Plattformmitteilung besagt, V4.1 Flash habe V4 Pro „in Leistung, Kosten, Geschwindigkeit und Gesamtzeit umfassend übertroffen". Ab 14. September, 12 Uhr Pekinger Zeit, werden Anfragen an den älteren Endpunkt <code>deepseek-v4-pro</code> auf V4.1 Flash umgeleitet und zum Flash-Tarif abgerechnet, bis ein V4.1 Pro erscheint. Wer etwas fest auf den V4-Pro-Endpunkt verdrahtet hat, erhält damit unbemerkt Antworten von einem anderen Modell.</span>
-            <span class="lc lang-fr">DeepSeek a ouvert un point d'accès de test auto-expirant le 8 septembre, puis annoncé le 10 septembre (heure de Pékin) comme date de sortie. Sa propre note de plateforme indique que V4.1 Flash « a globalement surpassé V4 Pro en performance, coût, vitesse et temps total ». À partir du 14 septembre à midi, heure de Pékin, les requêtes envoyées à l'ancien point d'accès <code>deepseek-v4-pro</code> sont redirigées vers V4.1 Flash et facturées au tarif Flash jusqu'à l'arrivée d'un V4.1 Pro. Si quelque chose chez vous pointe en dur vers V4 Pro, le modèle qui répond change sans préavis.</span>
-            <span class="lc lang-it">DeepSeek ha aperto un endpoint di test ad autoscadenza l'8 settembre, indicando poi il 10 settembre (ora di Pechino) come data di rilascio. La sua stessa nota di piattaforma afferma che V4.1 Flash "ha complessivamente superato V4 Pro in prestazioni, costo, velocità e tempo totale". Dal 14 settembre a mezzogiorno, ora di Pechino, le richieste al vecchio endpoint <code>deepseek-v4-pro</code> vengono indirizzate a V4.1 Flash e fatturate alla tariffa Flash fino all'arrivo di un V4.1 Pro. Se avete qualcosa fissato sull'endpoint V4 Pro, cambia silenziosamente il modello che risponde.</span>
-            <span class="lc lang-zh">DeepSeek 于 9 月 8 日开放了一个自动过期的测试端点，随后将发布日期定为北京时间 9 月 10 日。其平台公告称 V4.1 Flash「在性能、成本、速度与总耗时上全面超越 V4 Pro」。自北京时间 9 月 14 日中午起，发往旧端点 <code>deepseek-v4-pro</code> 的请求将被路由至 V4.1 Flash，并按 Flash 价格计费，直至 V4.1 Pro 发布。若有系统硬编码指向 V4 Pro 端点，实际应答的模型将在无提示的情况下改变。</span>
-            <br><a class="news-source" href="https://api-docs.deepseek.com/news/news_latest" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">OpenAI – ChatGPT Images 2.5</span>
-            <br>
-            <span class="lc lang-en">A new image model with sharper detail, more natural lighting and textures, and better preservation of subjects from a reference photo. It follows editing instructions more reliably across several turns, and generation is up to 50% faster than Images 2.0. A new Sketch feature lets you draw directly in ChatGPT as a reference. Rolling out to ChatGPT, ChatGPT Work and Codex on every tier. Developers get two API variants: GPT-Image-2.5 Flare for the same quality and speed gains, and GPT-Image-2.5 Sunburst for higher precision at longer generation times.</span>
-            <span class="lc lang-de">Ein neues Bildmodell mit schärferen Details, natürlicherem Licht und Texturen sowie besserer Erhaltung von Motiven aus einem Referenzfoto. Es folgt Bearbeitungsanweisungen über mehrere Runden zuverlässiger, und die Erzeugung ist bis zu 50% schneller als bei Images 2.0. Eine neue Sketch-Funktion erlaubt das Zeichnen direkt in ChatGPT als Referenz. Ausrollung an ChatGPT, ChatGPT Work und Codex in allen Stufen. Entwickelnde erhalten zwei API-Varianten: GPT-Image-2.5 Flare mit denselben Qualitäts- und Geschwindigkeitsgewinnen und GPT-Image-2.5 Sunburst für höhere Präzision bei längerer Erzeugungszeit.</span>
-            <span class="lc lang-fr">Un nouveau modèle d'image aux détails plus nets, à l'éclairage et aux textures plus naturels, et qui préserve mieux les sujets d'une photo de référence. Il suit plus fidèlement les instructions d'édition sur plusieurs tours, et la génération est jusqu'à 50% plus rapide qu'avec Images 2.0. Une nouvelle fonction Sketch permet de dessiner directement dans ChatGPT comme référence. Déploiement sur ChatGPT, ChatGPT Work et Codex, tous niveaux. Les développeurs disposent de deux variantes d'API : GPT-Image-2.5 Flare pour les mêmes gains, et GPT-Image-2.5 Sunburst pour une précision supérieure au prix d'une génération plus longue.</span>
-            <span class="lc lang-it">Un nuovo modello di immagini con dettagli più nitidi, luci e texture più naturali e migliore conservazione dei soggetti da una foto di riferimento. Segue le istruzioni di modifica in modo più affidabile su più turni e la generazione è fino al 50% più rapida rispetto a Images 2.0. Una nuova funzione Sketch consente di disegnare direttamente in ChatGPT come riferimento. Distribuzione su ChatGPT, ChatGPT Work e Codex su ogni livello. Per gli sviluppatori due varianti API: GPT-Image-2.5 Flare con gli stessi guadagni e GPT-Image-2.5 Sunburst per una precisione superiore con tempi più lunghi.</span>
-            <span class="lc lang-zh">新的图像模型，细节更锐利、光照与质感更自然，并能更好保留参考照片中的主体。在多轮交互中更可靠地遵循编辑指令，生成速度比 Images 2.0 最多快 50%。新增 Sketch 功能，可直接在 ChatGPT 中手绘作为参考。已向 ChatGPT、ChatGPT Work 与 Codex 的各档用户推出。开发者可用两个 API 变体：GPT-Image-2.5 Flare 提供同样的质量与速度提升，GPT-Image-2.5 Sunburst 以更长生成时间换取更高精度。</span>
-            <br><a class="news-source" href="https://openai.com/index/introducing-chatgpt-images-2-5/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">OpenAI – GPT-6 Astra</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">OpenAI's new flagship, built around using a computer the way a person does: filling in web forms, updating records in a customer database, running research and writing the summary into a document. It reaches 72.6% on the OSWorld 2.0 computer-use test in roughly 47% less time per task than the previous GPT-5.6 Sol. Now joint top of the leaderboard above, available through ChatGPT, the OpenAI API, Microsoft Azure and AWS Bedrock.</span>
-            <span class="lc lang-de">OpenAIs neues Spitzenmodell, ausgelegt auf Computernutzung wie durch einen Menschen: Webformulare ausfüllen, Datensätze in einer Kundendatenbank aktualisieren, recherchieren und die Zusammenfassung in ein Dokument schreiben. Es erreicht 72,6% im Computernutzungstest OSWorld 2.0 bei rund 47% weniger Zeit pro Aufgabe als das bisherige GPT-5.6 Sol. Nun gemeinsam an der Spitze der obigen Rangliste, verfügbar über ChatGPT, die OpenAI-API, Microsoft Azure und AWS Bedrock.</span>
-            <span class="lc lang-fr">Le nouveau modèle phare d'OpenAI, conçu pour utiliser un ordinateur comme le ferait une personne : remplir des formulaires web, mettre à jour des fiches dans une base clients, mener une recherche et rédiger le résumé dans un document. Il atteint 72,6% au test d'utilisation d'ordinateur OSWorld 2.0, avec environ 47% de temps en moins par tâche que le précédent GPT-5.6 Sol. Désormais co-premier du classement ci-dessus, accessible via ChatGPT, l'API OpenAI, Microsoft Azure et AWS Bedrock.</span>
-            <span class="lc lang-it">Il nuovo modello di punta di OpenAI, pensato per usare un computer come farebbe una persona: compilare moduli web, aggiornare schede in una banca dati clienti, condurre ricerche e scrivere il riassunto in un documento. Raggiunge il 72,6% nel test di uso del computer OSWorld 2.0 con circa il 47% di tempo in meno per attività rispetto al precedente GPT-5.6 Sol. Ora primo a pari merito nella classifica sopra, disponibile via ChatGPT, API OpenAI, Microsoft Azure e AWS Bedrock.</span>
-            <span class="lc lang-zh">OpenAI 的新旗舰模型，核心是像人一样操作电脑：填写网页表单、更新客户数据库记录、开展调研并把摘要写入文档。在 OSWorld 2.0 电脑操作测试中达到 72.6%，每项任务用时比上一代 GPT-5.6 Sol 减少约 47%。目前与其他模型并列上方排行榜首位，可通过 ChatGPT、OpenAI API、Microsoft Azure 及 AWS Bedrock 使用。</span>
-            <br><a class="news-source" href="https://openai.com/index/gpt-6-astra/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">Google DeepMind – WeatherNext 3</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">A global weather model producing hourly forecasts at 5 km resolution for surface variables such as temperature and moisture. DeepMind reports up to 50% more accurate precipitation forecasts when planning a day or more ahead, and predictions five times sharper than WeatherNext 2, with independent live evaluation by Brightband. Researchers can query it in BigQuery and Earth Engine, bulk-download from Google Cloud Storage, or use the Weather API – so it can sit inside an analysis pipeline rather than only a demo.</span>
-            <span class="lc lang-de">Ein globales Wettermodell mit stündlichen Prognosen bei 5-km-Auflösung für Oberflächenvariablen wie Temperatur und Feuchte. DeepMind berichtet bis zu 50% genauere Niederschlagsprognosen ab einem Tag Vorlauf und fünfmal schärfere Vorhersagen als WeatherNext 2, mit unabhängiger Live-Bewertung durch Brightband. Forschende können es in BigQuery und Earth Engine abfragen, aus Google Cloud Storage herunterladen oder die Weather-API nutzen – es lässt sich also in eine Analyse-Pipeline einbinden und nicht nur demonstrieren.</span>
-            <span class="lc lang-fr">Un modèle météo mondial produisant des prévisions horaires à 5 km de résolution pour les variables de surface comme la température et l'humidité. DeepMind annonce des prévisions de précipitations jusqu'à 50% plus précises à un jour ou plus d'échéance, et des prédictions cinq fois plus fines que WeatherNext 2, avec une évaluation indépendante en direct par Brightband. Les chercheurs peuvent l'interroger dans BigQuery et Earth Engine, télécharger en masse depuis Google Cloud Storage, ou utiliser la Weather API – il s'intègre donc à une chaîne d'analyse et pas seulement à une démonstration.</span>
-            <span class="lc lang-it">Un modello meteo globale che produce previsioni orarie a 5 km di risoluzione per variabili di superficie come temperatura e umidità. DeepMind riporta previsioni di precipitazione fino al 50% più accurate con un giorno o più di anticipo e predizioni cinque volte più nitide di WeatherNext 2, con valutazione indipendente in tempo reale di Brightband. I ricercatori possono interrogarlo in BigQuery ed Earth Engine, scaricarlo in blocco da Google Cloud Storage o usare la Weather API – può quindi stare dentro una pipeline di analisi e non solo in una dimostrazione.</span>
-            <span class="lc lang-zh">一个全球天气模型，可提供逐小时预报，地表变量（如温度、湿度）分辨率为 5 公里。DeepMind 称提前一天及以上的降水预报准确度最高提升 50%，预测精细度是 WeatherNext 2 的五倍，并由 Brightband 进行独立实时评估。研究人员可在 BigQuery 与 Earth Engine 中查询、从 Google Cloud Storage 批量下载，或使用 Weather API——因此可纳入实际分析流程，而非仅作演示。</span>
-            <br><a class="news-source" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
+<div class="news-item">
+  <span class="news-company">Google – Gemini 3.8 Live</span>
+  <br>
+  <span class="lc lang-en">Two new voice models for real-time spoken conversation: Gemini 3.8 Live for cheaper everyday dialogue, and Gemini 3.8 Live Extended Thinking for multi-step reasoning. Both handle 97 languages with automatic detection, can look at images mid-conversation, and watermark all generated audio with SynthID. Available now in the Gemini API and AI Studio. Promising for multilingual interview or helpline prototypes – but settle data residency before recording any participant.</span>
+  <span class="lc lang-de">Zwei neue Sprachmodelle für Echtzeit-Gespräche: Gemini 3.8 Live für kostengünstigere Alltagsdialoge und Gemini 3.8 Live Extended Thinking für mehrstufiges Schlussfolgern. Beide beherrschen 97 Sprachen mit automatischer Erkennung, können mitten im Gespräch Bilder betrachten und versehen alle erzeugten Audios mit SynthID-Wasserzeichen. Ab jetzt in der Gemini API und in AI Studio verfügbar. Interessant für mehrsprachige Interview- oder Helpline-Prototypen – klären Sie aber den Datenstandort, bevor Sie Teilnehmende aufzeichnen.</span>
+  <span class="lc lang-fr">Deux nouveaux modèles vocaux pour la conversation en temps réel : Gemini 3.8 Live pour le dialogue courant à moindre coût, et Gemini 3.8 Live Extended Thinking pour le raisonnement en plusieurs étapes. Les deux gèrent 97 langues avec détection automatique, peuvent regarder des images en cours de conversation et filigranent tout audio généré avec SynthID. Disponibles dès maintenant dans l'API Gemini et AI Studio. Prometteur pour des prototypes d'entretien ou de ligne d'assistance multilingues – mais réglez la question de la résidence des données avant d'enregistrer des participants.</span>
+  <span class="lc lang-it">Due nuovi modelli vocali per la conversazione in tempo reale: Gemini 3.8 Live per il dialogo quotidiano a costo ridotto e Gemini 3.8 Live Extended Thinking per il ragionamento in più passaggi. Entrambi gestiscono 97 lingue con rilevamento automatico, possono guardare immagini durante la conversazione e applicano la filigrana SynthID a tutto l'audio generato. Disponibili da ora nell'API Gemini e in AI Studio. Interessanti per prototipi multilingue di intervista o helpline – ma chiarite la residenza dei dati prima di registrare i partecipanti.</span>
+  <span class="lc lang-zh">两款面向实时语音对话的新模型：Gemini 3.8 Live 面向成本更低的日常对话，Gemini 3.8 Live Extended Thinking 面向多步推理。两者均支持 97 种语言并可自动识别，能在对话中查看图像，并为所有生成音频加上 SynthID 水印。现已在 Gemini API 和 AI Studio 中提供。可用于多语种访谈或热线原型——但在录制参与者之前须先确认数据存放地。</span>
+  <br><a class="news-source" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">Sakana AI – Fugu Max and Fugu Ultra v2</span>
+  <span class="tag-old">2026-09-11</span>
+  <br>
+  <span class="lc lang-en">Not single models but orchestrators: you make one API call and the system decides which pool of smaller open and specialist models should do the work. Fugu Max scores best overall on six benchmarks at USD 2 in / 6 out per million tokens, which Sakana puts 40–60% below Sonnet 5 and Kimi K3 on output. Notably, Fugu Ultra v2's pool contains no Claude Fable or GPT-6 Astra.</span>
+  <span class="lc lang-de">Keine einzelnen Modelle, sondern Orchestratoren: Ein API-Aufruf, und das System entscheidet, welcher Pool kleinerer offener und spezialisierter Modelle die Arbeit übernimmt. Fugu Max erzielt bei sechs Benchmarks das beste Gesamtergebnis, zu USD 2 Eingabe / 6 Ausgabe pro Million Tokens – laut Sakana 40–60% unter Sonnet 5 und Kimi K3 bei der Ausgabe. Bemerkenswert: Der Pool von Fugu Ultra v2 enthält weder Claude Fable noch GPT-6 Astra.</span>
+  <span class="lc lang-fr">Non pas des modèles uniques mais des orchestrateurs : un seul appel d'API, et le système décide quel ensemble de modèles plus petits, ouverts ou spécialisés, fera le travail. Fugu Max obtient le meilleur score global sur six bancs d'essai à 2 USD en entrée / 6 USD en sortie par million de tokens, soit selon Sakana 40 à 60% de moins que Sonnet 5 et Kimi K3 en sortie. À noter : l'ensemble de Fugu Ultra v2 ne contient ni Claude Fable ni GPT-6 Astra.</span>
+  <span class="lc lang-it">Non modelli singoli ma orchestratori: una sola chiamata API e il sistema decide quale insieme di modelli più piccoli, aperti o specializzati, svolgerà il lavoro. Fugu Max ottiene il miglior punteggio complessivo su sei benchmark a 2 USD in ingresso / 6 in uscita per milione di token, secondo Sakana il 40–60% in meno di Sonnet 5 e Kimi K3 in uscita. Da notare: l'insieme di Fugu Ultra v2 non contiene né Claude Fable né GPT-6 Astra.</span>
+  <span class="lc lang-zh">它们不是单一模型，而是编排器：你只发一次 API 调用，系统自行决定由哪一组更小的开源与专用模型来完成工作。Fugu Max 在六项基准上取得最佳总分，价格为每百万 token 输入 2 美元 / 输出 6 美元，Sakana 称其输出价格比 Sonnet 5 与 Kimi K3 低 40–60%。值得注意的是，Fugu Ultra v2 的模型池中既无 Claude Fable 也无 GPT-6 Astra。</span>
+  <br><a class="news-source" href="https://sakana.ai/fugu-max-release/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">OpenAI – GPT-Live-1 in the API</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">A full-duplex voice model – it listens and speaks at the same time, rather than waiting for you to finish – now callable by developers at USD 0.05 per minute, with 12 new voices, telephony support and built-in transcripts. Makes phone-based data collection technically straightforward; the consent and privacy questions remain the hard part.</span>
+  <span class="lc lang-de">Ein Vollduplex-Sprachmodell – es hört und spricht gleichzeitig, statt auf das Ende Ihres Satzes zu warten – ist nun für Entwickelnde zu USD 0,05 pro Minute nutzbar, mit 12 neuen Stimmen, Telefonie-Unterstützung und integrierten Transkripten. Damit wird telefonische Datenerhebung technisch einfach; schwierig bleiben Einwilligung und Datenschutz.</span>
+  <span class="lc lang-fr">Un modèle vocal en duplex intégral – il écoute et parle en même temps, au lieu d'attendre la fin de votre phrase – est désormais accessible aux développeurs à 0,05 USD la minute, avec 12 nouvelles voix, la prise en charge de la téléphonie et des transcriptions intégrées. La collecte de données par téléphone devient techniquement simple ; le consentement et la confidentialité restent le point difficile.</span>
+  <span class="lc lang-it">Un modello vocale full-duplex – ascolta e parla contemporaneamente, invece di attendere la fine della frase – è ora utilizzabile dagli sviluppatori a 0,05 USD al minuto, con 12 nuove voci, supporto telefonico e trascrizioni integrate. Rende tecnicamente semplice la raccolta dati telefonica; restano difficili consenso e privacy.</span>
+  <span class="lc lang-zh">一款全双工语音模型——可同时聆听与说话，无需等待对方说完——现已开放给开发者，费用为每分钟 0.05 美元，配有 12 种新语音、电话接入支持和内置转写。这让电话数据采集在技术上变得简单；难点仍在于知情同意与隐私。</span>
+  <br><a class="news-source" href="https://openai.com/index/introducing-gpt-live-1-in-the-api/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">DeepSeek – V4.1 Flash</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">DeepSeek's smallest new-architecture model, with image understanding built into the model rather than bolted on afterwards. It retires both V4 Flash and V4 Flash Vision Exp, and Artificial Analysis records it as open-weights, so it can in principle be self-hosted on institutional hardware – relevant where data cannot leave the building.</span>
+  <span class="lc lang-de">DeepSeeks kleinstes Modell der neuen Architektur, mit von Anfang an integriertem Bildverständnis statt nachträglich angebauter Vision. Es ersetzt V4 Flash und V4 Flash Vision Exp; Artificial Analysis führt es als Modell mit offenen Gewichten, es lässt sich also grundsätzlich auf institutionseigener Hardware betreiben – relevant, wenn Daten das Haus nicht verlassen dürfen.</span>
+  <span class="lc lang-fr">Le plus petit modèle de la nouvelle architecture de DeepSeek, avec la compréhension d'images intégrée au modèle plutôt qu'ajoutée après coup. Il remplace V4 Flash et V4 Flash Vision Exp ; Artificial Analysis le recense comme modèle à poids ouverts, il peut donc en principe être hébergé sur du matériel institutionnel – utile lorsque les données ne peuvent pas sortir.</span>
+  <span class="lc lang-it">Il modello più piccolo della nuova architettura di DeepSeek, con comprensione delle immagini integrata nel modello anziché aggiunta in seguito. Sostituisce V4 Flash e V4 Flash Vision Exp; Artificial Analysis lo registra come modello a pesi aperti, quindi in principio può essere ospitato su hardware dell'istituzione – utile quando i dati non possono uscire.</span>
+  <span class="lc lang-zh">DeepSeek 新架构中体量最小的模型，图像理解为原生内置而非后期加装。它取代了 V4 Flash 与 V4 Flash Vision Exp；Artificial Analysis 将其记录为开放权重模型，原则上可在机构自有硬件上自托管——在数据不得外传的场景下尤为相关。</span>
+  <br><a class="news-source" href="https://api-docs.deepseek.com/updates/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
         </div>
       </div>
       <div class="news-card cat-pricing">
         <div class="news-card-header" data-i18n="cat_pricing">Price and plan changes</div>
         <div class="news-card-body">
-          <div class="news-item">
-            <span class="news-company">DeepSeek – new Flash-series prices, and V4 Pro billed at Flash rates</span>
-            <br>
-            <span class="lc lang-en">New Flash-series pricing took effect at noon Beijing time on 10 September. From 14 September, requests to the retiring <code>deepseek-v4-pro</code> endpoint are billed at the V4.1 Flash price. Anyone budgeting against V4 Pro rates should re-check their figures.</span>
-            <span class="lc lang-de">Die neue Flash-Preisreihe gilt seit 10. September, 12 Uhr Pekinger Zeit. Ab 14. September werden Anfragen an den auslaufenden Endpunkt <code>deepseek-v4-pro</code> zum V4.1-Flash-Preis abgerechnet. Wer mit V4-Pro-Tarifen kalkuliert, sollte die Zahlen prüfen.</span>
-            <span class="lc lang-fr">La nouvelle grille tarifaire Flash s'applique depuis le 10 septembre à midi, heure de Pékin. À partir du 14 septembre, les requêtes vers le point d'accès <code>deepseek-v4-pro</code> en retrait sont facturées au prix V4.1 Flash. Quiconque budgète sur les tarifs V4 Pro devrait revérifier ses chiffres.</span>
-            <span class="lc lang-it">I nuovi prezzi della serie Flash sono in vigore dal 10 settembre, mezzogiorno ora di Pechino. Dal 14 settembre le richieste all'endpoint <code>deepseek-v4-pro</code> in dismissione sono fatturate al prezzo di V4.1 Flash. Chi fa budget sulle tariffe V4 Pro dovrebbe rivedere i calcoli.</span>
-            <span class="lc lang-zh">新的 Flash 系列价格自北京时间 9 月 10 日中午起生效。自 9 月 14 日起，发往即将退役的 <code>deepseek-v4-pro</code> 端点的请求按 V4.1 Flash 价格计费。按 V4 Pro 费率做预算的用户应重新核算。</span>
-            <br><a class="news-source" href="https://api-docs.deepseek.com/news/news_latest" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">OpenAI – GPT-6 Astra pricing</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">USD 10 per million input tokens, USD 1 for cached input, USD 12.50 for cache writes and USD 50 per million output tokens, with about 1.05M context and 128K max output. Requests above 272,000 input tokens are billed at double the input rate and 1.5 times the output rate – applied to the whole request, not just the excess. Batch and Flex processing run at half price.</span>
-            <span class="lc lang-de">USD 10 pro Million Eingabe-Tokens, USD 1 für zwischengespeicherte Eingaben, USD 12,50 für Cache-Schreibvorgänge und USD 50 pro Million Ausgabe-Tokens, bei etwa 1,05 Mio. Kontext und 128K maximaler Ausgabe. Anfragen über 272.000 Eingabe-Tokens werden mit dem doppelten Eingabe- und dem 1,5-fachen Ausgabepreis abgerechnet – für die gesamte Anfrage, nicht nur den Überschuss. Batch- und Flex-Verarbeitung kosten die Hälfte.</span>
-            <span class="lc lang-fr">10 USD par million de tokens d'entrée, 1 USD pour l'entrée mise en cache, 12,50 USD pour les écritures de cache et 50 USD par million de tokens de sortie, avec environ 1,05 M de contexte et 128K de sortie maximale. Les requêtes au-delà de 272 000 tokens d'entrée sont facturées au double du tarif d'entrée et 1,5 fois celui de sortie – sur la requête entière, pas seulement le dépassement. Les traitements Batch et Flex sont à moitié prix.</span>
-            <span class="lc lang-it">10 USD per milione di token in ingresso, 1 USD per l'input in cache, 12,50 USD per le scritture in cache e 50 USD per milione di token in uscita, con circa 1,05 M di contesto e 128K di output massimo. Le richieste oltre 272.000 token di input sono fatturate al doppio della tariffa di input e a 1,5 volte quella di output – sull'intera richiesta, non solo sull'eccedenza. L'elaborazione Batch e Flex costa la metà.</span>
-            <span class="lc lang-zh">每百万输入 token 10 美元，缓存输入 1 美元，缓存写入 12.50 美元，每百万输出 token 50 美元；上下文约 105 万，最大输出 12.8 万。输入超过 272,000 token 的请求，输入按两倍、输出按 1.5 倍计费，且按整个请求计算，而非仅超出部分。Batch 与 Flex 处理为半价。</span>
-            <br><a class="news-source" href="https://developers.openai.com/api/docs/models/gpt-6-astra" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
+<div class="news-item">
+  <span class="news-company">Anthropic – Claude Code weekly limits reset</span>
+  <br>
+  <span class="lc lang-en">A permanent 25% increase over the pre-May baseline took effect on 14 September, replacing a temporary 50% boost that ended on 13 September. Both percentages are accurate against different baselines, but in practice most users now have roughly 17% less weekly headroom than the week before. Worth checking against your team's actual usage before the next billing cycle.</span>
+  <span class="lc lang-de">Am 14. September trat eine dauerhafte Erhöhung um 25% gegenüber dem Stand vor Mai in Kraft und ersetzte eine temporäre Anhebung um 50%, die am 13. September endete. Beide Prozentzahlen stimmen – nur bezogen auf unterschiedliche Ausgangswerte; praktisch haben die meisten Nutzenden nun rund 17% weniger Wochenbudget als in der Woche davor. Vor dem nächsten Abrechnungszyklus mit der tatsächlichen Team-Nutzung abgleichen.</span>
+  <span class="lc lang-fr">Une augmentation permanente de 25% par rapport au niveau d'avant mai est entrée en vigueur le 14 septembre, remplaçant une hausse temporaire de 50% qui a pris fin le 13 septembre. Les deux pourcentages sont exacts, mais par rapport à des références différentes : en pratique, la plupart des utilisateurs disposent désormais d'environ 17% de marge hebdomadaire en moins que la semaine précédente. À vérifier au regard de l'usage réel de votre équipe avant le prochain cycle de facturation.</span>
+  <span class="lc lang-it">Il 14 settembre è entrato in vigore un aumento permanente del 25% rispetto al livello precedente a maggio, che sostituisce un incremento temporaneo del 50% concluso il 13 settembre. Entrambe le percentuali sono corrette, ma rispetto a basi diverse: in pratica la maggior parte degli utenti ha ora circa il 17% di margine settimanale in meno rispetto alla settimana precedente. Da verificare con l'uso effettivo del vostro team prima del prossimo ciclo di fatturazione.</span>
+  <span class="lc lang-zh">相对于五月前基准的永久性 25% 上调已于 9 月 14 日生效，取代了 9 月 13 日结束的临时 50% 提额。两个百分比各自相对不同基准都成立，但实际上多数用户的每周额度比前一周约少 17%。建议在下一个计费周期前，结合团队实际用量核对。</span>
+  <br><a class="news-source" href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-is-cutting-claude-codes-current-weekly-limits-by-17-percent/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">DeepSeek – V4 Pro stays in service</span>
+  <br>
+  <span class="lc lang-en">DeepSeek had said every <code>deepseek-v4-pro</code> request would be answered by V4.1 Flash from 14 September. The API documentation now states that V4 Pro service continues past that date with billing unchanged – so pipelines pinned to that model name do not need rewriting yet.</span>
+  <span class="lc lang-de">DeepSeek hatte angekündigt, dass ab 14. September jede <code>deepseek-v4-pro</code>-Anfrage von V4.1 Flash beantwortet wird. Die API-Dokumentation besagt nun, dass der V4-Pro-Dienst über dieses Datum hinaus weiterläuft, bei unveränderter Abrechnung – Pipelines, die auf diesen Modellnamen festgelegt sind, müssen also noch nicht umgeschrieben werden.</span>
+  <span class="lc lang-fr">DeepSeek avait annoncé que toute requête <code>deepseek-v4-pro</code> serait traitée par V4.1 Flash à partir du 14 septembre. La documentation de l'API indique désormais que le service V4 Pro se poursuit au-delà de cette date, sans changement de facturation – les chaînes de traitement fixées sur ce nom de modèle n'ont donc pas encore besoin d'être réécrites.</span>
+  <span class="lc lang-it">DeepSeek aveva annunciato che dal 14 settembre ogni richiesta <code>deepseek-v4-pro</code> sarebbe stata servita da V4.1 Flash. La documentazione dell'API ora indica che il servizio V4 Pro continua oltre tale data, con fatturazione invariata – le pipeline vincolate a quel nome di modello non devono ancora essere riscritte.</span>
+  <span class="lc lang-zh">DeepSeek 曾表示自 9 月 14 日起，所有 <code>deepseek-v4-pro</code> 请求都将由 V4.1 Flash 处理。API 文档现说明 V4 Pro 服务在该日期之后继续提供，计费方式不变——因此锁定该模型名称的流水线暂时无需改写。</span>
+  <br><a class="news-source" href="https://api-docs.deepseek.com/updates/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">DeepSeek – V4.1 Flash cuts API prices</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">Published rates for the new Flash tier are USD 0.15–0.30 per million input tokens on a cache miss, USD 0.003–0.006 on a cache hit, and USD 0.60–1.20 per million output tokens. The lower figure in each pair is the off-peak rate: peak hours are 01:00–04:00 and 06:00–10:00 UTC on weekdays, so European working hours fall largely inside peak.</span>
+  <span class="lc lang-de">Die veröffentlichten Sätze für die neue Flash-Stufe liegen bei USD 0,15–0,30 pro Million Eingabe-Tokens bei Cache-Miss, USD 0,003–0,006 bei Cache-Hit und USD 0,60–1,20 pro Million Ausgabe-Tokens. Der jeweils niedrigere Wert ist der Nebenzeiten-Tarif: Hauptzeit ist wochentags 01:00–04:00 und 06:00–10:00 UTC, europäische Arbeitszeiten fallen also überwiegend in die Hauptzeit.</span>
+  <span class="lc lang-fr">Les tarifs publiés pour le nouveau palier Flash sont de 0,15 à 0,30 USD par million de tokens d'entrée en cas d'échec de cache, 0,003 à 0,006 USD en cas de succès de cache, et 0,60 à 1,20 USD par million de tokens de sortie. Le chiffre le plus bas de chaque paire est le tarif heures creuses : les heures pleines sont 01h00–04h00 et 06h00–10h00 UTC en semaine, donc les horaires de travail européens tombent largement en heures pleines.</span>
+  <span class="lc lang-it">Le tariffe pubblicate per il nuovo livello Flash sono 0,15–0,30 USD per milione di token in ingresso in caso di cache miss, 0,003–0,006 USD in caso di cache hit e 0,60–1,20 USD per milione di token in uscita. Il valore più basso di ogni coppia è la tariffa fuori punta: le ore di punta sono 01:00–04:00 e 06:00–10:00 UTC nei giorni lavorativi, quindi l'orario di lavoro europeo ricade in gran parte nelle ore di punta.</span>
+  <span class="lc lang-zh">新 Flash 档位的公布价格为：缓存未命中时每百万输入 token 0.15–0.30 美元，缓存命中时 0.003–0.006 美元，每百万输出 token 0.60–1.20 美元。每组中较低者为非高峰价：高峰时段为工作日 UTC 01:00–04:00 与 06:00–10:00，因此欧洲工作时间大多落在高峰段。</span>
+  <br><a class="news-source" href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
         </div>
       </div>
       <div class="news-card cat-policy">
         <div class="news-card-header" data-i18n="cat_policy">Privacy, rules and terms</div>
         <div class="news-card-body">
-          <div class="news-item">
-            <span class="news-company">NSA, CISA and FBI – advisory AA26-251A on model distillation</span>
-            <br>
-            <span class="lc lang-en">A joint US government advisory alleges that six China-based AI companies – DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun and Z.AI – have run industrial-scale knowledge-distillation campaigns against Claude, GPT, Gemini and Grok since at least late 2024, obtaining billions of tokens through fraudulent accounts, API proxies and subscription abuse, likely with Chinese government knowledge. Recommended countermeasures for providers include usage-anomaly detection, rate limiting, industry information sharing and – notably – subtly degrading responses to suspected accounts using differential privacy or downgraded models. Two things follow for research users: a provenance question about models from the named firms, and the possibility that answer quality on those APIs is being deliberately varied.</span>
-            <span class="lc lang-de">Eine gemeinsame Warnung von US-Behörden wirft sechs in China ansässigen KI-Firmen – DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun und Z.AI – vor, seit mindestens Ende 2024 Wissensdestillation im industriellen Maßstab gegen Claude, GPT, Gemini und Grok betrieben und über gefälschte Konten, API-Proxys und Abo-Missbrauch Milliarden Tokens erlangt zu haben, wahrscheinlich mit Wissen der chinesischen Regierung. Empfohlene Gegenmaßnahmen für Anbieter: Erkennung von Nutzungsanomalien, Rate-Limiting, Informationsaustausch in der Branche und – bemerkenswert – das unmerkliche Verschlechtern von Antworten an verdächtige Konten mittels Differential Privacy oder herabgestufter Modelle. Für Forschende folgt daraus zweierlei: eine Herkunftsfrage zu Modellen der genannten Firmen und die Möglichkeit, dass die Antwortqualität dieser APIs absichtlich variiert wird.</span>
-            <span class="lc lang-fr">Un avis conjoint du gouvernement américain allègue que six entreprises d'IA basées en Chine – DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun et Z.AI – mènent depuis fin 2024 au moins des campagnes de distillation de connaissances à l'échelle industrielle contre Claude, GPT, Gemini et Grok, obtenant des milliards de tokens via des comptes frauduleux, des proxys d'API et des abus d'abonnement, probablement avec la connaissance du gouvernement chinois. Contre-mesures recommandées aux fournisseurs : détection des anomalies d'usage, limitation de débit, partage d'informations sectoriel et – fait notable – dégradation discrète des réponses aux comptes suspects via la confidentialité différentielle ou des modèles dégradés. Deux conséquences pour la recherche : une question de provenance sur les modèles des firmes nommées, et la possibilité que la qualité des réponses de ces API soit délibérément variable.</span>
-            <span class="lc lang-it">Un avviso congiunto del governo statunitense sostiene che sei aziende IA con sede in Cina – DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun e Z.AI – conducono almeno dalla fine del 2024 campagne di distillazione della conoscenza su scala industriale contro Claude, GPT, Gemini e Grok, ottenendo miliardi di token tramite account fraudolenti, proxy API e abuso di abbonamenti, probabilmente con la consapevolezza del governo cinese. Contromisure raccomandate ai fornitori: rilevamento delle anomalie d'uso, rate limiting, condivisione di informazioni nel settore e – significativamente – degradare sottilmente le risposte agli account sospetti con privacy differenziale o modelli depotenziati. Per chi fa ricerca ne seguono due cose: una questione di provenienza sui modelli delle aziende citate e la possibilità che la qualità delle risposte su quelle API sia variata deliberatamente.</span>
-            <span class="lc lang-zh">美国政府联合公告指控六家中国 AI 公司——DeepSeek、Moonshot AI、阿里巴巴、MiniMax、StepFun 与 Z.AI——至少自 2024 年底起对 Claude、GPT、Gemini 与 Grok 开展工业规模的知识蒸馏，通过虚假账户、API 代理与滥用订阅获取了数十亿 token，且很可能为中国政府所知悉。公告建议服务商采取的对策包括：用量异常检测、速率限制、行业信息共享，以及——值得注意的——利用差分隐私或降级模型对可疑账户的响应悄然降质。对研究用户有两点影响：上述公司模型的来源合法性问题，以及这些 API 的回答质量可能被有意调整。</span>
-            <br><a class="news-source" href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-251a" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">OpenAI – safety overview published with GPT-6 Astra</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">OpenAI shipped Astra four weeks after saying it had slowed the release over cyber risk, and published a separate safety overview. It is the first OpenAI model to trigger the company's critical-cyber safeguard threshold, so its cyber capabilities ship gated. The document also covers jailbreak resistance, browsing safety, monitoring for misaligned behaviour, and stronger protections for users under 18.</span>
-            <span class="lc lang-de">OpenAI veröffentlichte Astra vier Wochen nach der Ankündigung, die Freigabe wegen Cyber-Risiken verlangsamt zu haben, und legte eine separate Sicherheitsübersicht vor. Es ist das erste OpenAI-Modell, das die firmeneigene Schwelle für kritische Cyber-Schutzmaßnahmen auslöst; seine Cyber-Fähigkeiten werden daher zugangsbeschränkt ausgeliefert. Das Dokument behandelt zudem Widerstand gegen Jailbreaks, sicheres Browsen, Überwachung fehlausgerichteten Verhaltens und stärkeren Schutz für Nutzende unter 18.</span>
-            <span class="lc lang-fr">OpenAI a livré Astra quatre semaines après avoir annoncé un ralentissement du lancement pour risque cyber, et a publié un aperçu de sécurité distinct. C'est le premier modèle d'OpenAI à franchir le seuil interne de sauvegarde « cyber critique » : ses capacités cyber sont donc livrées sous contrôle d'accès. Le document traite aussi de la résistance aux contournements, de la sécurité de navigation, de la surveillance des comportements désalignés et de protections renforcées pour les moins de 18 ans.</span>
-            <span class="lc lang-it">OpenAI ha rilasciato Astra quattro settimane dopo aver dichiarato di aver rallentato il lancio per rischio cyber, pubblicando una panoramica di sicurezza separata. È il primo modello OpenAI a superare la soglia interna di salvaguardia "cyber critica": le sue capacità cyber sono quindi distribuite ad accesso controllato. Il documento tratta anche resistenza ai jailbreak, sicurezza della navigazione, monitoraggio dei comportamenti disallineati e protezioni rafforzate per gli utenti under 18.</span>
-            <span class="lc lang-zh">OpenAI 在宣布因网络风险放缓发布四周后推出 Astra，并另行发布安全概览。这是首个触发该公司「关键网络安全」防护阈值的 OpenAI 模型，因此其网络安全能力以受限方式发布。文件还涵盖抗越狱、浏览安全、失准行为监测以及对未满 18 岁用户的更强保护。</span>
-            <br><a class="news-source" href="https://openai.com/index/safety-overview-gpt-6-astra/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
+<div class="news-item">
+  <span class="news-company">Anthropic – Detecting and countering misuse of AI</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">Anthropic's threat intelligence team reports disrupting misuse of Claude across seven harm categories between December 2025 and August 2026, including multi-agent intrusion systems running with little human supervision, and stolen API keys resold and used at the victim's expense. The practical lesson for institutions: treat AI API keys as production secrets, and route work only through authorised channels.</span>
+  <span class="lc lang-de">Anthropics Threat-Intelligence-Team berichtet, zwischen Dezember 2025 und August 2026 Missbrauch von Claude in sieben Schadenskategorien unterbrochen zu haben – darunter Multi-Agenten-Systeme für Einbrüche mit kaum menschlicher Aufsicht sowie gestohlene API-Schlüssel, die weiterverkauft und auf Kosten der Opfer genutzt wurden. Die praktische Lehre für Institutionen: API-Schlüssel wie Produktionsgeheimnisse behandeln und Arbeit nur über autorisierte Kanäle laufen lassen.</span>
+  <span class="lc lang-fr">L'équipe de renseignement sur les menaces d'Anthropic indique avoir déjoué des usages malveillants de Claude dans sept catégories de préjudice entre décembre 2025 et août 2026, dont des systèmes d'intrusion multi-agents fonctionnant avec peu de supervision humaine et des clés d'API volées, revendues et utilisées aux frais de la victime. La leçon pratique pour les institutions : traiter les clés d'API comme des secrets de production et ne faire passer le travail que par des canaux autorisés.</span>
+  <span class="lc lang-it">Il team di threat intelligence di Anthropic riferisce di aver interrotto usi impropri di Claude in sette categorie di danno tra dicembre 2025 e agosto 2026, tra cui sistemi di intrusione multi-agente operanti con scarsa supervisione umana e chiavi API rubate, rivendute e usate a spese della vittima. La lezione pratica per le istituzioni: trattare le chiavi API come segreti di produzione e far passare il lavoro solo da canali autorizzati.</span>
+  <span class="lc lang-zh">Anthropic 的威胁情报团队报告称，2025 年 12 月至 2026 年 8 月期间，已阻断七类对 Claude 的滥用行为，包括在极少人工监督下运行的多智能体入侵系统，以及被盗后转售、由受害者承担费用的 API 密钥。对机构的实际启示：把 AI API 密钥当作生产环境机密来管理，并且只通过获授权的渠道开展工作。</span>
+  <br><a class="news-source" href="https://www.anthropic.com/threat-intelligence-report-september-2026" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">California – child-safety chatbot and social-media laws signed</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">Governor Newsom signed bipartisan legislation his office describes as the strongest companion-chatbot rules in the United States: new safeguards for companion chatbots, a ban on addictive features such as autoplay and profile-based feeds for under-16s, and wider children's privacy protections. A precedent worth watching if your project puts any conversational tool in front of minors.</span>
+  <span class="lc lang-de">Gouverneur Newsom hat ein parteiübergreifendes Gesetzespaket unterzeichnet, das sein Büro als strengste Regeln für Begleit-Chatbots in den USA bezeichnet: neue Schutzvorgaben für Companion-Chatbots, Verbot suchterzeugender Funktionen wie Autoplay oder profilbasierter Feeds für unter 16-Jährige sowie erweiterter Kinderdatenschutz. Ein Präzedenzfall, den man beobachten sollte, wenn im Projekt ein Dialogsystem für Minderjährige zum Einsatz kommt.</span>
+  <span class="lc lang-fr">Le gouverneur Newsom a signé une loi bipartisane que son cabinet présente comme l'encadrement des chatbots de compagnie le plus strict des États-Unis : nouvelles obligations de protection pour ces chatbots, interdiction des fonctions addictives comme la lecture automatique ou les fils fondés sur le profil pour les moins de 16 ans, et protection élargie de la vie privée des enfants. Un précédent à suivre si votre projet met un outil conversationnel entre les mains de mineurs.</span>
+  <span class="lc lang-it">Il governatore Newsom ha firmato una legge bipartisan che il suo ufficio definisce la disciplina più severa degli Stati Uniti per i chatbot di compagnia: nuove tutele per questi chatbot, divieto di funzioni che creano dipendenza come l'autoplay o i feed basati sul profilo per i minori di 16 anni, e protezioni della privacy dei minori ampliate. Un precedente da seguire se il vostro progetto mette uno strumento conversazionale in mano a minori.</span>
+  <span class="lc lang-zh">纽森州长签署了一项跨党派法案，其办公室称之为全美最严格的陪伴型聊天机器人规则：对陪伴型聊天机器人设定新的保护要求，禁止向 16 岁以下用户提供自动播放、基于画像的信息流等成瘾性功能，并扩大儿童隐私保护。若你的项目会向未成年人提供对话式工具，这是值得关注的先例。</span>
+  <br><a class="news-source" href="https://www.gov.ca.gov/2026/09/10/governor-newsom-signs-the-strongest-child-safety-chatbot-and-social-media-laws-in-the-nation/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
         </div>
       </div>
       <div class="news-card cat-features">
         <div class="news-card-header" data-i18n="cat_features">New features and upgrades</div>
         <div class="news-card-body">
-          <div class="news-item">
-            <span class="news-company">Mistral – AI agents for modernising legacy scientific code</span>
-            <br>
-            <span class="lc lang-en">A practical write-up of using AI agents to modernise 40,000 lines of Fortran. Directly relevant wherever a research group depends on decades-old numerical code that nobody still maintains: it sets out what the agents handled, where human review stayed essential, and how the work was structured.</span>
-            <span class="lc lang-de">Ein praxisnaher Bericht über den Einsatz von KI-Agenten zur Modernisierung von 40.000 Zeilen Fortran. Direkt relevant überall dort, wo eine Forschungsgruppe von jahrzehntealtem numerischem Code abhängt, den niemand mehr pflegt: Der Text legt dar, was die Agenten bewältigten, wo menschliche Prüfung unverzichtbar blieb und wie die Arbeit strukturiert wurde.</span>
-            <span class="lc lang-fr">Un retour d'expérience concret sur l'utilisation d'agents IA pour moderniser 40 000 lignes de Fortran. Directement pertinent partout où un groupe de recherche dépend d'un code numérique vieux de plusieurs décennies que plus personne ne maintient : l'article expose ce que les agents ont pris en charge, là où la relecture humaine est restée indispensable, et comment le travail a été organisé.</span>
-            <span class="lc lang-it">Un resoconto pratico sull'uso di agenti IA per modernizzare 40.000 righe di Fortran. Direttamente rilevante ovunque un gruppo di ricerca dipenda da codice numerico vecchio di decenni che nessuno mantiene più: illustra cosa hanno gestito gli agenti, dove la revisione umana è rimasta essenziale e come è stato strutturato il lavoro.</span>
-            <span class="lc lang-zh">一份关于用 AI 智能体改造 4 万行 Fortran 代码的实践记录。对任何依赖数十年前、已无人维护的数值代码的研究组都直接相关：文中说明了智能体能处理的部分、必须由人工审核的环节，以及整个工作的组织方式。</span>
-            <br><a class="news-source" href="https://mistral.ai/news/legacy-code-modernization/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">Anthropic – <code>ant apply</code> manages agents as files in a repository</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">Version 1.30.0 of Anthropic's <code>ant</code> command-line tool adds <code>ant apply</code>: describe agents, environments, skills, memory stores and deployments in files, review the plan, then apply it. It writes a <code>claude-lock.json</code> lockfile so later runs update the same resources instead of creating duplicates. The point is reproducibility and a committed record of what was deployed – the same argument as for version-controlling an analysis pipeline.</span>
-            <span class="lc lang-de">Version 1.30.0 von Anthropics Kommandozeilenwerkzeug <code>ant</code> ergänzt <code>ant apply</code>: Agenten, Umgebungen, Skills, Speicher und Deployments in Dateien beschreiben, den Plan prüfen und anwenden. Eine <code>claude-lock.json</code>-Lock-Datei stellt sicher, dass spätere Läufe dieselben Ressourcen aktualisieren statt Duplikate zu erzeugen. Es geht um Reproduzierbarkeit und einen versionierten Nachweis des Deployments – dasselbe Argument wie für die Versionskontrolle einer Analyse-Pipeline.</span>
-            <span class="lc lang-fr">La version 1.30.0 de l'outil en ligne de commande <code>ant</code> d'Anthropic ajoute <code>ant apply</code> : décrivez agents, environnements, compétences, mémoires et déploiements dans des fichiers, examinez le plan, puis appliquez-le. Un fichier de verrouillage <code>claude-lock.json</code> garantit que les exécutions suivantes mettent à jour les mêmes ressources au lieu d'en créer des doublons. L'enjeu est la reproductibilité et une trace versionnée de ce qui a été déployé – le même argument que pour mettre une chaîne d'analyse sous contrôle de version.</span>
-            <span class="lc lang-it">La versione 1.30.0 dello strumento a riga di comando <code>ant</code> di Anthropic aggiunge <code>ant apply</code>: descrivete agenti, ambienti, skill, archivi di memoria e deployment in file, rivedete il piano e applicatelo. Un file di lock <code>claude-lock.json</code> fa sì che le esecuzioni successive aggiornino le stesse risorse invece di crearne duplicati. L'obiettivo è la riproducibilità e una traccia versionata di ciò che è stato distribuito – lo stesso argomento del mettere sotto controllo di versione una pipeline di analisi.</span>
-            <span class="lc lang-zh">Anthropic 命令行工具 <code>ant</code> 的 1.30.0 版新增 <code>ant apply</code>：在文件中描述智能体、环境、技能、记忆库与部署，审阅执行计划后应用。它会写入 <code>claude-lock.json</code> 锁文件，使后续运行更新同一批资源而非重复创建。重点在于可复现性以及部署内容的版本化记录——与将分析流程纳入版本控制的理由相同。</span>
-            <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/api" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">Anthropic – per-message effort now on Google Cloud</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">The beta that lets you change a model's reasoning effort mid-conversation, without losing the cached prompt, is now available on Google Cloud for Claude Fable 5.1, Mythos 5.1 and Opus 5. Because the per-token rate is the same at every effort level, this is a way to spend fewer tokens on routine turns and more only on the hard step.</span>
-            <span class="lc lang-de">Die Beta-Funktion, mit der sich der Denkaufwand eines Modells mitten im Gespräch ändern lässt, ohne den zwischengespeicherten Prompt zu verlieren, ist nun auf Google Cloud für Claude Fable 5.1, Mythos 5.1 und Opus 5 verfügbar. Da der Preis pro Token auf jeder Stufe gleich ist, lassen sich damit für Routineschritte weniger und nur für den schwierigen Schritt mehr Tokens aufwenden.</span>
-            <span class="lc lang-fr">La bêta qui permet de modifier l'effort de raisonnement d'un modèle en cours de conversation, sans perdre l'invite mise en cache, est désormais disponible sur Google Cloud pour Claude Fable 5.1, Mythos 5.1 et Opus 5. Le tarif par token étant identique à tous les niveaux d'effort, c'est un moyen de consommer moins de tokens sur les tours de routine et davantage uniquement sur l'étape difficile.</span>
-            <span class="lc lang-it">La beta che consente di modificare lo sforzo di ragionamento di un modello a metà conversazione, senza perdere il prompt in cache, è ora disponibile su Google Cloud per Claude Fable 5.1, Mythos 5.1 e Opus 5. Poiché la tariffa per token è la stessa a ogni livello di sforzo, è un modo per spendere meno token nei passaggi di routine e più solo in quello difficile.</span>
-            <span class="lc lang-zh">可在对话进行中调整模型推理投入档位、且不丢失已缓存提示的测试版功能，现已在 Google Cloud 上支持 Claude Fable 5.1、Mythos 5.1 与 Opus 5。由于每 token 单价在各档位相同，这可用于在常规环节少用 token、仅在关键难点多投入。</span>
-            <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/api" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
+<div class="news-item">
+  <span class="news-company">Anthropic – Messages API can compact a conversation on demand</span>
+  <br>
+  <span class="lc lang-en">A beta parameter makes the API summarise earlier messages into a signed block that you send in their place on later requests. It addresses the practical ceiling on long agent runs: instead of the conversation growing until it hits the context limit, you compact it deliberately at a point you choose.</span>
+  <span class="lc lang-de">Ein Beta-Parameter lässt die API frühere Nachrichten zu einem signierten Block zusammenfassen, den man in späteren Anfragen an deren Stelle sendet. Das adressiert die praktische Obergrenze langer Agentenläufe: Statt dass das Gespräch wächst, bis es an das Kontextlimit stösst, verdichtet man es bewusst an einer selbst gewählten Stelle.</span>
+  <span class="lc lang-fr">Un paramètre en version bêta permet à l'API de résumer les messages antérieurs en un bloc signé que vous envoyez à leur place lors des requêtes suivantes. Cela répond au plafond pratique des longues exécutions d'agents : au lieu de laisser la conversation croître jusqu'à la limite de contexte, vous la compactez délibérément au moment choisi.</span>
+  <span class="lc lang-it">Un parametro in beta consente all'API di riassumere i messaggi precedenti in un blocco firmato da inviare al loro posto nelle richieste successive. Affronta il limite pratico delle lunghe esecuzioni di agenti: invece di lasciare crescere la conversazione fino al limite di contesto, la si compatta deliberatamente nel punto scelto.</span>
+  <span class="lc lang-zh">一个测试版参数可让 API 把较早的消息汇总为一个带签名的区块，在后续请求中以该区块替代原消息。这解决了长时间智能体运行的实际上限问题：不必让对话一直增长到触及上下文上限，而是在自选的时点主动压缩。</span>
+  <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">OpenAI – Agents API in public beta</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">The harness that runs Codex is now a hosted product open to all developers: OpenAI manages session orchestration, automatic context compaction and recovery, loads tool definitions only when needed, and offers sandboxes through nine partners. No extra fee – you pay for the tokens and tools your agents use.</span>
+  <span class="lc lang-de">Das Gerüst, auf dem Codex läuft, ist nun ein gehostetes Produkt für alle Entwickelnden: OpenAI übernimmt Sitzungsorchestrierung, automatische Kontextverdichtung und Wiederaufnahme, lädt Werkzeugdefinitionen nur bei Bedarf und bietet Sandboxes über neun Partner. Keine Zusatzgebühr – bezahlt werden die Tokens und Werkzeuge, die die Agenten nutzen.</span>
+  <span class="lc lang-fr">Le cadre d'exécution de Codex devient un produit hébergé ouvert à tous les développeurs : OpenAI gère l'orchestration des sessions, le compactage automatique du contexte et la reprise, ne charge les définitions d'outils qu'au besoin et propose des bacs à sable via neuf partenaires. Pas de frais supplémentaires – vous payez les tokens et les outils utilisés par vos agents.</span>
+  <span class="lc lang-it">L'impalcatura su cui gira Codex diventa un prodotto ospitato aperto a tutti gli sviluppatori: OpenAI gestisce l'orchestrazione delle sessioni, la compattazione automatica del contesto e il ripristino, carica le definizioni degli strumenti solo quando serve e offre sandbox tramite nove partner. Nessun costo aggiuntivo – si pagano i token e gli strumenti usati dagli agenti.</span>
+  <span class="lc lang-zh">支撑 Codex 运行的框架现已成为面向所有开发者的托管产品：OpenAI 负责会话编排、自动上下文压缩与恢复，仅在需要时加载工具定义，并通过九家合作方提供沙箱。不收额外费用——只按智能体所用的 token 和工具计费。</span>
+  <br><a class="news-source" href="https://openai.com/index/introducing-the-agents-api/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">Anthropic – Managed Agents gain an auto permission policy</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">The server can now evaluate each agent or MCP tool call and run it, deny it, or pause for human approval, reporting the decision in the event stream. A new <code>ant beta:sessions connect</code> command attaches your terminal to a running session so you can follow it live and approve or refuse calls as they arrive – useful when an agent touches anything sensitive.</span>
+  <span class="lc lang-de">Der Server kann nun jeden Agenten- oder MCP-Werkzeugaufruf bewerten und ausführen, ablehnen oder zur menschlichen Freigabe anhalten; die Entscheidung wird im Ereignisstrom mitgeteilt. Ein neuer Befehl <code>ant beta:sessions connect</code> verbindet das Terminal mit einer laufenden Sitzung, sodass man live mitlesen und Aufrufe freigeben oder ablehnen kann – nützlich, wenn ein Agent Sensibles berührt.</span>
+  <span class="lc lang-fr">Le serveur peut désormais évaluer chaque appel d'outil d'agent ou MCP et l'exécuter, le refuser ou le suspendre en attente d'une approbation humaine, la décision étant rapportée dans le flux d'événements. Une nouvelle commande <code>ant beta:sessions connect</code> rattache votre terminal à une session en cours pour la suivre en direct et approuver ou refuser les appels au fil de l'eau – utile lorsqu'un agent touche à des éléments sensibles.</span>
+  <span class="lc lang-it">Il server può ora valutare ogni chiamata di strumento dell'agente o MCP ed eseguirla, negarla o sospenderla in attesa di approvazione umana, riportando la decisione nel flusso di eventi. Un nuovo comando <code>ant beta:sessions connect</code> collega il terminale a una sessione in corso per seguirla in diretta e approvare o rifiutare le chiamate man mano – utile quando un agente tocca dati sensibili.</span>
+  <span class="lc lang-zh">服务端现在可对每一次智能体或 MCP 工具调用进行评估，并选择执行、拒绝或暂停以等待人工批准，决策结果会在事件流中报告。新增的 <code>ant beta:sessions connect</code> 命令可将终端接入正在运行的会话，实时跟踪并逐条批准或拒绝调用——当智能体涉及敏感内容时很有用。</span>
+  <br><a class="news-source" href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">OpenAI – ChatGPT for Financial Services</span>
+  <span class="tag-old">2026-09-10</span>
+  <br>
+  <span class="lc lang-en">A sector-specific ChatGPT built with Morgan Stanley and Evercore, bundling licensed data from Daloopa, PitchBook, LSEG News and Crunchbase for research and client material. The pattern matters more than the sector: expect vertical editions with built-in licensed data sources to appear for other regulated fields.</span>
+  <span class="lc lang-de">Eine branchenspezifische ChatGPT-Variante, entwickelt mit Morgan Stanley und Evercore, mit lizenzierten Daten von Daloopa, PitchBook, LSEG News und Crunchbase für Recherche und Kundenunterlagen. Wichtiger als die Branche ist das Muster: Mit eingebauten Lizenzdatenquellen ausgestattete Vertikalversionen dürften auch in anderen regulierten Feldern erscheinen.</span>
+  <span class="lc lang-fr">Une version sectorielle de ChatGPT conçue avec Morgan Stanley et Evercore, intégrant des données sous licence de Daloopa, PitchBook, LSEG News et Crunchbase pour la recherche et les documents clients. Le schéma compte plus que le secteur : attendez-vous à des éditions verticales avec sources de données sous licence intégrées dans d'autres domaines réglementés.</span>
+  <span class="lc lang-it">Una versione settoriale di ChatGPT sviluppata con Morgan Stanley ed Evercore, che integra dati in licenza da Daloopa, PitchBook, LSEG News e Crunchbase per ricerca e materiali per i clienti. Conta più lo schema che il settore: è probabile che compaiano edizioni verticali con fonti dati in licenza integrate anche in altri ambiti regolamentati.</span>
+  <span class="lc lang-zh">与摩根士丹利和 Evercore 共同打造的行业专版 ChatGPT，内置来自 Daloopa、PitchBook、LSEG News 和 Crunchbase 的授权数据，用于研究与客户材料。比行业本身更值得关注的是这一模式：预计其他受监管领域也会出现内置授权数据源的垂直版本。</span>
+  <br><a class="news-source" href="https://www.finextra.com/newsarticle/48391/openai-launches-chatgpt-for-financial-service" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
         </div>
       </div>
       <div class="news-card cat-company">
         <div class="news-card-header" data-i18n="cat_company">Company news</div>
         <div class="news-card-body">
-          <div class="news-item">
-            <span class="news-company">Nvidia – agreement to acquire Hugging Face</span>
-            <span class="tag-old">2026-09-03</span>
-            <br>
-            <span class="lc lang-en">Nvidia has agreed to buy Hugging Face for USD 12.93 billion – the platform most researchers use to publish and download open models and datasets. Nvidia says Hugging Face's chief executive approached it about the sale. The stated commitments: Nvidia compute will not be required to build or deploy through the platform, open-source and open-weight models from every builder continue to be supported, multi-cloud and multi-accelerator use stays, and the team keeps its 🤗 brand. For anyone whose published work depends on Hugging Face hosting, these are the promises to hold the deal to.</span>
-            <span class="lc lang-de">Nvidia hat sich auf den Kauf von Hugging Face für 12,93 Mrd. USD verständigt – der Plattform, über die die meisten Forschenden offene Modelle und Datensätze veröffentlichen und herunterladen. Laut Nvidia trat die Geschäftsführung von Hugging Face mit dem Verkauf an das Unternehmen heran. Die genannten Zusagen: Nvidia-Rechenleistung ist für Entwicklung und Betrieb über die Plattform nicht erforderlich, Open-Source- und Open-Weight-Modelle aller Anbieter werden weiter unterstützt, Multi-Cloud- und Multi-Beschleuniger-Nutzung bleibt, und das Team behält seine 🤗-Marke. Wer mit veröffentlichten Arbeiten von Hugging-Face-Hosting abhängt, sollte den Kauf an diesen Zusagen messen.</span>
-            <span class="lc lang-fr">Nvidia a conclu un accord pour racheter Hugging Face pour 12,93 milliards USD – la plateforme que la plupart des chercheurs utilisent pour publier et télécharger modèles et jeux de données ouverts. Selon Nvidia, c'est la direction de Hugging Face qui l'a approché pour cette vente. Les engagements annoncés : le calcul Nvidia ne sera pas requis pour développer ou déployer via la plateforme, les modèles open source et à poids ouverts de tous les créateurs restent pris en charge, l'usage multi-cloud et multi-accélérateur est maintenu, et l'équipe conserve sa marque 🤗. Pour quiconque dépend de l'hébergement Hugging Face, ce sont les promesses sur lesquelles juger l'opération.</span>
-            <span class="lc lang-it">Nvidia ha concordato l'acquisto di Hugging Face per 12,93 miliardi di USD – la piattaforma che la maggior parte dei ricercatori usa per pubblicare e scaricare modelli e dataset aperti. Secondo Nvidia è stata la dirigenza di Hugging Face a proporre la vendita. Gli impegni dichiarati: il calcolo Nvidia non sarà necessario per sviluppare o distribuire tramite la piattaforma, i modelli open source e open-weight di ogni sviluppatore continuano a essere supportati, l'uso multi-cloud e multi-acceleratore resta, e il team mantiene il marchio 🤗. Per chi dipende dall'hosting di Hugging Face, sono queste le promesse su cui valutare l'operazione.</span>
-            <span class="lc lang-zh">Nvidia 已达成协议，以 129.3 亿美元收购 Hugging Face——多数研究人员用于发布与下载开放模型和数据集的平台。Nvidia 称是 Hugging Face 管理层主动就出售事宜与其接洽。公开承诺包括：通过该平台开发或部署无需使用 Nvidia 算力；继续支持所有开发方的开源与开源权重模型；保留多云与多加速器使用方式；团队保留其 🤗 品牌。若已发表工作依赖 Hugging Face 托管，应以这些承诺来衡量此次交易。</span>
-            <br><a class="news-source" href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">Mistral – €3 billion Series D at over €21 billion valuation</span>
-            <br>
-            <span class="lc lang-en">Europe's leading frontier lab raised €3 billion, led by Samsung Electronics with co-leads Scaleup Europe Fund (managed by EQT) and PSG Equity. New investors include Advent, BlackRock-managed funds and the Grand Duchy of Luxembourg; existing backers include a16z, ASML, Nvidia and Salesforce Ventures. The money goes to frontier research and training compute. Mistral frames the whole raise around open-weight models and a "sovereign AI layer": data governance inside organisational boundaries, customisable models, private compute and auditable production systems.</span>
-            <span class="lc lang-de">Europas führendes Frontier-Labor hat 3 Mrd. EUR aufgenommen, angeführt von Samsung Electronics mit den Co-Leads Scaleup Europe Fund (verwaltet von EQT) und PSG Equity. Zu den neuen Investoren zählen Advent, von BlackRock verwaltete Fonds und das Großherzogtum Luxemburg; bestehende Geldgeber sind u. a. a16z, ASML, Nvidia und Salesforce Ventures. Das Geld fließt in Spitzenforschung und Trainingsrechenleistung. Mistral rahmt die gesamte Runde um Open-Weight-Modelle und eine „souveräne KI-Schicht": Datenhoheit innerhalb der Organisationsgrenzen, anpassbare Modelle, private Rechenleistung und auditierbare Produktionssysteme.</span>
-            <span class="lc lang-fr">Le principal laboratoire frontier européen a levé 3 milliards d'euros, sous la conduite de Samsung Electronics avec les co-chefs de file Scaleup Europe Fund (géré par EQT) et PSG Equity. Parmi les nouveaux investisseurs : Advent, des fonds gérés par BlackRock et le Grand-Duché de Luxembourg ; les soutiens existants comptent a16z, ASML, Nvidia et Salesforce Ventures. Les fonds iront à la recherche de pointe et au calcul d'entraînement. Mistral inscrit toute la levée dans les modèles à poids ouverts et une « couche d'IA souveraine » : gouvernance des données dans le périmètre de l'organisation, modèles personnalisables, calcul privé et systèmes de production auditables.</span>
-            <span class="lc lang-it">Il principale laboratorio frontier europeo ha raccolto 3 miliardi di euro, guidato da Samsung Electronics con co-lead Scaleup Europe Fund (gestito da EQT) e PSG Equity. Tra i nuovi investitori Advent, fondi gestiti da BlackRock e il Granducato del Lussemburgo; tra i sostenitori esistenti a16z, ASML, Nvidia e Salesforce Ventures. Il capitale va alla ricerca di frontiera e al calcolo per l'addestramento. Mistral inquadra tutta la raccolta attorno ai modelli open-weight e a un "livello di IA sovrano": governance dei dati entro i confini dell'organizzazione, modelli personalizzabili, calcolo privato e sistemi di produzione verificabili.</span>
-            <span class="lc lang-zh">欧洲领先的前沿实验室融资 30 亿欧元，由三星电子领投，EQT 管理的 Scaleup Europe Fund 与 PSG Equity 共同领投。新投资方包括 Advent、BlackRock 管理的基金及卢森堡大公国；既有投资方包括 a16z、ASML、Nvidia 与 Salesforce Ventures。资金将投入前沿研究与训练算力。Mistral 将整轮融资定位于开源权重模型与「自主 AI 层」：组织边界内的数据治理、可定制模型、私有算力与可审计的生产系统。</span>
-            <br><a class="news-source" href="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/" target="_blank"><span data-i18n="source_link">Source →</span></a>
-          </div>
+<div class="news-item">
+  <span class="news-company">Microsoft – Suleyman essay on 'model welfare'</span>
+  <br>
+  <span class="lc lang-en">Microsoft AI's chief executive published 'A warning about "model welfare"', arguing that AI systems are not conscious and that Anthropic writing uncertainty about Claude's moral status into its constitution is circular reasoning that encourages anthropomorphisation. Anthropic has not published a reply. Worth reading if you advise colleagues on how to talk about what these systems are.</span>
+  <span class="lc lang-de">Der CEO von Microsoft AI veröffentlichte „A warning about ‚model welfare'" und argumentiert, KI-Systeme seien nicht bewusst und Anthropics Verankerung der Unsicherheit über Claudes moralischen Status in dessen Verfassung sei ein Zirkelschluss, der Vermenschlichung fördere. Anthropic hat bislang nicht geantwortet. Lesenswert, wenn Sie Kolleginnen und Kollegen beraten, wie über diese Systeme zu sprechen ist.</span>
+  <span class="lc lang-fr">Le directeur général de Microsoft AI a publié « A warning about "model welfare" », soutenant que les systèmes d'IA ne sont pas conscients et que l'inscription par Anthropic de l'incertitude sur le statut moral de Claude dans sa constitution relève d'un raisonnement circulaire qui encourage l'anthropomorphisation. Anthropic n'a pas répondu. À lire si vous conseillez des collègues sur la manière de parler de ce que sont ces systèmes.</span>
+  <span class="lc lang-it">L'amministratore delegato di Microsoft AI ha pubblicato «A warning about "model welfare"», sostenendo che i sistemi di IA non sono coscienti e che l'inserimento da parte di Anthropic dell'incertezza sullo status morale di Claude nella sua costituzione è un ragionamento circolare che incoraggia l'antropomorfizzazione. Anthropic non ha replicato. Da leggere se consigliate i colleghi su come parlare di ciò che questi sistemi sono.</span>
+  <span class="lc lang-zh">微软 AI 首席执行官发表《A warning about "model welfare"》，主张 AI 系统并无意识，而 Anthropic 把「Claude 道德地位不确定」写入其宪章属于循环论证，会助长拟人化。Anthropic 尚未回应。若你需要就「该如何谈论这些系统的本质」向同事提供建议，值得一读。</span>
+  <br><a class="news-source" href="https://www.axios.com/2026/09/16/microsoft-ai-chief-anthropic-consciousness" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">Anthropic – Nvidia reported in talks over IPO stake</span>
+  <span class="tag-rumour" data-i18n="tag_rumour">rumour</span>
+  <span class="tag-old">2026-09-11</span>
+  <br>
+  <span class="lc lang-en">Reuters reports that Nvidia is in talks to commit up to USD 10 billion as anchor investor in an Anthropic listing that could raise as much as USD 100 billion, at a valuation reported at up to USD 2.3 trillion, targeted to price before the US midterm elections in November. Neither company has confirmed the talks.</span>
+  <span class="lc lang-de">Reuters berichtet, Nvidia verhandle über bis zu USD 10 Milliarden als Ankerinvestor bei einem Börsengang von Anthropic, der bis zu USD 100 Milliarden einbringen könnte, bei einer kolportierten Bewertung von bis zu USD 2,3 Billionen und einem Termin vor den US-Zwischenwahlen im November. Keines der beiden Unternehmen hat die Gespräche bestätigt.</span>
+  <span class="lc lang-fr">Reuters rapporte que Nvidia négocie un engagement pouvant atteindre 10 milliards USD en tant qu'investisseur de référence dans une introduction en bourse d'Anthropic susceptible de lever jusqu'à 100 milliards USD, pour une valorisation évoquée jusqu'à 2 300 milliards USD, prévue avant les élections de mi-mandat américaines de novembre. Aucune des deux entreprises n'a confirmé ces discussions.</span>
+  <span class="lc lang-it">Reuters riferisce che Nvidia è in trattativa per impegnare fino a 10 miliardi di USD come investitore di riferimento in una quotazione di Anthropic che potrebbe raccogliere fino a 100 miliardi di USD, a una valutazione riportata fino a 2.300 miliardi di USD, prevista prima delle elezioni di metà mandato statunitensi di novembre. Nessuna delle due aziende ha confermato i colloqui.</span>
+  <span class="lc lang-zh">路透社报道，英伟达正在洽谈以最高 100 亿美元作为基石投资者参与 Anthropic 上市，该次发行或募资至多 1,000 亿美元，估值据报道最高达 2.3 万亿美元，计划在 11 月美国中期选举前定价。两家公司均未确认相关谈判。</span>
+  <br><a class="news-source" href="https://the-decoder.com/nvidia-wants-to-pour-up-to-10-billion-into-anthropics-record-breaking-ipo/" target="_blank"><span data-i18n="source_link">Source →</span></a>
+</div>
         </div>
       </div>
       <div class="news-card cat-github">
         <div class="news-card-header" data-i18n="cat_github">Trending GitHub AI tools</div>
         <div class="news-card-body">
-          <div class="news-item">
-            <span class="news-company">mattpocock/skills</span>
-            <span class="repo-stars">★ 258,240</span>
-            <br>
-            <span class="lc lang-en">A published collection of agent skills – reusable instruction packs an AI coding assistant loads for a specific kind of task. About 13,100 new stars this week, the largest gain on the weekly list.</span>
-            <span class="lc lang-de">Eine veröffentlichte Sammlung von Agenten-Skills – wiederverwendbare Anleitungspakete, die ein KI-Programmierassistent für eine bestimmte Aufgabenart lädt. Rund 13.100 neue Sterne diese Woche, der größte Zuwachs der Wochenliste.</span>
-            <span class="lc lang-fr">Une collection publiée de compétences d'agent – des paquets d'instructions réutilisables qu'un assistant de code IA charge pour un type de tâche donné. Environ 13 100 nouvelles étoiles cette semaine, la plus forte progression du classement hebdomadaire.</span>
-            <span class="lc lang-it">Una raccolta pubblicata di skill per agenti – pacchetti di istruzioni riutilizzabili che un assistente di programmazione IA carica per un tipo specifico di attività. Circa 13.100 nuove stelle questa settimana, il maggior incremento della classifica settimanale.</span>
-            <span class="lc lang-zh">公开发布的智能体技能合集——AI 编程助手可针对特定任务类型加载的可复用指令包。本周新增约 13,100 颗星，为周榜涨幅第一。</span>
-            <br><a class="news-source" href="https://github.com/mattpocock/skills" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">tt-a1i/archify</span>
-            <span class="repo-stars">★ 56,649</span>
-            <br>
-            <span class="lc lang-en">Produces architecture and workflow diagrams as self-contained HTML with export, aimed at being verifiable rather than decorative. About 12,500 new stars this week.</span>
-            <span class="lc lang-de">Erzeugt Architektur- und Ablaufdiagramme als eigenständiges HTML mit Export, ausgelegt auf Nachprüfbarkeit statt Dekoration. Rund 12.500 neue Sterne diese Woche.</span>
-            <span class="lc lang-fr">Produit des diagrammes d'architecture et de flux de travail en HTML autonome avec export, conçus pour être vérifiables plutôt que décoratifs. Environ 12 500 nouvelles étoiles cette semaine.</span>
-            <span class="lc lang-it">Produce diagrammi di architettura e flusso di lavoro come HTML autonomo con esportazione, pensati per essere verificabili anziché decorativi. Circa 12.500 nuove stelle questa settimana.</span>
-            <span class="lc lang-zh">以自包含 HTML 生成架构与工作流程图并支持导出，目标是可核验而非仅作装饰。本周新增约 12,500 颗星。</span>
-            <br><a class="news-source" href="https://github.com/tt-a1i/archify" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">ayghri/i-have-adhd</span>
-            <span class="repo-stars">★ 36,138</span>
-            <br>
-            <span class="lc lang-en">A skill that stops a coding agent from burying its answer in preamble – it forces the conclusion to the top. About 4,650 new stars in 24 hours, top of today's list.</span>
-            <span class="lc lang-de">Ein Skill, der verhindert, dass ein Coding-Agent seine Antwort in Vorreden versteckt – die Schlussfolgerung wird nach oben gezwungen. Rund 4.650 neue Sterne in 24 Stunden, Spitze der heutigen Liste.</span>
-            <span class="lc lang-fr">Une compétence qui empêche un agent de code d'enterrer sa réponse sous un préambule – elle force la conclusion en haut. Environ 4 650 nouvelles étoiles en 24 heures, en tête du classement du jour.</span>
-            <span class="lc lang-it">Una skill che impedisce a un agente di programmazione di seppellire la risposta nel preambolo – porta la conclusione in cima. Circa 4.650 nuove stelle in 24 ore, prima nella lista di oggi.</span>
-            <span class="lc lang-zh">一项技能，可避免编程智能体把答案埋在冗长开场白里——强制将结论置顶。24 小时内新增约 4,650 颗星，位居当日榜首。</span>
-            <br><a class="news-source" href="https://github.com/ayghri/i-have-adhd" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">cathrynlavery/diagram-design</span>
-            <span class="repo-stars">★ 37,115</span>
-            <br>
-            <span class="lc lang-en">38 editorial diagram types for AI coding assistants, so generated figures look designed rather than default. About 2,250 new stars in 24 hours.</span>
-            <span class="lc lang-de">38 redaktionelle Diagrammtypen für KI-Programmierassistenten, damit erzeugte Abbildungen gestaltet statt standardmäßig aussehen. Rund 2.250 neue Sterne in 24 Stunden.</span>
-            <span class="lc lang-fr">38 types de diagrammes éditoriaux pour assistants de code IA, afin que les figures générées paraissent conçues et non standard. Environ 2 250 nouvelles étoiles en 24 heures.</span>
-            <span class="lc lang-it">38 tipi di diagrammi editoriali per assistenti di programmazione IA, così le figure generate sembrano progettate e non predefinite. Circa 2.250 nuove stelle in 24 ore.</span>
-            <span class="lc lang-zh">为 AI 编程助手提供 38 种编辑级图示类型，使生成的图形看起来是经过设计的，而非默认样式。24 小时内新增约 2,250 颗星。</span>
-            <br><a class="news-source" href="https://github.com/cathrynlavery/diagram-design" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">mksglu/context-mode</span>
-            <span class="repo-stars">★ 21,849</span>
-            <br>
-            <span class="lc lang-en">An MCP server that manages the context window of AI coding agents, claiming a 98% reduction in tool output and session memory that persists across platforms. About 1,330 new stars this week. MCP is the open standard for connecting tools and data sources to a model.</span>
-            <span class="lc lang-de">Ein MCP-Server, der das Kontextfenster von KI-Coding-Agenten verwaltet und eine Reduktion der Werkzeugausgabe um 98% sowie plattformübergreifend beständigen Sitzungsspeicher verspricht. Rund 1.330 neue Sterne diese Woche. MCP ist der offene Standard, um Werkzeuge und Datenquellen an ein Modell anzubinden.</span>
-            <span class="lc lang-fr">Un serveur MCP qui gère la fenêtre de contexte des agents de code IA, annonçant une réduction de 98% de la sortie des outils et une mémoire de session persistante entre plateformes. Environ 1 330 nouvelles étoiles cette semaine. MCP est le standard ouvert de connexion des outils et sources de données à un modèle.</span>
-            <span class="lc lang-it">Un server MCP che gestisce la finestra di contesto degli agenti di programmazione IA, dichiarando una riduzione del 98% dell'output degli strumenti e una memoria di sessione persistente tra piattaforme. Circa 1.330 nuove stelle questa settimana. MCP è lo standard aperto per collegare strumenti e fonti di dati a un modello.</span>
-            <span class="lc lang-zh">一个 MCP 服务器，用于管理 AI 编程智能体的上下文窗口，声称可将工具输出减少 98%，并实现跨平台持久的会话记忆。本周新增约 1,330 颗星。MCP 是将工具与数据源接入模型的开放标准。</span>
-            <br><a class="news-source" href="https://github.com/mksglu/context-mode" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
-          </div>
-          <div class="news-item">
-            <span class="news-company">Tencent/teamai-cli</span>
-            <span class="repo-stars">★ 3,399</span>
-            <br>
-            <span class="lc lang-en">Tencent's command-line tool for putting AI into a team's shared workflows rather than one person's editor. New repository, about 556 new stars in 24 hours.</span>
-            <span class="lc lang-de">Tencents Kommandozeilenwerkzeug, um KI in die gemeinsamen Arbeitsabläufe eines Teams zu bringen statt in den Editor einer einzelnen Person. Neues Repositorium, rund 556 neue Sterne in 24 Stunden.</span>
-            <span class="lc lang-fr">L'outil en ligne de commande de Tencent pour intégrer l'IA aux flux de travail partagés d'une équipe plutôt qu'à l'éditeur d'une seule personne. Nouveau dépôt, environ 556 nouvelles étoiles en 24 heures.</span>
-            <span class="lc lang-it">Lo strumento a riga di comando di Tencent per portare l'IA nei flussi di lavoro condivisi di un team invece che nell'editor di una singola persona. Repository nuovo, circa 556 nuove stelle in 24 ore.</span>
-            <span class="lc lang-zh">腾讯的命令行工具，旨在把 AI 融入团队共享工作流，而非仅停留在个人编辑器中。新仓库，24 小时内新增约 556 颗星。</span>
-            <br><a class="news-source" href="https://github.com/Tencent/teamai-cli" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
-          </div>
+<div class="news-item">
+  <span class="news-company">alibaba/open-code-review</span>
+  <span class="repo-stars">★ 32,995 (+3,231)</span>
+  <br>
+  <span class="lc lang-en">Alibaba's internal code-review tool, now public: deterministic static checks run alongside an LLM agent, so review comments are grounded in analysis rather than free association.</span>
+  <span class="lc lang-de">Alibabas internes Code-Review-Werkzeug, nun öffentlich: deterministische statische Prüfungen laufen neben einem LLM-Agenten, sodass Review-Kommentare auf Analyse beruhen statt auf freier Assoziation.</span>
+  <span class="lc lang-fr">L'outil interne de revue de code d'Alibaba, désormais public : des vérifications statiques déterministes s'exécutent aux côtés d'un agent LLM, de sorte que les commentaires reposent sur une analyse plutôt que sur une libre association.</span>
+  <span class="lc lang-it">Lo strumento interno di revisione del codice di Alibaba, ora pubblico: controlli statici deterministici girano insieme a un agente LLM, così i commenti si basano sull'analisi e non sulla libera associazione.</span>
+  <span class="lc lang-zh">阿里巴巴内部的代码审查工具现已公开：确定性静态检查与 LLM 智能体并行运行，使审查意见基于分析而非自由联想。</span>
+  <br><a class="news-source" href="https://github.com/alibaba/open-code-review" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">JustVugg/colibri</span>
+  <span class="repo-stars">★ 35,272 (+1,546)</span>
+  <br>
+  <span class="lc lang-en">Runs large mixture-of-experts models in pure C with no dependencies – aimed at getting frontier-class weights onto hardware you already own rather than rented GPUs.</span>
+  <span class="lc lang-de">Führt grosse Mixture-of-Experts-Modelle in reinem C ohne Abhängigkeiten aus – mit dem Ziel, Gewichte der Spitzenklasse auf bereits vorhandener Hardware statt auf gemieteten GPUs zu betreiben.</span>
+  <span class="lc lang-fr">Exécute de grands modèles à mélange d'experts en C pur, sans dépendances – pour faire tourner des poids de classe frontière sur du matériel que vous possédez déjà plutôt que sur des GPU loués.</span>
+  <span class="lc lang-it">Esegue grandi modelli mixture-of-experts in C puro senza dipendenze – per far girare pesi di classe frontiera su hardware che già possedete anziché su GPU noleggiate.</span>
+  <span class="lc lang-zh">用纯 C、零依赖运行大型专家混合（MoE）模型——目标是让前沿级权重跑在你已有的硬件上，而非租用的 GPU。</span>
+  <br><a class="news-source" href="https://github.com/JustVugg/colibri" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">Tencent/WeKnora</span>
+  <span class="repo-stars">★ 25,752 (+1,197)</span>
+  <br>
+  <span class="lc lang-en">A document-knowledge platform pairing retrieval-augmented generation with a reasoning agent – the shape most institutional 'ask our own documents' projects end up needing.</span>
+  <span class="lc lang-de">Eine Dokumenten-Wissensplattform, die Retrieval-Augmented Generation mit einem Reasoning-Agenten verbindet – genau die Form, die institutionelle Projekte vom Typ „unsere eigenen Dokumente befragen" am Ende brauchen.</span>
+  <span class="lc lang-fr">Une plateforme de connaissance documentaire associant génération augmentée par recherche et agent de raisonnement – la forme dont finissent par avoir besoin la plupart des projets institutionnels de type « interroger nos propres documents ».</span>
+  <span class="lc lang-it">Una piattaforma di conoscenza documentale che unisce generazione aumentata dal recupero e un agente di ragionamento – la forma di cui finiscono per avere bisogno molti progetti istituzionali del tipo «interrogare i nostri documenti».</span>
+  <span class="lc lang-zh">一个文档知识平台，将检索增强生成与推理智能体结合——多数机构级「查询我们自己的文档」项目最终需要的正是这种形态。</span>
+  <br><a class="news-source" href="https://github.com/Tencent/WeKnora" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">affaan-m/ECC</span>
+  <span class="repo-stars">★ 260,626 (+1,057)</span>
+  <br>
+  <span class="lc lang-en">An optimisation harness for coding agents including Claude Code – it tunes how the agent is prompted and orchestrated rather than changing the underlying model.</span>
+  <span class="lc lang-de">Ein Optimierungsgerüst für Coding-Agenten einschliesslich Claude Code – es justiert Prompting und Orchestrierung des Agenten, ohne das zugrunde liegende Modell zu ändern.</span>
+  <span class="lc lang-fr">Un cadre d'optimisation pour agents de codage, dont Claude Code – il ajuste la manière dont l'agent est sollicité et orchestré, sans modifier le modèle sous-jacent.</span>
+  <span class="lc lang-it">Un'impalcatura di ottimizzazione per agenti di codifica, incluso Claude Code – regola come l'agente viene sollecitato e orchestrato senza modificare il modello sottostante.</span>
+  <span class="lc lang-zh">面向编码智能体（含 Claude Code）的优化框架——调整智能体的提示与编排方式，而不改动底层模型。</span>
+  <br><a class="news-source" href="https://github.com/affaan-m/ECC" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">alphaXiv/OpenResearch</span>
+  <span class="repo-stars">★ 4,691 (+1,017)</span>
+  <br>
+  <span class="lc lang-en">Turns a coding agent into a research agent: literature search, reading and synthesis driven from the same terminal loop normally used for code.</span>
+  <span class="lc lang-de">Verwandelt einen Coding-Agenten in einen Forschungs-Agenten: Literatursuche, Lesen und Synthese gesteuert aus derselben Terminal-Schleife, die normalerweise für Code dient.</span>
+  <span class="lc lang-fr">Transforme un agent de codage en agent de recherche : recherche bibliographique, lecture et synthèse pilotées depuis la même boucle de terminal habituellement utilisée pour le code.</span>
+  <span class="lc lang-it">Trasforma un agente di codifica in un agente di ricerca: ricerca bibliografica, lettura e sintesi guidate dallo stesso ciclo di terminale usato di norma per il codice.</span>
+  <span class="lc lang-zh">把编码智能体变成研究智能体：文献检索、阅读与综合，均在平时用于写代码的同一终端循环中驱动。</span>
+  <br><a class="news-source" href="https://github.com/alphaXiv/OpenResearch" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+</div>
+<div class="news-item">
+  <span class="news-company">cloudflare/security-audit-skill</span>
+  <span class="repo-stars">★ 8,236 (+927)</span>
+  <br>
+  <span class="lc lang-en">Cloudflare's multi-phase security-audit skill for coding agents – a vendor shipping its review methodology as an executable agent skill rather than a PDF.</span>
+  <span class="lc lang-de">Cloudflares mehrphasige Sicherheitsaudit-Fähigkeit für Coding-Agenten – ein Anbieter, der seine Prüfmethodik als ausführbare Agenten-Fähigkeit statt als PDF ausliefert.</span>
+  <span class="lc lang-fr">La compétence d'audit de sécurité multi-phases de Cloudflare pour agents de codage – un fournisseur qui livre sa méthodologie de revue sous forme de compétence exécutable plutôt qu'en PDF.</span>
+  <span class="lc lang-it">La skill di audit di sicurezza multi-fase di Cloudflare per agenti di codifica – un fornitore che consegna la propria metodologia di revisione come skill eseguibile invece che come PDF.</span>
+  <span class="lc lang-zh">Cloudflare 面向编码智能体的多阶段安全审计技能——厂商以可执行的智能体技能交付其审查方法论，而非一份 PDF。</span>
+  <br><a class="news-source" href="https://github.com/cloudflare/security-audit-skill" target="_blank"><span data-i18n="gh_source">View on GitHub →</span></a>
+</div>
         </div>
       </div>
     </div>
@@ -880,7 +945,8 @@ const T = {
     col_hle:'Humanity\'s Last Exam', col_hle_hint:'hard academic questions, 0–100%',
     col_omni:'AA-Omniscience accuracy', col_omni_hint:'factual questions answered correctly, 0–100%',
     col_gdpval:'GDPval-AA v2', col_gdpval_hint:'agentic real-world work tasks, 0–100%',
-    legend:'<strong>How to read:</strong> The <strong>Artificial Analysis Intelligence Index</strong> (0–100) is a single blended quality score. The next four columns break it down: <strong>SciCode</strong> = writing working scientific analysis code (0–100%); <strong>Humanity\'s Last Exam</strong> = frontier academic questions (0–100%); <strong>AA-Omniscience accuracy</strong> = share of 6,000 factual questions across 42 topics <strong>GDPval-AA v2</strong> = 220 real-world professional tasks across 44 occupations and 9 industries, scored as an Elo rating from blind pairwise comparisons and normalised to 0–100% as (Elo − 500) / 2000, with a human professional baseline of 1,000 Elo (50%). It is a relative win-rate score, <em>not</em> the share of tasks completed correctly. answered correctly (0–100%). Accuracy counts correct answers only and says nothing about whether a model admits ignorance or invents an answer. <span class="badge-os" style="vertical-align:baseline">Open</span> = weights publicly downloadable. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = input modalities beyond text. Open-weights status comes from the Artificial Analysis dataset; modalities were checked per model on Artificial Analysis or the provider\'s API docs. A missing badge means "not confirmed", not "not supported". <strong>Price</strong> = CHF/1M tokens at USD 1 = CHF 0.8086 (10 September 2026), from the Artificial Analysis blended rate assuming a 7:2:1 ratio of cache-hit : input : output tokens. It is a per-token rate, so it is identical for every reasoning-effort setting of a model – what changes is how many tokens the model spends. Speed ≈ words/sec. Context = max text at once. "not reported" means the value is not published; those cells always sort to the bottom. Data: <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+' – verify before decisions.',
+    tag_rumour:'rumour',
+    legend:'<strong>How to read:</strong> The <strong>Artificial Analysis Intelligence Index</strong> (0–100) is a single blended quality score. The four columns immediately after it break it down: <strong>SciCode</strong> = writing working scientific analysis code (0–100%); <strong>Humanity\'s Last Exam</strong> = 2,158 frontier academic questions across maths, humanities and natural sciences (0–100%); <strong>AA-Omniscience accuracy</strong> = the share of 6,000 factual questions across 42 topics answered correctly (0–100%); <strong>GDPval-AA v2</strong> = 220 real-world professional tasks across 44 occupations and 9 industries, scored as an Elo rating from blind pairwise comparisons and normalised to 0–100% as (Elo − 500) / 2000, with a human professional baseline of 1,000 Elo (50%) – a relative win-rate score, <em>not</em> the share of tasks completed correctly. <em>Accuracy counts correct answers only</em> and says nothing about whether a model admits ignorance or invents an answer – Artificial Analysis publishes a separate hallucination rate and a combined Omniscience Index for that. <span class="badge-os" style="vertical-align:baseline">Open</span> = weights publicly downloadable. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = input modalities beyond text. Open-weights status comes from the Artificial Analysis dataset; modalities were confirmed per model in the provider\'s own API documentation (Anthropic, OpenAI, Meta, Alibaba Cloud Model Studio, xAI). A missing badge means "not confirmed", not "not supported" – GLM-5.3 carries no modality badge because Z AI had not published confirmed input modalities at the time of writing. No model in this top 20 has confirmed audio input. <strong>Price</strong> = CHF/1M tokens at USD 1 = CHF 0.82 (rate of 16 September 2026), from the Artificial Analysis blended rate assuming a 7:2:1 ratio of cache-hit : input : output tokens. It is a per-token rate, so it is identical for every reasoning-effort setting of a model – what changes is how many tokens the model spends. Speed ≈ words/sec. Context = max text at once. "not reported" means the value is not published; those cells always sort to the bottom – all 20 models here have a published score for all four benchmarks. Suffixes such as (max), (high), (medium), (low) are reasoning-effort settings of the same model, scored separately; "(with fallback)" means the vendor routes overflow requests to a fallback model. Data: <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+' – verify before decisions.',
     news_title:"What's new this week",
     news_desc:'Announcements from AI companies – items older than 72 hours are date-stamped. Click "Source" to read the original.',
     cat_releases:'New AI models released', cat_pricing:'Price and plan changes',
@@ -904,7 +970,8 @@ const T = {
     col_hle:'Humanity\'s Last Exam', col_hle_hint:'schwierige akademische Fragen, 0–100%',
     col_omni:'AA-Omniscience Genauigkeit', col_omni_hint:'korrekt beantwortete Faktenfragen, 0–100%',
     col_gdpval:'GDPval-AA v2', col_gdpval_hint:'agentische reale Arbeitsaufgaben, 0–100%',
-    legend:'<strong>So lesen Sie die Tabelle:</strong> Der <strong>Artificial Analysis Intelligence Index</strong> (0–100) ist ein einzelner gemischter Qualitätswert. Die vier folgenden Spalten schlüsseln ihn auf: <strong>SciCode</strong> = funktionierenden wissenschaftlichen Analysecode schreiben (0–100%); <strong>Humanity\'s Last Exam</strong> = anspruchsvolle akademische Fragen (0–100%); <strong>AA-Omniscience Genauigkeit</strong> = Anteil korrekt beantworteter Fragen aus 6.000 Faktenfragen in 42 Themengebieten <strong>GDPval-AA v2</strong> = 220 reale Arbeitsaufgaben aus 44 Berufen und 9 Branchen, als Elo-Wert aus blinden Paarvergleichen bewertet und mit (Elo − 500) / 2000 auf 0–100% normiert; die menschliche Fachkraft-Basislinie liegt bei 1.000 Elo (50%). Es ist ein relativer Gewinnquoten-Wert, <em>nicht</em> der Anteil korrekt erledigter Aufgaben. (0–100%). Gezählt werden nur richtige Antworten; über Unwissen-Eingestehen oder Erfinden sagt der Wert nichts. <span class="badge-os" style="vertical-align:baseline">Open</span> = Gewichte öffentlich herunterladbar. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = Eingabemodalitäten über Text hinaus. Der Open-Weights-Status stammt aus dem Artificial-Analysis-Datensatz; Modalitäten wurden je Modell bei Artificial Analysis oder in der API-Dokumentation des Anbieters geprüft. Ein fehlendes Badge bedeutet „nicht bestätigt", nicht „nicht unterstützt". <strong>Preis</strong> = CHF/1M Tokens bei USD 1 = CHF 0.8086 (10. September 2026), aus dem gemischten Satz von Artificial Analysis mit einem Verhältnis von 7:2:1 für Cache-Treffer : Eingabe : Ausgabe. Es ist ein Satz pro Token und daher für jede Denkaufwand-Stufe eines Modells identisch – es ändert sich nur, wie viele Tokens das Modell verbraucht. Geschwindigkeit ≈ Wörter/Sek. Kontext = maximaler Text auf einmal. „not reported" heißt, der Wert ist nicht veröffentlicht; solche Zellen sortieren stets nach unten. Daten: <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'.',
+    tag_rumour:'Gerücht',
+    legend:'<strong>So lesen Sie die Tabelle:</strong> Der <strong>Artificial Analysis Intelligence Index</strong> (0–100) ist ein einzelner gemischter Qualitätswert. Die vier folgenden Spalten schlüsseln ihn auf: <strong>SciCode</strong> = funktionierenden wissenschaftlichen Analysecode schreiben (0–100%); <strong>Humanity\'s Last Exam</strong> = 2.158 anspruchsvolle akademische Fragen aus Mathematik, Geistes- und Naturwissenschaften (0–100%); <strong>AA-Omniscience Genauigkeit</strong> = Anteil korrekt beantworteter Fragen aus 6.000 Faktenfragen in 42 Themengebieten (0–100%); <strong>GDPval-AA v2</strong> = 220 reale Arbeitsaufgaben aus 44 Berufen und 9 Branchen, als Elo-Wert aus blinden Paarvergleichen bewertet und mit (Elo − 500) / 2000 auf 0–100% normiert; die menschliche Fachkraft-Basislinie liegt bei 1.000 Elo (50%) – ein relativer Gewinnquoten-Wert, <em>nicht</em> der Anteil korrekt erledigter Aufgaben. <em>Gezählt werden nur richtige Antworten</em>; über Unwissen-Eingestehen oder Erfinden sagt der Wert nichts – Artificial Analysis veröffentlicht dafür eine separate Halluzinationsrate und einen kombinierten Omniscience Index. <span class="badge-os" style="vertical-align:baseline">Open</span> = Gewichte öffentlich herunterladbar. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = Eingabemodalitäten über Text hinaus. Der Open-Weights-Status stammt aus dem Artificial-Analysis-Datensatz; Modalitäten wurden je Modell in der API-Dokumentation des Anbieters geprüft (Anthropic, OpenAI, Meta, Alibaba Cloud Model Studio, xAI). Ein fehlendes Badge bedeutet „nicht bestätigt", nicht „nicht unterstützt" – GLM-5.3 trägt kein Modalitäts-Badge, da Z AI zum Redaktionszeitpunkt keine bestätigten Eingabemodalitäten veröffentlicht hatte. Kein Modell dieser Top 20 hat bestätigte Audio-Eingabe. <strong>Preis</strong> = CHF/1M Tokens bei USD 1 = CHF 0.82 (Kurs vom 16. September 2026), aus dem gemischten Satz von Artificial Analysis mit einem Verhältnis von 7:2:1 für Cache-Treffer : Eingabe : Ausgabe. Es ist ein Satz pro Token und daher für jede Denkaufwand-Stufe eines Modells identisch – es ändert sich nur, wie viele Tokens das Modell verbraucht. Geschwindigkeit ≈ Wörter/Sek. Kontext = maximaler Text auf einmal. „not reported" heisst, der Wert ist nicht veröffentlicht; solche Zellen sortieren stets nach unten – alle 20 Modelle hier haben für alle vier Benchmarks einen veröffentlichten Wert. Endungen wie (max), (high), (medium), (low) sind Denkaufwand-Stufen desselben Modells, separat bewertet; „(with fallback)" bedeutet, dass der Anbieter überzählige Anfragen an ein Ausweichmodell leitet. Daten: <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'.',
     news_title:'Neuigkeiten dieser Woche',
     news_desc:'KI-Ankündigungen – ältere Einträge sind datiert. Auf „Quelle" klicken für das Original.',
     cat_releases:'Neue KI-Modelle veröffentlicht', cat_pricing:'Preis- und Planänderungen',
@@ -928,7 +995,8 @@ const T = {
     col_hle:'Humanity\'s Last Exam', col_hle_hint:'questions académiques difficiles, 0–100%',
     col_omni:'Exactitude AA-Omniscience', col_omni_hint:'questions factuelles correctes, 0–100%',
     col_gdpval:'GDPval-AA v2', col_gdpval_hint:'tâches professionnelles réelles en mode agent, 0–100%',
-    legend:'<strong>Comment lire :</strong> L\'<strong>Artificial Analysis Intelligence Index</strong> (0–100) est un score de qualité composite unique. Les quatre colonnes suivantes le détaillent : <strong>SciCode</strong> = écrire du code d\'analyse scientifique fonctionnel (0–100%) ; <strong>Humanity\'s Last Exam</strong> = questions académiques de pointe (0–100%) ; <strong>Exactitude AA-Omniscience</strong> = part des 6 000 questions factuelles sur 42 domaines auxquelles le modèle répond correctement <strong>GDPval-AA v2</strong> = 220 tâches professionnelles réelles couvrant 44 métiers et 9 secteurs, notées par un score Elo issu de comparaisons appariées en aveugle et normalisées de 0 à 100% par (Elo − 500) / 2000 ; la référence humaine est à 1 000 Elo (50%). C\'est un score relatif de taux de victoire, <em>pas</em> la part de tâches réussies. (0–100%). Seules les bonnes réponses comptent : rien n\'est dit sur l\'aveu d\'ignorance ou l\'invention. <span class="badge-os" style="vertical-align:baseline">Open</span> = poids téléchargeables publiquement. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = modalités d\'entrée au-delà du texte. Le statut des poids ouverts provient du jeu de données Artificial Analysis ; les modalités ont été vérifiées modèle par modèle sur Artificial Analysis ou dans la documentation API du fournisseur. Un badge absent signifie « non confirmé », pas « non pris en charge ». <strong>Prix</strong> = CHF/1M tokens à 1 USD = 0,8086 CHF (10 septembre 2026), d\'après le tarif mixte d\'Artificial Analysis supposant un ratio 7:2:1 entre tokens en cache, entrée et sortie. C\'est un tarif par token, donc identique pour tous les niveaux d\'effort d\'un modèle – seul change le nombre de tokens consommés. Vitesse ≈ mots/sec. Contexte = texte maximal en une fois. « not reported » signifie que la valeur n\'est pas publiée ; ces cellules se classent toujours en bas. Données : <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'.',
+    tag_rumour:'rumeur',
+    legend:'<strong>Comment lire :</strong> L\'<strong>Artificial Analysis Intelligence Index</strong> (0–100) est un score de qualité composite unique. Les quatre colonnes suivantes le détaillent : <strong>SciCode</strong> = écrire du code d\'analyse scientifique fonctionnel (0–100%) ; <strong>Humanity\'s Last Exam</strong> = 2 158 questions académiques de pointe en mathématiques, sciences humaines et sciences naturelles (0–100%) ; <strong>Exactitude AA-Omniscience</strong> = part des 6 000 questions factuelles sur 42 domaines auxquelles le modèle répond correctement (0–100%) ; <strong>GDPval-AA v2</strong> = 220 tâches professionnelles réelles couvrant 44 métiers et 9 secteurs, notées par un score Elo issu de comparaisons appariées en aveugle et normalisées de 0 à 100% par (Elo − 500) / 2000, la référence humaine étant à 1 000 Elo (50%) – un score relatif de taux de victoire, <em>pas</em> la part de tâches réussies. <em>Seules les bonnes réponses comptent</em> : rien n\'est dit sur l\'aveu d\'ignorance ou l\'invention – Artificial Analysis publie séparément un taux d\'hallucination et un Omniscience Index combiné. <span class="badge-os" style="vertical-align:baseline">Open</span> = poids téléchargeables publiquement. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = modalités d\'entrée au-delà du texte. Le statut des poids ouverts provient du jeu de données Artificial Analysis ; les modalités ont été vérifiées modèle par modèle dans la documentation API du fournisseur (Anthropic, OpenAI, Meta, Alibaba Cloud Model Studio, xAI). Un badge absent signifie « non confirmé », pas « non pris en charge » – GLM-5.3 n\'a pas de badge de modalité car Z AI n\'avait pas publié de modalités d\'entrée confirmées à la rédaction. Aucun modèle de ce top 20 n\'a d\'entrée audio confirmée. <strong>Prix</strong> = CHF/1M tokens à 1 USD = CHF 0.82 (cours du 16 septembre 2026), d\'après le tarif mixte d\'Artificial Analysis supposant un ratio 7:2:1 entre tokens en cache, entrée et sortie. C\'est un tarif par token, donc identique pour tous les niveaux d\'effort d\'un modèle – seul change le nombre de tokens consommés. Vitesse ≈ mots/sec. Contexte = texte maximal en une fois. « not reported » signifie que la valeur n\'est pas publiée ; ces cellules se classent toujours en bas – les 20 modèles présentés ont un score publié pour les quatre bancs d\'essai. Les suffixes (max), (high), (medium), (low) sont des niveaux d\'effort de raisonnement du même modèle, évalués séparément ; « (with fallback) » signifie que le fournisseur redirige les requêtes en surplus vers un modèle de repli. Données : <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'.',
     news_title:'Quoi de neuf cette semaine',
     news_desc:'Annonces des entreprises IA – éléments de plus de 72 h datés. Cliquez sur « Source » pour l\'original.',
     cat_releases:'Nouveaux modèles IA publiés', cat_pricing:'Changements de prix et d\'offres',
@@ -952,7 +1020,8 @@ const T = {
     col_hle:'Humanity\'s Last Exam', col_hle_hint:'domande accademiche difficili, 0–100%',
     col_omni:'Accuratezza AA-Omniscience', col_omni_hint:'domande fattuali corrette, 0–100%',
     col_gdpval:'GDPval-AA v2', col_gdpval_hint:'compiti di lavoro reali in modalità agente, 0–100%',
-    legend:'<strong>Come leggere:</strong> L\'<strong>Artificial Analysis Intelligence Index</strong> (0–100) è un unico punteggio di qualità composito. Le quattro colonne successive lo scompongono: <strong>SciCode</strong> = scrivere codice di analisi scientifica funzionante (0–100%); <strong>Humanity\'s Last Exam</strong> = domande accademiche di frontiera (0–100%); <strong>Accuratezza AA-Omniscience</strong> = quota delle 6.000 domande fattuali su 42 ambiti a cui il modello risponde correttamente <strong>GDPval-AA v2</strong> = 220 compiti professionali reali in 44 occupazioni e 9 settori, valutati con un punteggio Elo da confronti appaiati in cieco e normalizzati a 0–100% con (Elo − 500) / 2000; la linea di base umana è 1.000 Elo (50%). È un punteggio relativo di tasso di vittoria, <em>non</em> la quota di compiti completati correttamente. (0–100%). Conta solo le risposte corrette e non dice nulla su ammissione di ignoranza o invenzione. <span class="badge-os" style="vertical-align:baseline">Open</span> = pesi scaricabili pubblicamente. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = modalità di input oltre al testo. Lo stato dei pesi aperti proviene dal dataset di Artificial Analysis; le modalità sono state verificate modello per modello su Artificial Analysis o nella documentazione API del fornitore. Un badge assente significa "non confermato", non "non supportato". <strong>Prezzo</strong> = CHF/1M token a 1 USD = 0,8086 CHF (10 settembre 2026), dalla tariffa mista di Artificial Analysis che assume un rapporto 7:2:1 tra token in cache, input e output. È una tariffa per token, quindi identica per ogni livello di sforzo di un modello – cambia solo quanti token il modello spende. Velocità ≈ parole/sec. Contesto = testo massimo in una volta. "not reported" indica che il valore non è pubblicato; tali celle si ordinano sempre in fondo. Dati: <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'.',
+    tag_rumour:'indiscrezione',
+    legend:'<strong>Come leggere:</strong> L\'<strong>Artificial Analysis Intelligence Index</strong> (0–100) è un unico punteggio di qualità composito. Le quattro colonne successive lo scompongono: <strong>SciCode</strong> = scrivere codice di analisi scientifica funzionante (0–100%); <strong>Humanity\'s Last Exam</strong> = 2.158 domande accademiche di frontiera fra matematica, discipline umanistiche e scienze naturali (0–100%); <strong>Accuratezza AA-Omniscience</strong> = quota delle 6.000 domande fattuali su 42 ambiti a cui il modello risponde correttamente (0–100%); <strong>GDPval-AA v2</strong> = 220 compiti professionali reali in 44 occupazioni e 9 settori, valutati con un punteggio Elo da confronti appaiati in cieco e normalizzati a 0–100% con (Elo − 500) / 2000, con linea di base umana a 1.000 Elo (50%) – un punteggio relativo di tasso di vittoria, <em>non</em> la quota di compiti completati correttamente. <em>Conta solo le risposte corrette</em> e non dice nulla su ammissione di ignoranza o invenzione – Artificial Analysis pubblica a parte un tasso di allucinazione e un Omniscience Index combinato. <span class="badge-os" style="vertical-align:baseline">Open</span> = pesi scaricabili pubblicamente. <span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = modalità di input oltre al testo. Lo stato dei pesi aperti proviene dal dataset di Artificial Analysis; le modalità sono state verificate modello per modello nella documentazione API del fornitore (Anthropic, OpenAI, Meta, Alibaba Cloud Model Studio, xAI). Un badge assente significa "non confermato", non "non supportato" – GLM-5.3 non ha badge di modalità perché Z AI non aveva pubblicato modalità di input confermate al momento della stesura. Nessun modello di questa top 20 ha input audio confermato. <strong>Prezzo</strong> = CHF/1M token a 1 USD = CHF 0.82 (cambio del 16 settembre 2026), dalla tariffa mista di Artificial Analysis che assume un rapporto 7:2:1 tra token in cache, input e output. È una tariffa per token, quindi identica per ogni livello di sforzo di un modello – cambia solo quanti token il modello spende. Velocità ≈ parole/sec. Contesto = testo massimo in una volta. "not reported" indica che il valore non è pubblicato; tali celle si ordinano sempre in fondo – tutti i 20 modelli qui presenti hanno un punteggio pubblicato per tutti e quattro i benchmark. I suffissi (max), (high), (medium), (low) sono livelli di sforzo di ragionamento dello stesso modello, valutati separatamente; "(with fallback)" indica che il fornitore inoltra le richieste in eccesso a un modello di riserva. Dati: <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'.',
     news_title:'Novità di questa settimana',
     news_desc:'Annunci delle aziende IA – elementi più vecchi di 72 ore sono datati. Clicca "Fonte" per l\'originale.',
     cat_releases:'Nuovi modelli IA rilasciati', cat_pricing:'Modifiche a prezzi e piani',
@@ -965,7 +1034,7 @@ const T = {
   zh: {
     lang_label:'语言', dark_toggle:'深色模式', subtitle:'前沿 AI 模型排行榜与最新资讯',
     lb_title:'顶级前沿 AI 模型',
-    lb_desc:'按 <strong>Intelligence Index</strong> 排名 — 来自 <a href="'+AA+'" target="_blank">Artificial Analysis</a> 的综合质量评分（0–100）。分数越高越好。点击列标题可排序。',
+    lb_desc:'按 <strong>Intelligence Index</strong> 排名 —— 来自 <a href="'+AA+'" target="_blank">Artificial Analysis</a> 的综合质量评分（0–100）。分数越高越好。点击列标题可排序。',
     col_model:'模型', col_model_hint:'名称 + 开源/模态标签',
     col_company:'公司', col_company_hint:'开发商',
     col_score:'Artificial Analysis Intelligence Index', col_score_hint:'综合质量评分，0–100',
@@ -976,9 +1045,10 @@ const T = {
     col_hle:'Humanity\'s Last Exam', col_hle_hint:'高难度学术问题，0–100%',
     col_omni:'AA-Omniscience 准确率', col_omni_hint:'事实类问题答对比例，0–100%',
     col_gdpval:'GDPval-AA v2', col_gdpval_hint:'智能体真实工作任务，0–100%',
-    legend:'<strong>如何阅读：</strong><strong>Artificial Analysis Intelligence Index</strong>（0–100）为单一综合质量评分。紧随其后的四列对其进行拆解：<strong>SciCode</strong> = 编写可运行的科学分析代码（0–100%）；<strong>Humanity\'s Last Exam</strong> = 前沿学术问题（0–100%）；<strong>AA-Omniscience 准确率</strong> = 覆盖 42 个主题的 6,000 道事实类问题中答对的比例<strong>GDPval-AA v2</strong> = 覆盖 44 种职业、9 大行业的 220 项真实工作任务，采用盲测两两比较的 Elo 评分，并按 (Elo − 500) / 2000 归一化为 0–100%；人类专业人员基准为 1,000 Elo（50%）。这是相对胜率评分，<em>并非</em>正确完成任务的比例。 （0–100%）。只统计答对数量，不反映模型在不知道时是承认还是编造。<span class="badge-os" style="vertical-align:baseline">Open</span> = 权重可公开下载。<span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = 除文本外的输入模态。开源权重状态取自 Artificial Analysis 数据集；模态则逐个模型在 Artificial Analysis 或厂商 API 文档中核实。没有标签表示「未确认」，而非「不支持」。<strong>价格</strong> = 瑞士法郎/百万token，按 1 美元 = 0.8086 瑞士法郎换算（2026 年 9 月 10 日），源自 Artificial Analysis 的混合价格，其假设缓存命中 : 输入 : 输出的比例为 7:2:1。这是按 token 计的费率，因此同一模型各推理投入档位完全相同——变化的只是模型消耗的 token 数量。速度 ≈ 词/秒。上下文 = 单次可读取的最大文本量。「not reported」表示该数值未公布，此类单元格排序时始终置底。数据来自 <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'。',
+    tag_rumour:'传闻',
+    legend:'<strong>如何阅读：</strong><strong>Artificial Analysis Intelligence Index</strong>（0–100）为单一综合质量评分。紧随其后的四列对其进行拆解：<strong>SciCode</strong> = 编写可运行的科学分析代码（0–100%）；<strong>Humanity\'s Last Exam</strong> = 覆盖数学、人文与自然科学的 2,158 道前沿学术问题（0–100%）；<strong>AA-Omniscience 准确率</strong> = 覆盖 42 个主题的 6,000 道事实类问题中答对的比例（0–100%）；<strong>GDPval-AA v2</strong> = 覆盖 44 种职业、9 大行业的 220 项真实工作任务，采用盲测两两比较的 Elo 评分，并按 (Elo − 500) / 2000 归一化为 0–100%，人类专业人员基准为 1,000 Elo（50%）——这是相对胜率评分，<em>并非</em>正确完成任务的比例。<em>准确率只统计答对数量</em>，不反映模型在不知道时是承认还是编造——Artificial Analysis 另行公布幻觉率与综合 Omniscience 指数。<span class="badge-os" style="vertical-align:baseline">Open</span> = 权重可公开下载。<span class="badge-mm" style="vertical-align:baseline">Vision</span>/<span class="badge-mm" style="vertical-align:baseline">Video</span> = 除文本外的输入模态。开源权重状态取自 Artificial Analysis 数据集；模态则逐个模型在厂商自有 API 文档中核实（Anthropic、OpenAI、Meta、阿里云百炼、xAI）。没有标签表示「未确认」，而非「不支持」——GLM-5.3 未标注模态，因为撰写时 Z AI 尚未公布已确认的输入模态。本前 20 名中没有模型确认支持音频输入。<strong>价格</strong> = 瑞士法郎/百万token，按 1 美元 = 0.82 瑞士法郎换算（2026 年 9 月 16 日汇率），源自 Artificial Analysis 的混合价格，其假设缓存命中 : 输入 : 输出的比例为 7:2:1。这是按 token 计的费率，因此同一模型各推理投入档位完全相同——变化的只是模型消耗的 token 数量。速度 ≈ 词/秒。上下文 = 单次可读取的最大文本量。「not reported」表示该数值未公布，此类单元格排序时始终置底——本表 20 个模型在四项基准上均有已公布的分数。(max)、(high)、(medium)、(low) 等后缀是同一模型的推理投入档位，分别评测；「(with fallback)」表示厂商会将溢出请求转给备用模型。数据来自 <a href="'+AA+'" target="_blank">Artificial Analysis</a>'+AA_EVALS+'。',
     news_title:'本周新动态',
-    news_desc:'各AI公司的公告 — 超72小时的条目标有日期。点击「来源」阅读原文。',
+    news_desc:'各AI公司的公告 —— 超72小时的条目标有日期。点击「来源」阅读原文。',
     cat_releases:'新发布的AI模型', cat_pricing:'价格与方案变更',
     cat_policy:'隐私、规则与条款', cat_features:'新功能与升级',
     cat_company:'公司动态', source_link:'来源 →',
