@@ -23,7 +23,7 @@ You can also think of `conda` as a **software and package manager**. Instead of 
 
 For example:
 
-```
+```bash
 conda install scipy
 ```
 
@@ -97,13 +97,13 @@ Some commonly used channels are:
 
 For example, to install a package specifically from `conda-forge`:
 
-```
+```bash
 conda install -c conda-forge scipy
 ```
 
 Or from Bioconda:
 
-```
+```bash
 conda install -c bioconda blast
 ```
 
@@ -119,19 +119,19 @@ Not every package is available for every operating system, so always check the s
 
 Create a new environment and give it a meaningful name:
 
-```
+```bash
 conda create --name my_env
 ```
 
 A better practice is to specify the Python version when creating a Python environment:
 
-```
+```bash
 conda create --name my_env python=3.12
 ```
 
 For example:
 
-```
+```bash
 conda create --name malaria_analysis python=3.12
 ```
 
@@ -141,13 +141,13 @@ Using a meaningful name makes it much easier to remember what the environment is
 
 ## 2️⃣ Activate the environment
 
-```
+```bash
 conda activate my_env
 ```
 
 Your command line will normally show the active environment:
 
-```
+```bash
 (my_env) C:\Users\username>
 ```
 
@@ -159,19 +159,19 @@ Anything you install with `conda` will now be installed into this environment.
 
 For example:
 
-```
+```bash
 conda install scipy
 ```
 
 You can install several packages at once:
 
-```
+```bash
 conda install numpy pandas scipy
 ```
 
 You can also specify a version:
 
-```
+```bash
 conda install scipy=1.14
 ```
 
@@ -181,7 +181,7 @@ conda install scipy=1.14
 
 To see all `conda` environments on your computer:
 
-```
+```bash
 conda env list
 ```
 
@@ -193,13 +193,13 @@ The currently active environment is marked with `*`.
 
 To see all packages installed in the current environment:
 
-```
+```bash
 conda list
 ```
 
 To check whether a particular package is installed:
 
-```
+```bash
 conda list scipy
 ```
 
@@ -209,7 +209,7 @@ conda list scipy
 
 When you have finished working in an environment:
 
-```
+```bash
 conda deactivate
 ```
 
@@ -221,7 +221,7 @@ One major advantage of `conda` is that you can save the configuration of an envi
 
 For example:
 
-```
+```bash
 conda env export > environment.yml
 ```
 
@@ -229,7 +229,7 @@ This creates an `environment.yml` file containing information about the packages
 
 Someone else (or you at a later date) can use this file to recreate the environment:
 
-```
+```bash
 conda env create -f environment.yml
 ```
 
