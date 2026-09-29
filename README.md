@@ -41,6 +41,10 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](resea
 
 - [Quick start on SciCORE HPC](sciCORE_quick_start.md) (For those who prefer to skip the full manual)
 
+### Conda
+
+- [Getting started with `conda`](conda.md)
+
 ### PowerShell
 
 - [PowerShell basic usage](powershell_basic_usage.md)

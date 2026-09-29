@@ -50,6 +50,10 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](https
 ### 🧮 High-Performance Computing (HPC)
 - [Quick Start on SciCORE HPC](https://github.com/SwissTPH/Research_IT_doc/blob/main/sciCORE_quick_start.md) — for those who prefer to skip the full manual
 
+### 📦Conda
+
+- [Getting started with `conda`](https://github.com/SwissTPH/Research_IT_doc/blob/main/conda.md)
+
 ---
 
 _Please contact research-it@swisstph.ch if you need further help._
