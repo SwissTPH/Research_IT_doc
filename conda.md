@@ -31,7 +31,7 @@ conda install scipy
 
 
 
-## Installing `conda`
+## Variations of `conda` installer
 
 There are three common ways to install `conda`:
 
@@ -39,13 +39,13 @@ There are three common ways to install `conda`:
 
 Anaconda is a full distribution that includes `conda`, Python and many commonly used packages and tools for data science.
 
-It is convenient for beginners because many packages are already installed, but it requires considerably more disk space.
+It is convenient for **beginners** because many packages are already installed, but it requires considerably more disk space.
 
 ### 2. Miniconda
 
 Miniconda is a minimal installer containing `conda`, Python and only a small number of essential packages.
 
-Packages such as `pandas`, `NumPy` or `Jupyter` are not installed by default. You install only the packages that you actually need. This keeps the installation smaller and gives you more control over your environments.
+**Packages such as `pandas`, `NumPy` or `Jupyter` are not installed by default.** You install only the packages that you actually need. This keeps the installation smaller and gives you more control over your environments.
 
 ### 3. Miniforge
 
@@ -56,8 +56,6 @@ It comes preconfigured to use the `conda-forge` channel and also includes `mamba
 
 
 General installation instructions are available on the [official conda installation page](https://docs.conda.io/projects/conda/en/latest/user-guide/install/).
-
-> **Swiss TPH users:** On Swiss TPH Windows laptops, Anaconda and Miniconda are available through Company Portal.
 
 
 
@@ -113,11 +111,11 @@ Not every package is available for every operating system, so always check the s
 
 
 
-# Basic `conda` workflow
+# A basic `conda` workflow
 
 
 
-## 1. Create an environment
+## 1️⃣ Create an environment
 
 Create a new environment and give it a meaningful name:
 
@@ -141,7 +139,7 @@ Using a meaningful name makes it much easier to remember what the environment is
 
 
 
-## 2. Activate the environment
+## 2️⃣ Activate the environment
 
 ```
 conda activate my_env
@@ -157,7 +155,7 @@ Anything you install with `conda` will now be installed into this environment.
 
 
 
-## 3. Install packages
+## 3️⃣ Install packages
 
 For example:
 
@@ -179,7 +177,7 @@ conda install scipy=1.14
 
 
 
-## 4. Check your environments
+## 4️⃣ Check your environments
 
 To see all `conda` environments on your computer:
 
@@ -191,7 +189,7 @@ The currently active environment is marked with `*`.
 
 
 
-## 5. Check installed packages
+## 5️⃣ Check installed packages
 
 To see all packages installed in the current environment:
 
@@ -207,7 +205,7 @@ conda list scipy
 
 
 
-## 6. Leave the environment
+## 6️⃣ Leave the environment
 
 When you have finished working in an environment:
 
@@ -217,7 +215,7 @@ conda deactivate
 
 
 
-# Reproducible environments
+# Export environments
 
 One major advantage of `conda` is that you can save the configuration of an environment.
 
@@ -236,49 +234,3 @@ conda env create -f environment.yml
 ```
 
 Keeping an environment file together with your analysis or project helps make your work more reproducible.
-
-
-
-# Useful commands
-
-| Task                              | Command                                     |
-| --------------------------------- | ------------------------------------------- |
-| Create an environment             | `conda create --name my_env`                |
-| Create an environment with Python | `conda create --name my_env python=3.12`    |
-| Activate an environment           | `conda activate my_env`                     |
-| Deactivate an environment         | `conda deactivate`                          |
-| List environments                 | `conda env list`                            |
-| Install a package                 | `conda install package_name`                |
-| Install from a specific channel   | `conda install -c conda-forge package_name` |
-| List installed packages           | `conda list`                                |
-| Export an environment             | `conda env export > environment.yml`        |
-| Recreate an environment           | `conda env create -f environment.yml`       |
-| Remove an environment             | `conda env remove --name my_env`            |
-
-
-
-## Recommended workflow
-
-For most projects:
-
-1. **Create a separate environment for each project or analysis.**
-2. **Give the environment a meaningful name.**
-3. **Specify important versions where reproducibility matters.**
-4. **Install only the packages you actually need.**
-5. **Keep an** `environment.yml` **file with important projects.**
-6. **Avoid installing project-specific packages into the** `base` **environment.**
-7. **For Linux-only bioinformatics software, use** `conda` **inside WSL rather than Windows** `conda`**.**
-
-A typical workflow might therefore look like:
-
-```
-conda create --name malaria_analysis python=3.12
-conda activate malaria_analysis
-
-conda install -c conda-forge pandas scipy
-
-# work on your analysis...
-
-conda env export > environment.yml
-conda deactivate
-```
