@@ -15,11 +15,9 @@ For example, one project might require:
 - SciPy 1.14
 - a particular version of another scientific tool
 
-Another project may require completely different versions.
+Another project may require completely different versions.... Instead of installing everything into the same system, `conda` keeps these environments separate. This helps avoid software conflicts and makes your analyses easier to reproduce later.
 
-Instead of installing everything into the same system, `conda` keeps these environments separate. This helps avoid software conflicts and makes your analyses easier to reproduce later.
-
-You can also think of `conda` as a **software and package manager**. Instead of searching online for an installer for every tool, you can often find the package on [anaconda.org](https://anaconda.org/) and install it directly from the command line.
+You can also think of `conda` as a **software and package manager** - instead of searching online for an installer for every tool, you can often find the package on [anaconda.org](https://anaconda.org/) and install it directly from the command line.
 
 For example:
 
@@ -37,9 +35,7 @@ There are three common ways to install `conda`:
 
 ### 1. Anaconda
 
-Anaconda is a full distribution that includes `conda`, Python and many commonly used packages and tools for data science.
-
-It is convenient for **beginners** because many packages are already installed, but it requires considerably more disk space.
+Anaconda is a full distribution that includes `conda`. It is convenient for **beginners** because many packages are already installed.
 
 ### 2. Miniconda
 
@@ -49,9 +45,7 @@ Miniconda is a minimal installer containing `conda`, Python and only a small num
 
 ### 3. Miniforge
 
-Miniforge is a minimal installer maintained by the conda-forge community.
-
-It comes preconfigured to use the `conda-forge` channel and also includes `mamba`, an alternative package manager that uses the same package ecosystem.
+Miniforge is a minimal installer maintained by the `conda-forge` community.
 
 
 
@@ -155,13 +149,11 @@ To see all `conda` environments on your computer:
 conda env list
 ```
 
-The currently active environment is marked with `*`.
-
 
 
 ### 5️⃣ Check installed packages
 
-To see all packages installed in the current environment:
+To see all packages in the current environment:
 
 ```bash
 conda list
@@ -234,3 +226,4 @@ Not every package is available for every operating system, so always check the s
 
 
 **Note for bioinformatics users:** Many packages from the `bioconda` channel are available only for Linux and macOS, not native Windows. If a Bioconda package is not available on Windows, use `conda` inside WSL instead.
+
