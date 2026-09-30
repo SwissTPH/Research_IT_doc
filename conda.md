@@ -2,11 +2,11 @@
 
 
 
-## What is `conda` and why would I use it?
+## ❓ What is `conda` and why would I use it?
 
 `conda` is a command-line tool for managing **software packages** and **environments**. It runs on Windows, macOS and Linux.
 
-One of the main advantages of `conda` is that you can create a separate environment for each project or analysis.
+🔒 One of the main advantages of `conda` is that you can create a separate environment for each project or analysis.
 
 For example, one project might require:
 
@@ -31,7 +31,7 @@ conda install scipy
 
 
 
-## Variations of `conda` installer
+## 🚥 Variations of `conda` installer
 
 There are three common ways to install `conda`:
 
@@ -59,7 +59,7 @@ General installation instructions are available on the [official conda installat
 
 
 
-## Using `conda` on Swiss TPH laptops
+## 💻 Using `conda` on Swiss TPH laptops
 
 ### Windows / PowerShell
 
@@ -81,11 +81,133 @@ Do not mix your Windows `conda` installation with your WSL/Linux installation. T
 
 
 
-> **Bioinformatics users:** Many packages from the `bioconda` channel are available only for Linux and macOS, not native Windows. If a Bioconda package is not available on Windows, use `conda` inside WSL instead.
+## A basic `conda` workflow
 
 
 
-## Understanding channels
+### 1️⃣ Create an environment
+
+Create a new environment and give it a meaningful name:
+
+```bash
+conda create --name my_env
+```
+
+A better practice is to specify the Python version when creating a Python environment:
+
+```bash
+conda create --name my_env python=3.12
+```
+
+For example:
+
+```bash
+conda create --name malaria_analysis python=3.12
+```
+
+Using a meaningful name makes it much easier to remember what the environment is used for.
+
+
+
+### 2️⃣ Activate the environment
+
+```bash
+conda activate my_env
+```
+
+Your command line will normally show the active environment:
+
+```bash
+(my_env) C:\Users\username>
+```
+
+Anything you install with `conda` will now be installed into this environment.
+
+
+
+### 3️⃣ Install packages
+
+For example:
+
+```bash
+conda install scipy
+```
+
+You can install several packages at once:
+
+```bash
+conda install numpy pandas scipy
+```
+
+You can also specify a version:
+
+```bash
+conda install scipy=1.14
+```
+
+
+
+### 4️⃣ Check your environments
+
+To see all `conda` environments on your computer:
+
+```bash
+conda env list
+```
+
+The currently active environment is marked with `*`.
+
+
+
+### 5️⃣ Check installed packages
+
+To see all packages installed in the current environment:
+
+```bash
+conda list
+```
+
+To check whether a particular package is installed:
+
+```bash
+conda list scipy
+```
+
+
+
+### 6️⃣ Leave the environment
+
+When you have finished working in an environment:
+
+```bash
+conda deactivate
+```
+
+
+
+## 📤 Export environments
+
+One major advantage of `conda` is that you can save the configuration of an environment.
+
+For example:
+
+```bash
+conda env export > environment.yml
+```
+
+This creates an `environment.yml` file containing information about the packages installed in the environment.
+
+Someone else (or you at a later date) can use this file to recreate the environment:
+
+```bash
+conda env create -f environment.yml
+```
+
+Keeping an environment file together with your analysis or project helps make your work more reproducible.
+
+
+
+## 🕹️ Understanding channels
 
 A **channel** is a repository from which `conda` downloads packages.
 
@@ -111,126 +233,4 @@ Not every package is available for every operating system, so always check the s
 
 
 
-# A basic `conda` workflow
-
-
-
-## 1️⃣ Create an environment
-
-Create a new environment and give it a meaningful name:
-
-```bash
-conda create --name my_env
-```
-
-A better practice is to specify the Python version when creating a Python environment:
-
-```bash
-conda create --name my_env python=3.12
-```
-
-For example:
-
-```bash
-conda create --name malaria_analysis python=3.12
-```
-
-Using a meaningful name makes it much easier to remember what the environment is used for.
-
-
-
-## 2️⃣ Activate the environment
-
-```bash
-conda activate my_env
-```
-
-Your command line will normally show the active environment:
-
-```bash
-(my_env) C:\Users\username>
-```
-
-Anything you install with `conda` will now be installed into this environment.
-
-
-
-## 3️⃣ Install packages
-
-For example:
-
-```bash
-conda install scipy
-```
-
-You can install several packages at once:
-
-```bash
-conda install numpy pandas scipy
-```
-
-You can also specify a version:
-
-```bash
-conda install scipy=1.14
-```
-
-
-
-## 4️⃣ Check your environments
-
-To see all `conda` environments on your computer:
-
-```bash
-conda env list
-```
-
-The currently active environment is marked with `*`.
-
-
-
-## 5️⃣ Check installed packages
-
-To see all packages installed in the current environment:
-
-```bash
-conda list
-```
-
-To check whether a particular package is installed:
-
-```bash
-conda list scipy
-```
-
-
-
-## 6️⃣ Leave the environment
-
-When you have finished working in an environment:
-
-```bash
-conda deactivate
-```
-
-
-
-# Export environments
-
-One major advantage of `conda` is that you can save the configuration of an environment.
-
-For example:
-
-```bash
-conda env export > environment.yml
-```
-
-This creates an `environment.yml` file containing information about the packages installed in the environment.
-
-Someone else (or you at a later date) can use this file to recreate the environment:
-
-```bash
-conda env create -f environment.yml
-```
-
-Keeping an environment file together with your analysis or project helps make your work more reproducible.
+**Note for bioinformatics users:** Many packages from the `bioconda` channel are available only for Linux and macOS, not native Windows. If a Bioconda package is not available on Windows, use `conda` inside WSL instead.
