@@ -20,6 +20,7 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](resea
 
 - [Recommended skills](skills_recommend.md)
 - [AI dashboard](./docs/ai_dashboard.html)
+- [Using Swiss TPH provided skills in ChatGPT and Claude](using_swisstph_skills_in_chatgpt_and_claude.md)
 
 ### Python
 
