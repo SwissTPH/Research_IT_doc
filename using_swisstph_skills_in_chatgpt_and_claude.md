@@ -1,16 +1,25 @@
 # Using Swiss TPH Skills in ChatGPT and Claude
 
-This guide explains how to access and use **Swiss TPH-provided skills** in ChatGPT and Claude, both on the web and in desktop applications, for users with a Swiss TPH AI subscription.
+This document explains how to use **Swiss TPH-provided skills** in ChatGPT and Claude **for users with a Swiss TPH AI subscription**.
 
 **Please follow the instructions below for the application you are using.**
 
 
 
+## 🌐 ChatGPT Web
+
+**No installation required.** Swiss TPH-provided skills are **already available** in your ChatGPT web account.
+
+1. Open [ChatGPT](https://chatgpt.com/).
+2. Type **@** in the chat and select the skill you want to use.
+
+
+
 ## 💻 ChatGPT Desktop App (Windows)
 
-**Manual installation may be required.**
+**Manual installation from the web is required.**
 
-1. Open [ChatGPT in your browser](https://chatgpt.com/).
+1. Open [ChatGPT](https://chatgpt.com/).
 
 2. In the sidebar, go to **Plugins → Skills**.
 
@@ -21,30 +30,11 @@ This guide explains how to access and use **Swiss TPH-provided skills** in ChatG
 5. Move the **extracted skill folder** (not the ZIP file) into the following directory:
    `C:\Users\<your_username>\.codex\skills\`
 
-   Replace `<your_username>` with your Windows username.
+   Replace `<your_username>` with your Windows Swiss TPH username.
 
 6. Restart the ChatGPT app if necessary.
 
 7. To use the skill, type **@** followed by the skill name in your chat.
-
-
-
-## 🌐 ChatGPT Web
-
-**No installation required.** Swiss TPH-provided skills are already available in your ChatGPT web account.
-
-1. Open [ChatGPT](https://chatgpt.com/).
-2. Type **@** in the chat and select the skill you want to use.
-
-
-
-## 💻 Claude Desktop App (Windows)
-
-**Skills need to be added to your account first.**
-
-1. Open Claude and go to **Customize → Skills → Yours**.
-2. Add the Swiss TPH-provided skills using **three-dot (···)**.
-3. Use skills by typing **/** followed by the skill name in your chat.
 
 
 
@@ -56,3 +46,12 @@ This guide explains how to access and use **Swiss TPH-provided skills** in ChatG
 2. Add the Swiss TPH-provided skills using **three-dot (···)**.
 3. Use skills by typing **/** followed by the skill name in your chat.
 
+
+
+## 💻 Claude Desktop App (Windows)
+
+**Skills need to be added to your account first.**
+
+1. Open Claude and go to **Customize → Skills → Yours**.
+2. Add the Swiss TPH-provided skills using **three-dot (···)**.
+3. Use skills by typing **/** followed by the skill name in your chat.
