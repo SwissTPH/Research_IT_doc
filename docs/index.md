@@ -29,6 +29,7 @@ We bridge 🔍 science and 🖥️ IT: [Research Informatics Introduction](https
 - [Recommended skills](https://github.com/SwissTPH/Research_IT_doc/blob/main/skills_recommend.md)
 - [AI dashboard](ai_dashboard.html)
 - [Using Swiss TPH provided skills in ChatGPT and Claude](https://github.com/SwissTPH/Research_IT_doc/blob/main/using_swisstph_skills_in_chatgpt_and_claude.md)
+- [AI workshop 3: Working with AI effectively and responsibly](https://github.com/SwissTPH/Research_IT_doc/blob/main/workshop3_materials.md) 
 
 ### 🐍 Python
 
