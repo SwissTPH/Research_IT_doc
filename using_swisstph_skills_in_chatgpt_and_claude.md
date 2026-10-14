@@ -30,7 +30,7 @@ This document explains how to use **Swiss TPH-provided skills** in ChatGPT and C
 5. Move the **extracted skill folder** (not the ZIP file) into the following directory:
    `C:\Users\<your_username>\.codex\skills\`
 
-   Replace `<your_username>` with your Windows Swiss TPH username.
+   Replace `<your_username>` with your Windows Swiss TP username.
 
 6. Restart the ChatGPT app if necessary.
 
