@@ -6,5 +6,4 @@ Materials list:
 
 - [ChatGPT users - hands on material](chatgpt_ws3.md)
 - [Claude users - hands on material](claude_ws3.md)
-- Knowledge base for the project: [SwissTPH_Positioning and messaging framework.pdf](https://swisstph.sharepoint.com/sites/EngagementandCommunications/Freigegebene Dokumente/Forms/AllItems.aspx?id=%2Fsites%2FEngagementandCommunications%2FFreigegebene Dokumente%2FInstitutional Information%2FCorporate Identity and Design%2FBrand Refresh Overview%2FSwissTPH_Positioning and messaging framework.pdf&parent=%2Fsites%2FEngagementandCommunications%2FFreigegebene Dokumente%2FInstitutional Information%2FCorporate Identity and Design%2FBrand Refresh Overview&p=true&ga=1)
-
+- [SwissTPH_Positioning and messaging framework](https://swisstph.sharepoint.com/:b:/s/EngagementandCommunications/IQDL7tBvQtvcRqftU11ECA0dARHt7b5uQkIz6OwHx6Tgo0A?e=9Z47Vn)
