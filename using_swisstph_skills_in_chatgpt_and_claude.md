@@ -40,9 +40,9 @@ This document explains how to use **Swiss TPH-provided skills** in ChatGPT and C
 
 ## 🌐 Claude Web
 
-**Skills may need to be added to your account first.**
+**Skills need to be added to your account first.**
 
-1. Open [Claude](https://claude.ai/) and in the sidebar, go to **Customize → Skills → Yours**.
+1. Open [Claude](https://claude.ai/) and go to **Customize** sidebar, then search for the skill you need.
 2. Add the Swiss TPH-provided skills using **three-dot (···)**.
 3. Use skills by typing `/` followed by the skill name in your chat, like `/swisstph-slides Create a 5-slide presentation summarising https://www.swisstph.ch/en/`.
 
@@ -52,6 +52,6 @@ This document explains how to use **Swiss TPH-provided skills** in ChatGPT and C
 
 **Skills need to be added to your account first.**
 
-1. Open Claude and go to **Customize**, then search for the skill you need.
+1. Open Claude and go to **Customize** sidebar, then search for the skill you need.
 2. Add the Swiss TPH-provided skills using **three-dot (···)**.
 3. Use skills by typing **/** followed by the skill name in your chat.
