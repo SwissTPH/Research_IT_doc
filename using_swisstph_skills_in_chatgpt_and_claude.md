@@ -1,4 +1,4 @@
-# Using Swiss TPH Skills in ChatGPT and Claude
+# Using Swiss TPH provided Skills in ChatGPT and Claude
 
 This document explains how to use **Swiss TPH-provided skills** in ChatGPT and Claude **for users with a Swiss TPH AI subscription**.
 
@@ -21,20 +21,10 @@ This document explains how to use **Swiss TPH-provided skills** in ChatGPT and C
 
 1. Open [ChatGPT](https://chatgpt.com/).
 
-2. In the sidebar, go to **Plugins → Skills**.
+2. In the sidebar, go to `Plugins` → `Swiss TPH` -> add the `Swiss TPH AI Toolkit`.
 
-3. Find the Swiss TPH skill you want to use, click the **three-dot (···)** and select **Download**.
+3. Use skills inside the Toolkit by `@Swiss TPH AI Toolkit`
 
-4. On your laptop, open your **Downloads** folder, locate the downloaded ZIP file, right-click it and select **Extract All**.
-
-5. Move the **extracted skill folder** (not the ZIP file) into the following directory:
-   `C:\Users\<your_username>\.codex\skills\`
-
-   Replace `<your_username>` with your Windows Swiss TP username.
-
-6. Restart the ChatGPT app if necessary.
-
-7. To use the skill, type `@` followed by the skill name in your chat, like `@swisstph-slides Create a 5-slide presentation summarising https://www.swisstph.ch/en/`.
 
 
 
