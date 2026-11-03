@@ -152,7 +152,11 @@ Rules:
 The skill must work with different Projects and must not contain hard-coded Swiss TPH information.
 ```
 
+**After this, add the new skill.**
 
+
+
+Using the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.
 
 **Prompt (please make sure the `/relevance-checker` skill is called):**
 
@@ -173,6 +177,8 @@ If the skills are not synchronized, please add them again in Customise -> Yours 
 **Weekly tool & workflow discovery**
 
 Using the `/relevance-checker` skill inside `Swiss TPH - What we do` project in the desktop app.
+
+
 
 **Prompt (please make sure the `/relevance-checker` skill is called):**
 
@@ -241,3 +247,5 @@ Do not install software, execute downloaded code or modify unrelated files. Do n
 
 Finally, provide a short summary of the most promising discoveries and the full local paths of the Word report and CSV history.
 ```
+
+After this, you should see a Word report and CSV history generated.

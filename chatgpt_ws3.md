@@ -153,11 +153,13 @@ Rules:
 The skill must work with different Projects and must not contain hard-coded Swiss TPH information.
 ```
 
-**Note that after this, ChatGPT will give you a zip file, and we need to upload it back to ChatGPT->Plugins->Skills->Add->Upload from your computer.**
+**Note that after this, you should be able to add the new skill. If not, ChatGPT will give you a zip file, and we need to upload it back to ChatGPT->Plugins->Skills->Add->Upload from your computer.**
 
 
 
-**Using the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.** Prompt **(please make sure the `@relevance-checker` skill is called):**
+Using the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.
+
+**Prompt (please make sure the `@relevance-checker` skill is called):**
 
 ```
 Use the @relevance-checker skill to evaluate https://quarto.org/ against the activities of Swiss TPH. Use the Project knowledge base and consult the official Swiss TPH website if additional context is needed. Explain which teams could benefit and why.
@@ -247,3 +249,4 @@ Do not install software, execute downloaded code or modify unrelated files. Do n
 Finally, provide a short summary of the most promising discoveries and the full local paths of the Word report and CSV history.
 ```
 
+After this, you should see a Word report and CSV history generated.
