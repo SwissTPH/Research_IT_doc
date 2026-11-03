@@ -156,7 +156,7 @@ The skill must work with different Projects and must not contain hard-coded Swis
 
 
 
-Using the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.
+**Use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
 
 **Prompt (please make sure the `/relevance-checker` skill is called):**
 
