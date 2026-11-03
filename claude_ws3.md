@@ -91,7 +91,7 @@ Show me the AI model release in the past 7 days /check-ai-update
 
 ### 2. Using a skill inside a project
 
-**Create a new skill first:**
+**First, create a new skill first:**
 
 **Prompt (please make sure the `/skill-creator` skill is called):**
 
@@ -156,7 +156,7 @@ The skill must work with different Projects and must not contain hard-coded Swis
 
 
 
-**Use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
+**Then, use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
 
 **Prompt (please make sure the `/relevance-checker` skill is called):**
 
@@ -168,13 +168,13 @@ Use the /relevance-checker skill to evaluate https://quarto.org/ against the act
 
 ## Task 3️⃣ Automation on desktop app
 
-**Double check whether the skills are available**
+**1. Double check whether the skills are available**
 
 If the skills are not synchronized, please add them again in Customise -> Yours -> add.
 
 
 
-**Weekly tool & workflow discovery**
+**2. Weekly tool & workflow discovery**
 
 Using the `/relevance-checker` skill inside `Swiss TPH - What we do` project in the desktop app.
 

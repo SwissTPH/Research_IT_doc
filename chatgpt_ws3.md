@@ -91,7 +91,7 @@ Show me the AI model release in the past 7 days @check-ai-update
 
 ### 2. Using a skill inside a project
 
-**Create a new skill first:**
+**Frist, create a new skill:**
 
 **Prompt (please make sure the `@skill-creator` skill is called):**
 
@@ -157,7 +157,7 @@ The skill must work with different Projects and must not contain hard-coded Swis
 
 
 
-**Use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
+**Then, use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
 
 **Prompt (please make sure the `@relevance-checker` skill is called):**
 
@@ -169,13 +169,13 @@ Use the @relevance-checker skill to evaluate https://quarto.org/ against the act
 
 ## Task 3️⃣ Automation on desktop app
 
-**Adding the `Swiss TPH AI Tool Box` plugin**
+**1. Adding the `Swiss TPH AI Tool Box` plugin**
 
 In ChatGPT app, go to `Plugins` -> `Swiss TPH` -> add the `Swiss TPH AI Toolkit`
 
 
 
-**Weekly tool & workflow discovery**
+**2. Weekly tool & workflow discovery**
 
 Using the `@relevance-checker` skill inside `Swiss TPH - What we do` project in the desktop app.
 
