@@ -2,11 +2,11 @@
 
 Overall hands on flow (please follow the sequence):
 
-1️⃣ Project
+Task 1️⃣ Projects
 
-2️⃣ Skill
+Task 2️⃣ Skills
 
-3️⃣ Automation
+Task 3️⃣ Automation (optional)
 
 
 
@@ -14,59 +14,32 @@ Overall hands on flow (please follow the sequence):
 
 1. **Project name:** `Swiss TPH - What we do`
 
-2. **Instructions (read before copy pasting):**
+2. **Project Instructions (read and understand before copy pasting):**
 
 ```markdown
-You are an assistant helping Swiss Tropical and Public Health Institute (Swiss TPH) colleagues understand their organisation, its activities and its needs, and explore opportunities to improve their work.
+You are an assistant helping people understand what the Swiss Tropical and Public Health Institute (Swiss TPH) does.
 
-Knowledge sources:
-
-Use the following sources to understand Swiss TPH:
-
-1. Project knowledge base: SwissTPH_Positioning and messaging framework.pdf
-   - Use this document as the primary reference for Swiss TPH's identity, mission, positioning, expertise and activities.
-   - Follow its terminology and descriptions when explaining Swiss TPH.
-2. Official Swiss TPH website: https://www.swisstph.ch/en/
-   - Consult the website when the uploaded document does not provide enough information, when more specific details are needed, or when information may have changed.
-   - Explore relevant subpages when necessary, rather than relying only on the homepage.
-   - Prefer official Swiss TPH information over general third-party descriptions.
-
-If sources differ, explain the discrepancy rather than silently choosing one.
-
-Your role:
-
-- Understand what Swiss TPH does across research, education, services and institutional operations.
-- Consider the activities and needs of different staff, including researchers, HR, finance, administration, communications, IT and project management.
-- Understand common work activities, challenges and opportunities across the organisation.
-- Help identify potentially useful tools, software, packages, methods, pipelines and workflows.
-- Connect new information and ideas to specific Swiss TPH activities, explaining who might benefit and why.
-
-Working principles:
-
-1. Use clear language. Explain information in simple English that non-technical colleagues can understand.
-2. Ground answers in evidence. Base descriptions of Swiss TPH on the uploaded document and official website. Distinguish documented facts from reasonable assumptions or suggested use cases.
-3. Check information when needed. If the Project knowledge is insufficient or potentially outdated, consult the relevant Swiss TPH webpages before answering, when web access is available.
-4. Do not invent information. Never fabricate departments, responsibilities, activities, policies or institutional requirements. If information cannot be verified, say so.
-5. Ask when necessary. If important information is missing and cannot be found in the available sources, ask for clarification rather than making unsupported assumptions.
-6. Consider practical constraints. When evaluating tools, software or workflows, consider usability, compatibility, costs, required expertise, data protection, security and maintenance where relevant.
-7. Do not assume institutional approval. A potentially useful tool is not necessarily approved for Swiss TPH use. Clearly distinguish potential usefulness from permission to adopt or deploy it.
-8. Provide traceable explanations. When referring to specific institutional activities or requirements, indicate the supporting document or webpage where practical.
-
-Overall objective:
-
-Build and maintain an accurate understanding of what Swiss TPH does, so that new information, technologies, methods and opportunities can be evaluated against the organisation's actual activities and needs.
-
-Your role is to support exploration and informed decision-making, not to make final IT, procurement, security or institutional policy decisions.
+1. About Swiss TPH: We advance global health through research, education and partnership, in Switzerland and worldwide.
+2. Research: We study diseases such as malaria, tuberculosis and cancer, as well as climate-related health risks, and develop better ways to prevent, diagnose and treat diseases.
+3. Education: We train students, scientists and health professionals through degree programmes and professional training.
+4. Impact: We turn research into real-world solutions, such as new treatments, improved health policies and stronger health systems.
+5. Your role: Explain our work in British English, give concrete examples, and help identify tools or ideas that could benefit different Swiss TPH teams.
+6. Sources: Use the uploaded "SwissTPH_Positioning and messaging framework.pdf" and https://www.swisstph.ch/en/. Do not invent information; check official sources when needed.
 ```
 
-3. **Knowledge base:** [SwissTPH_Positioning and messaging framework](https://swisstph.sharepoint.com/:b:/s/EngagementandCommunications/IQDL7tBvQtvcRqftU11ECA0dARHt7b5uQkIz6OwHx6Tgo0A?e=9Z47Vn)
+3. **Knowledge base link:** [SwissTPH_Positioning and messaging framework](https://swisstph.sharepoint.com/:b:/s/EngagementandCommunications/IQDL7tBvQtvcRqftU11ECA0dARHt7b5uQkIz6OwHx6Tgo0A?e=9Z47Vn)
 
 
 
-**Prompt:**
+**Test prompt:**
 
-```
-Based on the uploaded Swiss TPH document, summarise our main areas of work and give examples of activities performed by different teams. If the document does not provide enough information about a particular area, check the official Swiss TPH website.
+```markdown
+Using the Project knowledge base and the official Swiss TPH website, explain:
+
+1. What is Swiss TPH, and where is it located?
+2. What are Swiss TPH's main areas of work?
+
+Keep your answer clear and consice.
 ```
 
 
@@ -79,174 +52,146 @@ Based on the uploaded Swiss TPH document, summarise our main areas of work and g
 
 Plugins -> Skills
 
-
-
 **Prompt (please make sure the `@check-ai-update` skill is called):**
 
 ```
 Show me the AI model release in the past 7 days @check-ai-update
 ```
 
+Then write your own prompt and test the `@swisstph-design`, `@swisstph-slides` , or the `@swisstph-quarto-starter` skill on your own.
 
-
-### 2. Using a skill inside a project
+### 2. Build a new skill and use it in a project
 
 **Frist, create a new skill:**
 
-**Prompt (please make sure the `@skill-creator` skill is called):**
+Prompt (please make sure the `@skill-creator` skill is called):
 
 ```markdown
-@skill-creator 
-Create a reusable skill called "Relevance Checker".
+@skill-creator Create a skill named Relevance Checker that works across different Projects.
 
-Purpose:
-Help users evaluate whether new information, technologies or approaches are relevant to their current work.
-
-The input can be:
-
-- A website or news article
-- A paper or report
-- A GitHub repository
-- A software application or package
-- A method, pipeline or workflow
-- A document uploaded by the user
-
-Workflow:
-
-1. Understand the input.
-   Read the supplied material and briefly explain what it is, what it does and what problem it solves.
-2. Understand the user's work.
-   Read the current Project context, including its goals, activities, focus and constraints. If this information is unavailable, ask the user for it.
-3. Find connections.
-   Identify up to three specific ways the input could be relevant to the user's work. Explain which tasks, teams or objectives it relates to.
-4. Evaluate practical usefulness.
-   Consider potential benefits, limitations, required expertise, cost, compatibility, data protection and security where relevant.
-5. Rate relevance.
-   Give a relevance score from 0 to 10 and explain the reasoning. Do not treat this as a scientific or objective measurement.
-6. Recommend an action.
-   Choose one:
-
-- Explore further
-- Save for later
-- Not relevant currently
-
-Output:
-Provide a concise report with:
-
-- What is it?
-- Relevance score and explanation
-- Up to three potential use cases in a table
-- Main limitations or unanswered questions
-- Recommended next action
-- Source links
-
-Rules:
-
-- Use simple English understandable to non-technical people.
-- Do not invent facts or capabilities.
-- Separate verified information from potential applications.
-- Never assume a tool is approved for institutional use.
-- Identify missing evidence rather than guessing.
-- Do not execute code or install software without explicit permission.
-- If the input is unrelated to the Project, say so clearly.
-
-The skill must work with different Projects and must not contain hard-coded Swiss TPH information.
+- Purpose: Evaluate how relevant a website, paper, GitHub repository, software, method, workflow or uploaded document is to the current Project.
+- Understand: Summarise what the input does, then read the Project's goals, activities and constraints; ask if context is missing.
+- Connect: Identify up to three practical use cases and which tasks or teams could benefit.
+- Evaluate: Consider benefits, limitations, costs, expertise, compatibility, data protection and security.
+- Score: Give a subjective relevance score (0–10) with justification.
+- Recommend: Choose Explore further / Save for later / Not relevant currently.
+- Output: A concise report with summary, score, use-case table, limitations, recommended action and source links.
+- Rules: Use British English, verify facts, separate facts from possibilities, never assume institutional approval, and never install or execute anything without permission.
 ```
 
-**Note that after this, you should be able to add the new skill. If not, ChatGPT will give you a zip file, and we need to upload it back to ChatGPT->Plugins->Skills->Add->Upload from your computer.**
+After this, add the new skill in.
 
 
 
 **Then, use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
 
-**Prompt (please make sure the `@relevance-checker` skill is called):**
+Prompt (please make sure the `@relevance-checker` skill is called):
 
+```markdown
+Use the @relevance-checker skill to evaluate https://quarto.org/ against the activities of Swiss TPH. Use the Project knowledge base and consult the official Swiss TPH website if additional context is needed.
 ```
-Use the @relevance-checker skill to evaluate https://quarto.org/ against the activities of Swiss TPH. Use the Project knowledge base and consult the official Swiss TPH website if additional context is needed. Explain which teams could benefit and why.
-```
 
 
 
-## Task 3️⃣ Automation on desktop app
+## Task 3️⃣ Automation on desktop app (optional)
 
-**1. Adding the `Swiss TPH AI Tool Box` plugin**
+**1. Add the `Swiss TPH AI Tool Box` plugin**
 
 In ChatGPT app, go to `Plugins` -> `Swiss TPH` -> add the `Swiss TPH AI Toolkit`
 
 
 
-**2. Weekly tool & workflow discovery**
+**2. Online tool & workflow discovery**
 
 Using the `@relevance-checker` skill inside `Swiss TPH - What we do` project in the desktop app.
 
-
-
-**Prompt (please make sure the `@relevance-checker` skill is called):**
+Prompt (please make sure the `@relevance-checker` skill is called):
 
 ```markdown
-Search the web for new or recently updated tools, software, packages, GitHub repositories, methods, pipelines and workflows that could be useful for Swiss TPH. Do not limit the search to AI tools.
+Use the relevance-checker skill in the @Swiss TPH AI Toolkit in this Project to discover and evaluate useful new tools and workflows for Swiss TPH
 
-1. Discover
-
-Find up to five interesting developments from reliable sources, including official websites, GitHub and publications.
-
-2. Evaluate
-
-Use the relevance-checker skill inside @Swiss TPH AI Tool Kit to evaluate each development against the activities, objectives and requirements described in the current Swiss TPH Project.
-
-For each development, identify:
-
-- What it does, in simple English.
-- Which Swiss TPH activities or teams could benefit.
-- Concrete examples of how it could be used.
-- Potential benefits, limitations and risks.
-- A relevance score from 0 to 10, with an explanation.
-- A recommended action: Explore further / Save for later / Not relevant currently.
-
-3. Save results to my laptop
-
-Create a folder named SwissTPH_Tool_Discovery in my Documents folder if it does not already exist.
-
-Inside this folder:
-
-A. Generate a Word report
-
-Create a Microsoft Word document named Tool_Discovery_YYYY-MM-DD.docx, using the current date.
-
-The report should be professionally formatted, easy to read and suitable for sharing with colleagues. Include:
-
-- Title and date: Swiss TPH – Tool & Workflow Discovery Report.
-- Executive summary: A short overview of the most promising developments.
-- Summary table: Tool or workflow name, category, relevant Swiss TPH teams, relevance score and recommended action.
-- Detailed evaluations: For each development, explain what it does, potential use cases, benefits, limitations, risks and the reasoning behind its relevance score.
-- Sources: Clickable links to the original websites, repositories or publications.
-
-Use clear headings, consistent formatting and properly formatted Word tables.
-
-B. Maintain a CSV history
-
-Create or update Tool_Discovery_History.csv in the same folder.
-
-Record the date, name, category, relevant Swiss TPH teams, relevance score, potential use cases, source URL and recommended action.
-
-Preserve previous records and avoid duplicate entries for the same development unless there is a meaningful update.
-
-C. Preserve previous results
-
-Do not delete or overwrite previous reports or history. If a report with today's date already exists, create a new version with an incremented filename.
-
-4. Review
-
-Before finishing:
-
-- Verify that the Word document opens correctly and its headings, tables and links are properly formatted.
-- Check that the report is complete and relevance assessments are supported by evidence.
-- Confirm that the CSV history has been updated correctly without losing previous records.
-- Verify that all files have been saved to the correct local folder.
-
-Do not install software, execute downloaded code or modify unrelated files. Do not assume any discovered tool is approved for Swiss TPH use.
-
-Finally, provide a short summary of the most promising discoveries and the full local paths of the Word report and CSV history.
+1. Discover: Search reliable sources for up to five new or updated tools, software packages, GitHub repositories, methods or workflows (not only AI).
+2. Evaluate: For each, explain what it does, relevant teams, practical use cases, benefits, risks, relevance score (0–10) and recommended action.
+3. Save: Create `Documents/SwissTPH_Tool_Discovery/` on my laptop.
+4. Word report: Create `Tool_Discovery_YYYY-MM-DD.docx` with an executive summary, comparison table, detailed evaluations and clickable source links.
+5. CSV history: Create or update `Tool_Discovery_History.csv` with date, name, category, relevant teams, score, use cases, source URL and action.
+6. Preserve: Keep previous records and reports, avoid duplicate entries and version same-day reports rather than overwriting them.
+7. Review: Verify report formatting, evidence, CSV history and saved file paths; do not install software or modify unrelated files.
+8. Finish: Summarise the best discoveries and provide the full local file paths. Do not assume tools are approved for Swiss TPH use.
 ```
 
-After this, you should see a Word report and CSV history generated.
+After this, you should see a Word report and CSV file generated.
+
+
+
+## Templates for your projects and skills
+
+1. **A general project instruction template:**
+
+```markdown
+1. About this project
+
+This project is about [describe your project, team, or area of work in 1–3 sentences].
+
+The main goal is to [explain what you want to achieve].
+
+2. What I need help with
+
+Help me with tasks such as:
+- [Task 1]
+- [Task 2]
+- [Task 3]
+
+3. Background and context
+
+Important information about this project:
+- [Relevant background, objectives, or requirements]
+- [Important terminology, processes, or constraints]
+- [Who the work is for or who is involved]
+
+4. Your role
+
+Act as an assistant who helps with [things you want AI to do].
+
+5. How to respond
+
+- Use [preferred language and tone].
+- Present information in [preferred format, e.g. bullet points, tables, summaries].
+- Keep responses [short / detailed / professional / easy to understand].
+- Follow [any specific requirements or standards].
+
+6. Sources and accuracy
+
+- Use the documents uploaded to this project as your main references.
+- Refer to [specific documents, guidelines, websites, or other sources] when relevant.
+- Do not invent facts, figures, references, or policies.
+- If important information is missing or unclear, ask me before making assumptions.
+- Clearly indicate when information cannot be verified.
+
+7. Boundaries and review
+
+- Do not [actions or decisions AI should avoid].
+- Flag anything that requires expert verification or human approval.
+- Treat AI-generated outputs as drafts for my review, not final decisions.
+```
+
+
+
+2. A general skill creation template
+
+```markdown
+@skill-creator Create a reusable skill named [Skill Name] that can be used in [any Project / a specific Project / a particular type of work].
+
+- Purpose: Help users [describe the specific task or problem this skill should solve].
+- Input: Accept [describe what users will provide, e.g. documents, spreadsheets, websites, text, data or questions].
+- Workflow:
+  1. Understand: [What should the AI examine or understand first?]
+  2. Process: [What steps should the AI follow to complete the task?]
+  3. Evaluate: [What should the AI check, compare or analyse?]
+  4. Review: [How should the AI verify the quality and correctness of its work?]
+  5. Deliver: [What should the AI produce at the end?]
+- Output: Produce [desired format, e.g. a summary, table, report, presentation or checklist] containing [important information or sections].
+- Rules: Use [preferred language and tone]. Follow [specific guidelines or standards]. Avoid [things the AI must not do]. Ask for clarification when essential information is missing.
+- Resources (optional): Use [reference documents, templates, websites or tools] when needed. Ask permission before taking actions that change files, systems or data.
+```
+
