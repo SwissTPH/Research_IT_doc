@@ -85,7 +85,7 @@ Show me the AI model release in the past 7 days /check-ai-update
 
 
 
-**Then, use the `@relevance-checker` skill inside the `Swiss TPH - What we do` project.**
+**Then, use the `/relevance-checker` skill inside the `Swiss TPH - What we do` project.**
 
 **Prompt (please make sure the `/relevance-checker` skill is called):**
 
