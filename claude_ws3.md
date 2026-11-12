@@ -60,9 +60,9 @@ Customise -> Discover -> **Search** for the specific skill or **Filter** by sour
 Show me the AI model release in the past 7 days /check-ai-update
 ```
 
+Then write your own prompt and test the `/swisstph-design`, `/swisstph-slides` , or the `/swisstph-quarto-starter` skill on your own.
 
-
-### 2. Using a skill inside a project
+### 2. Build a new skill and use it in a project
 
 **First, create a new skill first:**
 
