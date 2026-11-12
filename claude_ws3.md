@@ -103,13 +103,11 @@ If the skills are not synchronized, please add them again in Customise -> Yours 
 
 
 
-**2. Weekly tool & workflow discovery**
+**2. Online tool & workflow discovery**
 
 Using the `/relevance-checker` skill inside `Swiss TPH - What we do` project in the desktop app.
 
-
-
-**Prompt (please make sure the `/relevance-checker` skill is called):**
+Prompt (please make sure the `/relevance-checker` skill is called):
 
 ```markdown
 Use the /relevance-checker skill in this Project to discover and evaluate useful new tools and workflows for Swiss TPH
