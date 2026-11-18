@@ -1,14 +1,14 @@
-# AI workshop 3 hands on - Claude
+# AI workshop 3 hands-on - Claude
 
-Overall hands on flow (please follow the sequence):
+## Hands-on exercises
 
-Task 1️⃣ Projects
+Complete Tasks 1 and 2 in order. If you have time, continue to the optional desktop exercise.
 
-Task 2️⃣ Skills
-
-Task 3️⃣ Automation (optional)
-
-
+| Task                          | Difficulty      |
+| ----------------------------- | --------------- |
+| 1️⃣ Projects                    | ⭐ Beginner      |
+| 2️⃣ Skills                      | ⭐⭐ Intermediate |
+| 3️⃣ Desktop workflow (optional) | ⭐⭐⭐ Advanced    |
 
 ## Task 1️⃣ Projects on web agents
 
